@@ -21,9 +21,14 @@ namespace Mantici.Entities.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<CompanyInformation> CompanyInformations { get; set; }
         public DbSet<Phone> Phones { get; set; }
-        public DbSet<ProductPicture> ProductPictures { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<rezervation> rezervations { get; set; }
+        public DbSet<rezervedFood> rezervedFoods { get; set; }
+        public DbSet<roleOfUser> roleOfUsers { get; set; }
+        public DbSet<role> roles { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<user> users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,9 +37,14 @@ namespace Mantici.Entities.Models
             modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new CompanyInformationMap());
             modelBuilder.Configurations.Add(new PhoneMap());
-            modelBuilder.Configurations.Add(new ProductPictureMap());
+            modelBuilder.Configurations.Add(new PictureMap());
             modelBuilder.Configurations.Add(new ProductMap());
+            modelBuilder.Configurations.Add(new rezervationMap());
+            modelBuilder.Configurations.Add(new rezervedFoodMap());
+            modelBuilder.Configurations.Add(new roleOfUserMap());
+            modelBuilder.Configurations.Add(new roleMap());
             modelBuilder.Configurations.Add(new sysdiagramMap());
+            modelBuilder.Configurations.Add(new userMap());
         }
     }
 }

@@ -20,3 +20,16 @@ D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\System.Web.Mvc.xml
 D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\obj\Debug\Mantici.MVCWebUI.dll
 D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\obj\Debug\Mantici.MVCWebUI.pdb
 D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\obj\Debug\Mantici.MVCWebUI.csprojResolveAssemblyReference.cache
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Mantici.Bll.dll
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Mantici.Dal.dll
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Mantici.Entities.dll
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Mantici.Bll.pdb
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Mantici.Dal.pdb
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Mantici.Entities.pdb
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Antlr3.Runtime.dll
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Newtonsoft.Json.dll
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\System.Web.Optimization.dll
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\WebGrease.dll
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Antlr3.Runtime.pdb
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\Newtonsoft.Json.xml
+D:\omr111-GitHub\Mantici\Mantici.MVCWebUI\bin\System.Web.Optimization.xml

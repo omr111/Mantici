@@ -1,33 +1,69 @@
 ﻿using Mantici.Bll.Abstract;
+using Mantici.Dal.Abstract;
+using Mantici.Entities.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Mantici.Bll.Concrete
 {
     public class ProductBll:IProductBll
     {
 
-        public System.Collections.Generic.List<Entities.Models.Product> ListAll(System.Linq.Expressions.Expression<System.Func<Entities.Models.Product, bool>> filter = null)
+        private IProductDal _productDal;
+
+        public ProductBll(IProductDal productDal)
         {
-            throw new System.NotImplementedException();
+            _productDal = productDal;
+        }
+        public List<Product> ListAll(Expression<Func<Product, bool>> filter = null)
+        {
+            return _productDal.AllList();
         }
 
-        public Entities.Models.Product GetOne(System.Linq.Expressions.Expression<System.Func<Entities.Models.Product, bool>> filter)
+        public Product GetOne(Expression<Func<Product, bool>> filter)
         {
-            throw new System.NotImplementedException();
+            return _productDal.GetOne(filter);
         }
 
-        public bool Add(Entities.Models.Product product)
+        public bool Add(Product product)
         {
-            throw new System.NotImplementedException();
+            bool result = _productDal.Add(product);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public bool Update(Entities.Models.Product product)
+        public bool Update(Product product)
         {
-            throw new System.NotImplementedException();
+            bool result = _productDal.Update(product);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            Product product = _productDal.GetOne(x => x.id == id);
+            bool result = _productDal.Delete(product);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

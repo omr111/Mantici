@@ -15,19 +15,21 @@ namespace Mantici.Entities.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(70);
 
+            this.Property(t => t.area)
+                .IsFixedLength()
+                .HasMaxLength(30);
+
             this.Property(t => t.BranchAdress)
                 .IsRequired()
                 .HasMaxLength(250);
-
-            this.Property(t => t.BranchPicture)
-                .HasMaxLength(150);
 
             // Table & Column Mappings
             this.ToTable("Branches");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.BranchName).HasColumnName("BranchName");
+            this.Property(t => t.area).HasColumnName("area");
             this.Property(t => t.BranchAdress).HasColumnName("BranchAdress");
-            this.Property(t => t.BranchPicture).HasColumnName("BranchPicture");
+            this.Property(t => t.BranchPictureID).HasColumnName("BranchPictureID");
         }
     }
 }

@@ -1,0 +1,50 @@
+﻿@using Mantici.Entities.Models
+@model List<Mantici.Entities.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Ürün Listesi</strong>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>İsim</th>
+                                    <th>Tanım</th>
+                                    <th>Kategori</th>
+                                    <th>Fiyat</th>
+                                    <th>Düzenle</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               @foreach (Product pro in Model)
+                               {
+                               
+                                   <tr>
+                                       <td>@pro.name</td>
+                                       <td>@pro.caption</td>
+                                       <td>@pro.Category.categoryName</td>
+                                       <td>@pro.price</td>
+                                       <td><a href="/AdminPanel/product/productUpdate/@pro.id " class="btn btn-warning"><i class="fa fa-refresh"></i></a></td>
+                                       <td><a href="/AdminPanel/product/productDelete/@pro.id" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                   </tr>
+                                
+                               }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- .animated -->
+</div>

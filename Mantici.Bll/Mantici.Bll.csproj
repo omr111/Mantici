@@ -54,14 +54,24 @@
     <Compile Include="Abstract\ICompanyInformationBll.cs" />
     <Compile Include="Abstract\IPhoneBll.cs" />
     <Compile Include="Abstract\IProductBll.cs" />
-    <Compile Include="Abstract\IProductPictureBll.cs" />
+    <Compile Include="Abstract\IPictureBll.cs" />
+    <Compile Include="Abstract\IrezervationBll.cs" />
+    <Compile Include="Abstract\IrezervedFoodBll.cs" />
+    <Compile Include="Abstract\IroleBll.cs" />
+    <Compile Include="Abstract\IroleOfUserBll.cs" />
+    <Compile Include="Abstract\IuserBll.cs" />
     <Compile Include="Concrete\BranchBll.cs" />
     <Compile Include="Concrete\BranchPhoneBll.cs" />
     <Compile Include="Concrete\CategoryBll.cs" />
     <Compile Include="Concrete\CompanyInformationBll.cs" />
     <Compile Include="Concrete\PhoneBll.cs" />
     <Compile Include="Concrete\ProductBll.cs" />
-    <Compile Include="Concrete\ProductPictureBll.cs" />
+    <Compile Include="Concrete\PictureBll.cs" />
+    <Compile Include="Concrete\rezervationBll.cs" />
+    <Compile Include="Concrete\rezervedFoodBll.cs" />
+    <Compile Include="Concrete\roleBll.cs" />
+    <Compile Include="Concrete\roleOfUserBll.cs" />
+    <Compile Include="Concrete\userBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

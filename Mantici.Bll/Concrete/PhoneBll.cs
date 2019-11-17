@@ -1,33 +1,70 @@
 ﻿using Mantici.Bll.Abstract;
+using Mantici.Dal.Abstract;
+using Mantici.Entities.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Mantici.Bll.Concrete
 {
     public class PhoneBll:IPhoneBll
     {
 
-        public System.Collections.Generic.List<Entities.Models.Phone> ListAll(System.Linq.Expressions.Expression<System.Func<Entities.Models.Phone, bool>> filter = null)
+      
+        private IPhoneDal _phoneDal;
+
+        public PhoneBll(IPhoneDal phoneDal)
         {
-            throw new System.NotImplementedException();
+            _phoneDal = phoneDal;
+        }
+        public List<Phone> ListAll(Expression<Func<Phone, bool>> filter = null)
+        {
+            return _phoneDal.AllList();
         }
 
-        public Entities.Models.Branch GetOne(System.Linq.Expressions.Expression<System.Func<Entities.Models.Phone, bool>> filter)
+        public Phone GetOne(Expression<Func<Phone, bool>> filter)
         {
-            throw new System.NotImplementedException();
+            return _phoneDal.GetOne(filter);
         }
 
-        public bool Add(Entities.Models.Phone phone)
+        public bool Add(Phone phone)
         {
-            throw new System.NotImplementedException();
+            bool result = _phoneDal.Add(phone);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public bool Update(Entities.Models.Phone phone)
+        public bool Update(Phone phone)
         {
-            throw new System.NotImplementedException();
+            bool result = _phoneDal.Update(phone);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            Phone phone = _phoneDal.GetOne(x => x.id == id);
+            bool result = _phoneDal.Delete(phone);    
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

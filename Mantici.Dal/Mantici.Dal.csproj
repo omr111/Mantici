@@ -54,16 +54,26 @@
     <Compile Include="Abstract\ICompanyInformationDal.cs" />
     <Compile Include="Abstract\IPhoneDal.cs" />
     <Compile Include="Abstract\IProductDal.cs" />
-    <Compile Include="Abstract\IProductPictureDal.cs" />
+    <Compile Include="Abstract\IPictureDal.cs" />
     <Compile Include="Abstract\IRepositoryBase.cs" />
+    <Compile Include="Abstract\IrezervedFoodDal.cs" />
+    <Compile Include="Abstract\IrezervationDal.cs" />
+    <Compile Include="Abstract\IroleDal.cs" />
+    <Compile Include="Abstract\IroleOfUserDal.cs" />
+    <Compile Include="Abstract\IuserDal.cs" />
     <Compile Include="Concrete\EfRepository\BranchDal.cs" />
     <Compile Include="Concrete\EfRepository\BranchPhoneDal.cs" />
     <Compile Include="Concrete\EfRepository\CategoryDal.cs" />
     <Compile Include="Concrete\EfRepository\CompanyInformationDal.cs" />
     <Compile Include="Concrete\EfRepository\PhoneDal.cs" />
     <Compile Include="Concrete\EfRepository\ProductDal.cs" />
-    <Compile Include="Concrete\EfRepository\ProductPictureDal.cs" />
+    <Compile Include="Concrete\EfRepository\PictureDal.cs" />
     <Compile Include="Concrete\EfRepository\RepositoryBase.cs" />
+    <Compile Include="Concrete\EfRepository\rezervationDal.cs" />
+    <Compile Include="Concrete\EfRepository\rezervedFoodDal.cs" />
+    <Compile Include="Concrete\EfRepository\roleDal.cs" />
+    <Compile Include="Concrete\EfRepository\roleOfUserDal.cs" />
+    <Compile Include="Concrete\EfRepository\userDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

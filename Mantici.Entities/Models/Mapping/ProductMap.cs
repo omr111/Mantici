@@ -30,11 +30,16 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.description).HasColumnName("description");
             this.Property(t => t.coverPicture).HasColumnName("coverPicture");
             this.Property(t => t.categoryID).HasColumnName("categoryID");
+            this.Property(t => t.pictureID).HasColumnName("pictureID");
+            this.Property(t => t.price).HasColumnName("price");
 
             // Relationships
             this.HasRequired(t => t.Category)
                 .WithMany(t => t.Products)
                 .HasForeignKey(d => d.categoryID);
+            this.HasOptional(t => t.Picture)
+                .WithMany(t => t.Products)
+                .HasForeignKey(d => d.pictureID);
 
         }
     }

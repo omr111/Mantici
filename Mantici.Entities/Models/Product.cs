@@ -7,7 +7,7 @@ namespace Mantici.Entities.Models
     {
         public Product()
         {
-            this.ProductPictures = new List<ProductPicture>();
+            this.rezervedFoods = new List<rezervedFood>();
         }
 
         public int id { get; set; }
@@ -16,7 +16,10 @@ namespace Mantici.Entities.Models
         public string description { get; set; }
         public string coverPicture { get; set; }
         public int categoryID { get; set; }
+        public Nullable<int> pictureID { get; set; }
+        public Nullable<decimal> price { get; set; }
         public virtual Category Category { get; set; }
-        public virtual ICollection<ProductPicture> ProductPictures { get; set; }
+        public virtual Picture Picture { get; set; }
+        public virtual ICollection<rezervedFood> rezervedFoods { get; set; }
     }
 }

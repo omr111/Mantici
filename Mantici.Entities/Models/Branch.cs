@@ -13,8 +13,9 @@ namespace Mantici.Entities.Models
 
         public int id { get; set; }
         public string BranchName { get; set; }
+        public string area { get; set; }
         public string BranchAdress { get; set; }
-        public string BranchPicture { get; set; }
+        public Nullable<int> BranchPictureID { get; set; }
         public virtual ICollection<BranchPhone> BranchPhones { get; set; }
         public virtual ICollection<CompanyInformation> CompanyInformations { get; set; }
     }

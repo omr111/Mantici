@@ -58,13 +58,23 @@
     <Compile Include="Models\Mapping\CategoryMap.cs" />
     <Compile Include="Models\Mapping\CompanyInformationMap.cs" />
     <Compile Include="Models\Mapping\PhoneMap.cs" />
+    <Compile Include="Models\Mapping\PictureMap.cs" />
     <Compile Include="Models\Mapping\ProductMap.cs" />
-    <Compile Include="Models\Mapping\ProductPictureMap.cs" />
+    <Compile Include="Models\Mapping\rezervationMap.cs" />
+    <Compile Include="Models\Mapping\rezervedFoodMap.cs" />
+    <Compile Include="Models\Mapping\roleMap.cs" />
+    <Compile Include="Models\Mapping\roleOfUserMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\userMap.cs" />
     <Compile Include="Models\Phone.cs" />
+    <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductPicture.cs" />
+    <Compile Include="Models\rezervation.cs" />
+    <Compile Include="Models\rezervedFood.cs" />
+    <Compile Include="Models\role.cs" />
+    <Compile Include="Models\roleOfUser.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

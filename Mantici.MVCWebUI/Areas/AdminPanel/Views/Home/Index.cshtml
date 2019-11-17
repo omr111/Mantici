@@ -1,0 +1,14 @@
+﻿@model Mantici.MVCWebUI.Areas.AdminPanel.Models.AdminIndex
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+@Html.Partial("_fastReach")
+@Html.Partial("_urunlerWidget",@Model.Products)
+@Html.Partial("_bayilerWidget",@Model.Branches)
+@Html.Partial("_rezervasyonWidget",@Model.Rezervations)
+
+@Html.Partial("_managementTeamWidget")
+@Html.Partial("_totalRezervationWidget")
+@Html.Partial("_totalAccount")
+@Html.Partial("_activeMemberWidget")

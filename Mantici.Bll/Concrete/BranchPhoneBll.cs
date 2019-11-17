@@ -1,33 +1,69 @@
 ﻿using Mantici.Bll.Abstract;
+using Mantici.Dal.Abstract;
+using Mantici.Entities.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Mantici.Bll.Concrete
 {
     public class BranchPhoneBll:IBranchPhoneBll
     {
+        private IBranchPhoneDal _branchPhoneDal;
 
-        public System.Collections.Generic.List<Entities.Models.BranchPhone> ListAll(System.Linq.Expressions.Expression<System.Func<Entities.Models.BranchPhone, bool>> filter = null)
+        public BranchPhoneBll(IBranchPhoneDal branchPhoneDal)
         {
-            throw new System.NotImplementedException();
+            _branchPhoneDal = branchPhoneDal;
+        }
+        public List<BranchPhone> ListAll(Expression<Func<BranchPhone, bool>> filter = null)
+        {
+            return _branchPhoneDal.AllList();
         }
 
-        public Entities.Models.BranchPhone GetOne(System.Linq.Expressions.Expression<System.Func<Entities.Models.BranchPhone, bool>> filter)
+        public BranchPhone GetOne(Expression<Func<BranchPhone, bool>> filter)
         {
-            throw new System.NotImplementedException();
+            return _branchPhoneDal.GetOne(filter);
         }
 
-        public bool Add(Entities.Models.BranchPhone branchPhone)
+        public bool Add(BranchPhone branchPhone)
         {
-            throw new System.NotImplementedException();
+            bool result = _branchPhoneDal.Add(branchPhone);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public bool Update(Entities.Models.BranchPhone branchPhone)
+        public bool Update(BranchPhone branchPhone)
         {
-            throw new System.NotImplementedException();
+            bool result = _branchPhoneDal.Update(branchPhone);
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            BranchPhone branch = _branchPhoneDal.GetOne(x => x.id == id);
+            bool result = _branchPhoneDal.Delete(branch);    
+            if (result)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
     }
 }
