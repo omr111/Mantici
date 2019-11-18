@@ -8,8 +8,11 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Models
 {
     public class AdminIndex
     {
+        public List<user> Users { get; set; }
+        public List<user> managementTeam { get; set; }
         public List<Product> Products { get; set; }
         public List<Branch> Branches { get; set; }
         public List<rezervation> Rezervations { get; set; }
+        
     }
 }

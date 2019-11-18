@@ -28,7 +28,6 @@ namespace Mantici.Entities.Models.Mapping
                 .HasMaxLength(50);
 
             this.Property(t => t.userPicturePath)
-                .IsRequired()
                 .HasMaxLength(150);
 
             // Table & Column Mappings
@@ -39,6 +38,7 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.nick).HasColumnName("nick");
             this.Property(t => t.email).HasColumnName("email");
             this.Property(t => t.userPicturePath).HasColumnName("userPicturePath");
+            this.Property(t => t.isBlock).HasColumnName("isBlock");
         }
     }
 }

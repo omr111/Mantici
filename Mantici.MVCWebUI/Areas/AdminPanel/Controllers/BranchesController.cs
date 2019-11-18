@@ -13,10 +13,12 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
     public class BranchesController : Controller
     {
         IBranchBll _branchBll=new BranchBll(new BranchDal());
+        IBranchPhoneBll _branchPhone=new BranchPhoneBll(new BranchPhoneDal());
         // GET: AdminPanel/Branches
         public ActionResult Index()
         {
-            return View();
+           
+            return View( _branchBll.ListAll());
         }
 
         public ActionResult branchAdd()
@@ -25,11 +27,22 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         }
 
         [HttpPost]
-        public ActionResult branchAdd(Branch branch, List<BranchPhone> phones, HttpPostedFileBase file)
+        public ActionResult branchAdd(Branch branch, string[] BranchPhone1, HttpPostedFileBase file)
         {
+            
             branch.BranchPictureID = pictureController.pictureAddInt(file, HttpContext);
             _branchBll.Add(branch);
-            return RedirectToAction("Index");
+            for (int i = 0; i < BranchPhone1.Length; i++)
+            {
+                if (BranchPhone1[i] != "")
+                {
+                    BranchPhone branchPhone = new BranchPhone();
+                    branchPhone.BranchID = branch.id;
+                    branchPhone.BranchPhone1 = BranchPhone1[i];
+                    _branchPhone.Add(branchPhone);
+                }
+            }
+            return RedirectToAction("Index","Branches",new{area="AdminPanel"});
         }
     }
 }

@@ -18,6 +18,9 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.roleID).HasColumnName("roleID");
 
             // Relationships
+            this.HasRequired(t => t.role)
+                .WithMany(t => t.roleOfUsers)
+                .HasForeignKey(d => d.roleID);
             this.HasRequired(t => t.user)
                 .WithMany(t => t.roleOfUsers)
                 .HasForeignKey(d => d.userID);

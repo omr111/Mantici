@@ -8,7 +8,7 @@
 @Html.Partial("_bayilerWidget",@Model.Branches)
 @Html.Partial("_rezervasyonWidget",@Model.Rezervations)
 
-@Html.Partial("_managementTeamWidget")
-@Html.Partial("_totalRezervationWidget")
-@Html.Partial("_totalAccount")
+@Html.Partial("_managementTeamWidget",@Model.managementTeam.Count)
+@Html.Partial("_totalRezervationWidget",@Model.Rezervations.Count)
+@Html.Partial("_totalAccount",@Model.Users.Count)
 @Html.Partial("_activeMemberWidget")

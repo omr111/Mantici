@@ -8,13 +8,10 @@ namespace Mantici.Entities.Models.Mapping
         public roleMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.id, t.role1 });
+            this.HasKey(t => t.id);
 
             // Properties
-            this.Property(t => t.id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            this.Property(t => t.role1)
+            this.Property(t => t.roleName)
                 .IsRequired()
                 .IsFixedLength()
                 .HasMaxLength(10);
@@ -22,13 +19,7 @@ namespace Mantici.Entities.Models.Mapping
             // Table & Column Mappings
             this.ToTable("roles");
             this.Property(t => t.id).HasColumnName("id");
-            this.Property(t => t.role1).HasColumnName("role");
-
-            // Relationships
-            this.HasRequired(t => t.roleOfUser)
-                .WithMany(t => t.roles)
-                .HasForeignKey(d => d.id);
-
+            this.Property(t => t.roleName).HasColumnName("roleName");
         }
     }
 }

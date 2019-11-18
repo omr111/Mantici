@@ -36,14 +36,42 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="/AdminPanel/Home/Index"> <i class=" menu-icon fa fa-dashboard"></i>Admin Panel </a>
+                        <a href="/AdminPanel/Home/Index"> <i style="font-size: 20px" class=" menu-icon fa fa-dashboard"></i>Admin Panel </a>
                     </li>
                     <h3 class="menu-title">İşlemler</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-product-hunt"></i>Ürünler</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i style="font-size: 20px"; class=" menu-icon fa fa-product-hunt"></i>Ürünler</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-list"></i><a href="/AdminPanel/product/Index">Ürün Listesi</a></li>
                             <li><i class="fa fa-save"></i><a href="~/AdminPanel/product/productAdd">Ürün Ekle</a></li>
+
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i style="font-size: 20px" class="menu-icon fa fa-code-fork"></i>Şube/Bayii</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-list"></i><a href="/AdminPanel/Branches/Index">Şube/Bayii Listesi</a></li>
+                            <li><i class="fa fa-save"></i><a href="~/AdminPanel/Branches/branchAdd">Şube/Bayii Ekle</a></li>
+                            
+
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i style="font-size: 20px" class="menu-icon fa fa-user"></i>Kullanıcılar</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-list"></i><a href="/AdminPanel/user/Index">Kullanıcı Listesi</a></li>
+                     
+
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i style="font-size: 17px" class="menu-icon fa fa-users"></i>Yöneticiler</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-list"></i><a href="/AdminPanel/user/managementTeam">Yönetim Kadrosu</a></li>
+                     
 
                         </ul>
                     </li>
@@ -173,7 +201,7 @@
         <!-- Header-->
          
      @RenderBody()
-               <!--  <div class="content mt-3">
+               <!-- 
 
                     <div class="col-sm-12">
                         <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -194,10 +222,13 @@
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
     <script src="~/Areas/AdminPanel/context/admin-panel/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/content/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Areas/AdminPanel/context/admin-panel/vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="~/Areas/AdminPanel/context/admin-panel/assets/js/main.js"></script>
     <script src="~/Areas/AdminPanel/context/admin-panel/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/Areas/AdminPanel/context/admin-panel/assets/js/widgets.js"></script>
+    <script src="~/content/Scripts/jquery.unobtrusive-ajax.js"></script>
+@RenderSection("js",false)
  
 
 </body>

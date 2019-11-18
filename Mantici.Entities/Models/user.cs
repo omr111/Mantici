@@ -16,6 +16,7 @@ namespace Mantici.Entities.Models
         public string nick { get; set; }
         public string email { get; set; }
         public string userPicturePath { get; set; }
+        public bool isBlock { get; set; }
         public virtual ICollection<roleOfUser> roleOfUsers { get; set; }
     }
 }

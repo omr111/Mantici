@@ -13,6 +13,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
     
     public class HomeController : Controller
     {
+        IuserBll _userBll=new userBll(new userDal());
         IProductBll _productBll=new ProductBll(new ProductDal());
         IBranchBll _branchBll=new BranchBll(new BranchDal());
         IrezervationBll _rezervationBll=new rezervationBll(new rezervationDal());
@@ -23,6 +24,8 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             adminIndex.Products = _productBll.ListAll();
             adminIndex.Branches = _branchBll.ListAll();
             adminIndex.Rezervations = _rezervationBll.ListAll();
+            adminIndex.Users = _userBll.ListAll();
+            adminIndex.managementTeam = _userBll.managementTeam("Uye");
             return View(adminIndex);
         }
     }

@@ -21,11 +21,14 @@ namespace Mantici.Bll.Concrete
             return _rolOfUserDal.AllList();
         }
 
-        public roleOfUser GetOne(Expression<Func<roleOfUser, bool>> filter)
+        public roleOfUser GetOneWithRoleId(int roleId, int userId)
         {
-            return _rolOfUserDal.GetOne(filter);
+            return _rolOfUserDal.GetOne(x=>x.user.id==userId &&x.roleID==roleId);
         }
-
+        public roleOfUser CheckRoleOfUser( int userId)
+        {
+            return _rolOfUserDal.GetOne(x => x.userID == userId);
+        }
         public bool Add(roleOfUser roleOfUser)
         {
             bool result = _rolOfUserDal.Add(roleOfUser);

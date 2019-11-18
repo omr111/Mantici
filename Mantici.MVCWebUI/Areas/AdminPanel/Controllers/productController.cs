@@ -32,7 +32,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         {
             product.coverPicture = pictureController.pictureAdd(file, HttpContext);
             _productBll.Add(product);
-            return RedirectToAction("Index", "product");
+            return RedirectToAction("Index", "product",new{area="AdminPanel"});
         }
         public ActionResult productDelete(int id)
         {
@@ -91,7 +91,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 
 
 
-            return RedirectToAction("Index", "product");
+            return RedirectToAction("Index", "product",new {area="AdminPanel"});
         }
     }
 }

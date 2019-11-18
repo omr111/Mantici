@@ -3394,6 +3394,8 @@
     <Content Include="Areas\AdminPanel\Views\product\productAdd.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Branches\branchAdd.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Branches\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\user\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\user\managementTeam.cshtml" />
     <None Include="content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="content\Scripts\jquery-3.4.1.js" />
     <Content Include="content\Scripts\jquery-3.4.1.min.js" />
@@ -3412,7 +3414,11 @@
     <Compile Include="Areas\AdminPanel\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\pictureController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\productController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\RoleController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\roleOfUserController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\userController.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminIndex.cs" />
+    <Compile Include="Areas\AdminPanel\Models\usersAndRoles.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3637,6 +3643,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminPanel\Views\Categories\" />
     <Folder Include="Areas\AdminPanel\Views\picture\" />
+    <Folder Include="Areas\AdminPanel\Views\roleOfUser\" />
+    <Folder Include="Areas\AdminPanel\Views\Role\" />
     <Folder Include="content\img\branchPicture\bigPicture\" />
     <Folder Include="content\img\branchPicture\smallPicture\" />
     <Folder Include="content\img\productPicture\galeryPicture\bigPicture\" />

@@ -7,7 +7,8 @@ namespace Mantici.Bll.Abstract
     public interface IroleOfUserBll
     {
         List<roleOfUser> ListAll(Expression<Func<roleOfUser, bool>> filter = null);
-        roleOfUser GetOne(Expression<Func<roleOfUser, bool>> filter);
+        roleOfUser GetOneWithRoleId(int roleId,int userId);
+         roleOfUser CheckRoleOfUser(int userId);
         bool Add(roleOfUser roleOfUser);
         bool Update(roleOfUser roleOfUser);
         bool Delete(int id);

@@ -3,6 +3,7 @@ using Mantici.Dal.Abstract;
 using Mantici.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Mantici.Bll.Concrete
@@ -21,9 +22,9 @@ namespace Mantici.Bll.Concrete
             return _userDal.AllList();
         }
 
-        public user GetOne(Expression<Func<user, bool>> filter)
+        public user GetOne(int id)
         {
-            return _userDal.GetOne(filter);
+            return _userDal.GetOne(x=>x.id==id);
         }
 
         public bool Add(user user)
@@ -64,6 +65,18 @@ namespace Mantici.Bll.Concrete
             {
                 return false;
             }
+        }
+
+
+        public List<user> whereRole(string userRole)
+        {
+           return _userDal.AllList(x => x.roleOfUsers.Any(y => y.role.roleName == userRole)).ToList();
+        }
+
+
+        public List<user> managementTeam(string userRole)
+        {
+            return _userDal.AllList(x => x.roleOfUsers.Any(y => y.role.roleName != userRole)).ToList();
         }
     }
 }
