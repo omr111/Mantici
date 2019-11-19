@@ -7,6 +7,7 @@ namespace Mantici.Entities.Models
     {
         public user()
         {
+            this.reviews = new List<review>();
             this.roleOfUsers = new List<roleOfUser>();
         }
 
@@ -17,6 +18,7 @@ namespace Mantici.Entities.Models
         public string email { get; set; }
         public string userPicturePath { get; set; }
         public bool isBlock { get; set; }
+        public virtual ICollection<review> reviews { get; set; }
         public virtual ICollection<roleOfUser> roleOfUsers { get; set; }
     }
 }

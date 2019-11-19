@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Ayha.Net</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <div class="form-group">
+                            <label class=" form-control-label">Şirket İsmi</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-building"></i></div>
+                                <input type="text" name="companyName" class="form-control">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label"><i class="fa fa-info-circle"></i> Hakkımızda</label>
+                            <div class="input-group">
+
+                                <textarea style="overflow: scroll;" type="text" name="companyAbout" class="form-control" rows="10"></textarea>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body card-block">
+                        <div class="form-group">
+                            <label class=" form-control-label">Telefon</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+
+                                <form action="/action_page.php" method="get">
+                                    <input style="margin-left: 10px; margin-top: 4px"list="browsers" name="browser">
+                                    <datalist id="browsers">
+                                        <option value="Internet Explorer">
+                                        <option value="Firefox">
+                                        <option value="Chrome">
+                                        <option value="Opera">
+                                        <option value="Safari">
+                                    </datalist>
+                                    <a style="padding: 5px;margin-top: -6px"class="btn btn-success ">Ekle</a>
+                                    <a style="padding: 5px;margin-top: -6px"class="btn btn-danger">Sil</a>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Adres</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-address-card-o"></i></div>
+                                <input type="text" name="companyAddress" class="form-control ">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class=" form-control-label">Şirket Logo</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-picture-o"></i></div>
+                                <input type="file" name="companyLogo" class="form-control ">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class=" form-control-label">Resim</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-file"></i></div>
+                                <input class="form-control" type="file" name="companyPicturePath">
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <input type="submit" value="Onayla" class="btn btn-success" style="float: right" />
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!--row end-->
+    </div><!-- .animated -->
+</div>
+

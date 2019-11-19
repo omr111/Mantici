@@ -28,6 +28,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         {
             return View(_userBll.managementTeam("Uye"));
         }
+
         public ActionResult userBlock(int id)
         {
             

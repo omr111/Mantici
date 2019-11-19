@@ -1,4 +1,5 @@
-﻿@model List<Mantici.Entities.Models.user>
+﻿@using Mantici.Entities.Models
+@model List<Mantici.Entities.Models.user>
 @{
     ViewBag.Title = "managemenetTeam";
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
@@ -37,11 +38,11 @@
                                         <td>@user.email</td>
                                     
                                             <td>
-                                                <select id="role" name="roleName">
+                                                <select id="dropdown-@user.id" name="roleName">
                                                     <option></option>
-                                                    @foreach (var roleName in user.roleOfUsers)
+                                                    @foreach (roleOfUser rolesUser in user.roleOfUsers)
                                                     {
-                                                        <option value="@roleName.roleID">@roleName.role.roleName</option>
+                                                        <option value="@rolesUser.roleID">@rolesUser.role.roleName</option>
                                                     }
                                                 </select>
                                             </td>
@@ -58,7 +59,7 @@
                                                 <a href="/AdminPanel/user/managerBlock/@user.id " class="btn btn-success"><i class="fa fa-unlock"></i></a>
                                             }
                                         </td>
-                                        <td><a id="roleDismiss"class="btn btn-danger" data-id="@user.id"><i class="fa fa-ban"></i></a></td>
+                                        <td><a class="btn btn-danger roleDismiss" data-id="@user.id"><i class="fa fa-ban"></i></a></td>
                                         <td><a href="/AdminPanel/user/managerDelete/@user.id" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                                         
                                     </tr>
@@ -75,9 +76,10 @@
 </div>
 @section js{
     <script type="text/javascript">
-        $("#roleDismiss").click(function () {
+        $(".roleDismiss").click(function () {
             var userId = $(this).data("id");
-            var roleId = $("#role :selected").val();
+            const dropdown = $("#dropdown-" + userId).val();
+           
             var ok = '<div class="col-sm-12">';
             ok += '<div class="alert  alert-success alert-dismissible fade show" role="alert">';
             ok += ' <span class="badge badge-pill badge-success">Başarılı</span> Kullanıcının Rütbesi Düşürüldü.';
@@ -98,7 +100,7 @@
             $.ajax({
                 url: "/AdminPanel/roleOfUser/roleDismiss",
                 type: "POST",
-                data: {roleId:roleId,userId:userId},
+                data: { roleId: dropdown, userId: userId },
                 success:function(result) {
                     if (result == 1) {
                         $("#sil").html(ok);

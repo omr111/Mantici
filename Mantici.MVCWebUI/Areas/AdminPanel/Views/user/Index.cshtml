@@ -30,14 +30,14 @@
                             <tbody>
                                 @foreach (user user in Model.Users)
                                 {
-
                                     <tr>
                                         <td>@user.nick</td>
                                         <td>@user.name</td>
                                         <td>@user.surname</td>
                                         <td>@user.email</td>
                                         <td>
-                                            <select id="roles" name="rolName">
+                                         
+                                            <select id="dropdown-@user.id" class="roles" name="rolName">
                                                 <option></option>
                                                 @foreach (role rol in Model.Roles)
                                                 {
@@ -45,7 +45,7 @@
                                                 }
                                             </select>
                                         </td>
-                                        <td><a id="giveRole" data-id="@user.id"class="btn btn-success" title="Rütbe Ver"><i class="fa fa-sign-in"></i></a></td>
+                                        <td><a  data-id="@user.id" class="btn btn-success giveRole"><i class="fa fa-sign-in"></i></a></td>
                                         <td>
                                           @if (user.isBlock)
                                           {
@@ -71,9 +71,14 @@
 </div>
 @section js{
     <script type="text/javascript">
-        $("#giveRole").click(function() {
+
+        $(".giveRole").click(function() {
             var userId = $(this).data("id");
-            var roleId = $("#roles :selected").val();
+            const dropdown = $("#dropdown-"+userId).val();
+          
+      
+
+
             var ok = '<div class="col-sm-12">';
             ok += '<div class="alert  alert-success alert-dismissible fade show" role="alert">';
             ok += ' <span class="badge badge-pill badge-success">Başarılı</span>Rütbe Ataması Başarılı.';
@@ -90,30 +95,30 @@
             okFail += '</button>';
             okFail += '</div>';
             okFail += ' </div>';
-            alert(userId);
-            alert(roleId);
-            $.ajax({
-                url: "/AdminPanel/roleOfUser/giveRole",
-                data: { userId: userId, roleId: roleId },
-                
-                type: "Post",
-                
-                success:function(result) {
-                    if (result == 1) {
-                        $("#msg").append(ok);
-                        setTimeout(function() { $('#msg').hide('slow'); }, 5000);
-                    }
-                    else {
+
+
+                $.ajax({
+                    url: "/AdminPanel/roleOfUser/giveRole",
+                    data: { userId: userId, roleId: dropdown },
+
+                    type: "Post",
+
+                    success:function(result) {
+                        if (result == 1) {
+                            $("#msg").append(ok);
+                            setTimeout(function() { $('#msg').hide('slow'); }, 5000);
+                        }
+                        else {
+                            $("#msg").append(okFail);
+                            setTimeout(function () { $('#msg').hide('slow'); }, 5000);
+                        }
+                    },
+                    error:function() {
                         $("#msg").append(okFail);
                         setTimeout(function () { $('#msg').hide('slow'); }, 5000);
                     }
-                },
-                error:function() {
-                    $("#msg").append(okFail);
-                    setTimeout(function () { $('#msg').hide('slow'); }, 5000);
-                }
 
-        });
+            });
 
         });
     </script>

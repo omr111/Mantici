@@ -23,6 +23,7 @@ namespace Mantici.Entities.Models
         public DbSet<Phone> Phones { get; set; }
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<review> reviews { get; set; }
         public DbSet<rezervation> rezervations { get; set; }
         public DbSet<rezervedFood> rezervedFoods { get; set; }
         public DbSet<roleOfUser> roleOfUsers { get; set; }
@@ -39,6 +40,7 @@ namespace Mantici.Entities.Models
             modelBuilder.Configurations.Add(new PhoneMap());
             modelBuilder.Configurations.Add(new PictureMap());
             modelBuilder.Configurations.Add(new ProductMap());
+            modelBuilder.Configurations.Add(new reviewMap());
             modelBuilder.Configurations.Add(new rezervationMap());
             modelBuilder.Configurations.Add(new rezervedFoodMap());
             modelBuilder.Configurations.Add(new roleOfUserMap());

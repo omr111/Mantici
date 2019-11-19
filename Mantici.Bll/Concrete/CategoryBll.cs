@@ -20,9 +20,18 @@ namespace Mantici.Bll.Concrete
             return _categoryDal.AllList().ToList();
         }
 
-        public Category GetOne(System.Linq.Expressions.Expression<System.Func<Category, bool>> filter)
+        public Category GetOne(int id)
         {
-            return _categoryDal.GetOne(filter);
+            Category cat=_categoryDal.GetOne(x=>x.id==id);
+            if (cat!=null)
+            {
+                return cat;
+            }
+            else
+            {
+                return null;
+            }
+           
         }
 
         public bool Add(Category category)
@@ -56,6 +65,12 @@ namespace Mantici.Bll.Concrete
                 return true;
             }
             return false;
+        }
+
+
+        public Category GetOneWithCategoryName(string categoryName)
+        {
+            return _categoryDal.GetOne(x => x.categoryName == categoryName);
         }
     }
 }

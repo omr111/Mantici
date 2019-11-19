@@ -3396,6 +3396,8 @@
     <Content Include="Areas\AdminPanel\Views\Branches\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\user\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\user\managementTeam.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Company\Index.cshtml" />
     <None Include="content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="content\Scripts\jquery-3.4.1.js" />
     <Content Include="content\Scripts\jquery-3.4.1.min.js" />
@@ -3411,6 +3413,7 @@
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BranchesController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\CompanyController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\pictureController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\productController.cs" />
@@ -3641,7 +3644,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminPanel\Views\Categories\" />
     <Folder Include="Areas\AdminPanel\Views\picture\" />
     <Folder Include="Areas\AdminPanel\Views\roleOfUser\" />
     <Folder Include="Areas\AdminPanel\Views\Role\" />
