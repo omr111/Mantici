@@ -7,8 +7,8 @@ namespace Mantici.Bll.Abstract
 {
     public interface IPhoneBll
     {
-        List<Phone> ListAll(Expression<Func<Phone, bool>> filter = null);
-        Phone GetOne(Expression<Func<Phone, bool>> filter);
+        List<Phone> ListAllOfCompany(int compId);
+        Phone GetOne(string phoneNo,int compId);
         bool Add(Phone phone);
         bool Update(Phone phone);
         bool Delete(int id);

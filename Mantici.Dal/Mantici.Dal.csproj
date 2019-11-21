@@ -56,6 +56,7 @@
     <Compile Include="Abstract\IProductDal.cs" />
     <Compile Include="Abstract\IPictureDal.cs" />
     <Compile Include="Abstract\IRepositoryBase.cs" />
+    <Compile Include="Abstract\IreviewDal.cs" />
     <Compile Include="Abstract\IrezervedFoodDal.cs" />
     <Compile Include="Abstract\IrezervationDal.cs" />
     <Compile Include="Abstract\IroleDal.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Concrete\EfRepository\ProductDal.cs" />
     <Compile Include="Concrete\EfRepository\PictureDal.cs" />
     <Compile Include="Concrete\EfRepository\RepositoryBase.cs" />
+    <Compile Include="Concrete\EfRepository\reviewDal.cs" />
     <Compile Include="Concrete\EfRepository\rezervationDal.cs" />
     <Compile Include="Concrete\EfRepository\rezervedFoodDal.cs" />
     <Compile Include="Concrete\EfRepository\roleDal.cs" />

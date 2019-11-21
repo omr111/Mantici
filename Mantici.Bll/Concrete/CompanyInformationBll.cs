@@ -21,9 +21,9 @@ namespace Mantici.Bll.Concrete
             return _companyInformationDal.AllList();
         }
 
-        public CompanyInformation GetOne(Expression<Func<CompanyInformation, bool>> filter)
+        public CompanyInformation GetOneWitId(int id)
         {
-            return _companyInformationDal.GetOne(filter);
+            return _companyInformationDal.GetOne(x=>x.id==id);
         }
 
         public bool Add(CompanyInformation companyInformation)

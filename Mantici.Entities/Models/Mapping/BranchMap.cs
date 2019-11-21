@@ -22,6 +22,9 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.city)
                 .HasMaxLength(30);
 
+            this.Property(t => t.email)
+                .HasMaxLength(70);
+
             this.Property(t => t.BranchAdress)
                 .IsRequired()
                 .HasMaxLength(250);
@@ -32,6 +35,7 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.BranchName).HasColumnName("BranchName");
             this.Property(t => t.area).HasColumnName("area");
             this.Property(t => t.city).HasColumnName("city");
+            this.Property(t => t.email).HasColumnName("email");
             this.Property(t => t.BranchAdress).HasColumnName("BranchAdress");
             this.Property(t => t.BranchPictureID).HasColumnName("BranchPictureID");
         }

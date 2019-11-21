@@ -55,6 +55,7 @@
     <Compile Include="Abstract\IPhoneBll.cs" />
     <Compile Include="Abstract\IProductBll.cs" />
     <Compile Include="Abstract\IPictureBll.cs" />
+    <Compile Include="Abstract\IreviewBll.cs" />
     <Compile Include="Abstract\IrezervationBll.cs" />
     <Compile Include="Abstract\IrezervedFoodBll.cs" />
     <Compile Include="Abstract\IroleBll.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Concrete\PhoneBll.cs" />
     <Compile Include="Concrete\ProductBll.cs" />
     <Compile Include="Concrete\PictureBll.cs" />
+    <Compile Include="Concrete\reviewBll.cs" />
     <Compile Include="Concrete\rezervationBll.cs" />
     <Compile Include="Concrete\rezervedFoodBll.cs" />
     <Compile Include="Concrete\roleBll.cs" />

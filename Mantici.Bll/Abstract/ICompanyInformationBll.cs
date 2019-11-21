@@ -9,7 +9,7 @@ namespace Mantici.Bll.Abstract
 
     {
         List<CompanyInformation> ListAll(Expression<Func<CompanyInformation, bool>> filter = null);
-        CompanyInformation GetOne(Expression<Func<CompanyInformation, bool>> filter);
+        CompanyInformation GetOneWitId(int id);
         bool Add(CompanyInformation companyInformation);
         bool Update(CompanyInformation companyInformation);
         bool Delete(int id);

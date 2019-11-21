@@ -17,14 +17,14 @@ namespace Mantici.Bll.Concrete
         {
             _phoneDal = phoneDal;
         }
-        public List<Phone> ListAll(Expression<Func<Phone, bool>> filter = null)
+        public List<Phone> ListAllOfCompany(int compId)
         {
-            return _phoneDal.AllList();
+            return _phoneDal.AllList(x=>x.CompanyID==compId);
         }
 
-        public Phone GetOne(Expression<Func<Phone, bool>> filter)
+        public Phone GetOne(string phoneNo,int compId)
         {
-            return _phoneDal.GetOne(filter);
+            return _phoneDal.GetOne(x=>x.phoneNumber==phoneNo&& x.CompanyID==compId);
         }
 
         public bool Add(Phone phone)

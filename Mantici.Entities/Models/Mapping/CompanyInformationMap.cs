@@ -17,8 +17,14 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.companyLogo)
                 .HasMaxLength(150);
 
+            this.Property(t => t.email)
+                .HasMaxLength(70);
+
             this.Property(t => t.companyAddress)
                 .HasMaxLength(250);
+
+            this.Property(t => t.companyPicturePath)
+                .HasMaxLength(150);
 
             // Table & Column Mappings
             this.ToTable("CompanyInformations");
@@ -26,14 +32,9 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.companyName).HasColumnName("companyName");
             this.Property(t => t.companyAbout).HasColumnName("companyAbout");
             this.Property(t => t.companyLogo).HasColumnName("companyLogo");
+            this.Property(t => t.email).HasColumnName("email");
             this.Property(t => t.companyAddress).HasColumnName("companyAddress");
-            this.Property(t => t.BranchID).HasColumnName("BranchID");
-
-            // Relationships
-            this.HasRequired(t => t.Branch)
-                .WithMany(t => t.CompanyInformations)
-                .HasForeignKey(d => d.BranchID);
-
+            this.Property(t => t.companyPicturePath).HasColumnName("companyPicturePath");
         }
     }
 }

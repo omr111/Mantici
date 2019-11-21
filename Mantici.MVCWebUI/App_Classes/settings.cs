@@ -9,6 +9,28 @@ namespace Mantici.MVCWebUI.App_Classes
 {
     public class settings
     {
+        public static Size companyLogo
+        {
+            get
+            {
+                Size sonuc = new Size();
+                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["logoWith"]);
+                sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["logoHeight"]);
+                return sonuc;
+            }
+
+        }
+        public static Size companyPicture
+        {
+            get
+            {
+                Size sonuc = new Size();
+                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["compWith"]);
+                sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["compHeight"]);
+                return sonuc;
+            }
+
+        }
         public static Size pictureSize
         {
             get

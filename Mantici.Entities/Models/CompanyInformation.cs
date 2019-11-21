@@ -14,9 +14,9 @@ namespace Mantici.Entities.Models
         public string companyName { get; set; }
         public string companyAbout { get; set; }
         public string companyLogo { get; set; }
+        public string email { get; set; }
         public string companyAddress { get; set; }
-        public int BranchID { get; set; }
-        public virtual Branch Branch { get; set; }
+        public string companyPicturePath { get; set; }
         public virtual ICollection<Phone> Phones { get; set; }
     }
 }

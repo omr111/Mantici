@@ -11,7 +11,7 @@ namespace Mantici.Entities.Models.Mapping
             this.HasKey(t => t.id);
 
             // Properties
-            this.Property(t => t.phone1)
+            this.Property(t => t.phoneNumber)
                 .IsRequired()
                 .HasMaxLength(15);
 
@@ -19,7 +19,7 @@ namespace Mantici.Entities.Models.Mapping
             this.ToTable("Phones");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.CompanyID).HasColumnName("CompanyID");
-            this.Property(t => t.phone1).HasColumnName("phone");
+            this.Property(t => t.phoneNumber).HasColumnName("phoneNumber");
 
             // Relationships
             this.HasRequired(t => t.CompanyInformation)

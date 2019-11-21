@@ -108,11 +108,13 @@
                     }
                     else {
                         $("#sil").html(okFail);
+                        setTimeout(function () { $('#sil').hide('slow'); }, 5000);
                     }
                 },
                 error:function() {
                   
-                    $("#before").before(okFail);
+                    $("#sil").html(okFail);
+                    setTimeout(function () { $('#sil').hide('slow'); }, 5000);
                 }
             });
         });
