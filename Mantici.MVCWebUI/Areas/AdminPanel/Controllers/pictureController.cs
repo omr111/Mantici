@@ -30,7 +30,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             string newName = Path.GetFileNameWithoutExtension(file.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(file.FileName);
             Image orjResim = Image.FromStream(file.InputStream);
             Bitmap pictureDraw = new Bitmap(orjResim, picWidth, pichHeight);
-            pictureDraw.Save(context.Server.MapPath("~/content/img/productPicture/menuPicture/" + newName));
+            pictureDraw.Save(context.Server.MapPath("/content/img/productPicture/menuPicture/" + newName));
 
             Picture pp = new Picture();
             pp.smallPath = "/content/img/productPicture/menuPicture/" + newName;

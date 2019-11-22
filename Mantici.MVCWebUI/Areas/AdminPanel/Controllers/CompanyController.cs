@@ -133,7 +133,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                 bool resultDelete = _phoneBll.Delete(phone.id);
                 if (resultDelete)
                 {
-                   
+                    
                     return Json(data:1);
                 }
                 else

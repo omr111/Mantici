@@ -38,6 +38,12 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.email).HasColumnName("email");
             this.Property(t => t.BranchAdress).HasColumnName("BranchAdress");
             this.Property(t => t.BranchPictureID).HasColumnName("BranchPictureID");
+
+            // Relationships
+            this.HasOptional(t => t.Picture)
+                .WithMany(t => t.Branches)
+                .HasForeignKey(d => d.BranchPictureID);
+
         }
     }
 }

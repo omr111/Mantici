@@ -16,6 +16,7 @@ namespace Mantici.Entities.Models
         {
         }
 
+        public DbSet<banner> banners { get; set; }
         public DbSet<Branch> Branches { get; set; }
         public DbSet<BranchPhone> BranchPhones { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -33,6 +34,7 @@ namespace Mantici.Entities.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new bannerMap());
             modelBuilder.Configurations.Add(new BranchMap());
             modelBuilder.Configurations.Add(new BranchPhoneMap());
             modelBuilder.Configurations.Add(new CategoryMap());

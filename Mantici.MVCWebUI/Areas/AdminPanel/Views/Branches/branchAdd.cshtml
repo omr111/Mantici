@@ -120,33 +120,3 @@
         <!-- .content -->
 
 </form>
-@*}*@
-
-@*@section js{
-    <script type="text/javascript">
-        $(".onayla").click(function() {
-            //var form = $('form')[0];
-            //var formdata = new FormData(form);
-            var phone1 = $(".phone1").val();
-            var phone2 = $(".phone2").val();
-            var phone3 = $(".phone3").val();
-            
-            var phones = phone1 + "-" + phone2 + "-" + phone3;
-         
-            //formdata.append('phones', phones);
-            $.ajax({
-                url: "/AdminPanel/Branches/branchAdd",
-                data: formdata,
-                type: "POST",
-                processData: false,
-                contentType: false,
-                cache: false,
-                timeout: 600000,
-                success: function () {
-                    aler("ok");
-                }
-            });
-        });
-       
-    </script>
-}*@

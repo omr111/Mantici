@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IbannerDal.cs" />
     <Compile Include="Abstract\IBranchDal.cs" />
     <Compile Include="Abstract\IBranchPhoneDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Abstract\IroleDal.cs" />
     <Compile Include="Abstract\IroleOfUserDal.cs" />
     <Compile Include="Abstract\IuserDal.cs" />
+    <Compile Include="Concrete\EfRepository\bannerDal.cs" />
     <Compile Include="Concrete\EfRepository\BranchDal.cs" />
     <Compile Include="Concrete\EfRepository\BranchPhoneDal.cs" />
     <Compile Include="Concrete\EfRepository\CategoryDal.cs" />

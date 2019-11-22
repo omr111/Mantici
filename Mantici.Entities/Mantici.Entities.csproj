@@ -48,11 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\banner.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\BranchPhone.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CompanyInformation.cs" />
     <Compile Include="Models\DBMantiContext.cs" />
+    <Compile Include="Models\Mapping\bannerMap.cs" />
     <Compile Include="Models\Mapping\BranchMap.cs" />
     <Compile Include="Models\Mapping\BranchPhoneMap.cs" />
     <Compile Include="Models\Mapping\CategoryMap.cs" />

@@ -3818,6 +3818,7 @@
     <Content Include="Areas\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Areas\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\AdminPanel\Views\banner\Index.cshtml" />
     <None Include="content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="content\Scripts\jquery-3.4.1.js" />
     <Content Include="content\Scripts\jquery-3.4.1.min.js" />
@@ -3831,6 +3832,7 @@
     <Compile Include="App_Classes\settings.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\bannerController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BranchesController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\CompanyController.cs" />

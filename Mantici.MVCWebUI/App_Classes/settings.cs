@@ -9,12 +9,23 @@ namespace Mantici.MVCWebUI.App_Classes
 {
     public class settings
     {
+        public static Size bannerPicture
+        {
+            get
+            {
+                Size sonuc = new Size();
+                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["bannerWidth"]);
+                sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["bannerHeight"]);
+                return sonuc;
+            }
+
+        }
         public static Size companyLogo
         {
             get
             {
                 Size sonuc = new Size();
-                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["logoWith"]);
+                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["logoWidth"]);
                 sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["logoHeight"]);
                 return sonuc;
             }
@@ -25,7 +36,7 @@ namespace Mantici.MVCWebUI.App_Classes
             get
             {
                 Size sonuc = new Size();
-                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["compWith"]);
+                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["compWidth"]);
                 sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["compHeight"]);
                 return sonuc;
             }
