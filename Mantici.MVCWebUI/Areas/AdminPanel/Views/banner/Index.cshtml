@@ -2,12 +2,14 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
 }
+@using Mantici.Entities.Models
 @model List<Mantici.Entities.Models.banner>
 @if (Session["bannerEklenemedi"] != null)
 {
     string mesaj = (string)Session["bannerEklenemedi"];
     if (mesaj=="Banner Başarıyla Eklendi")
     {
+
         <div class="col-sm-12">
 
             <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -35,7 +37,7 @@
    
   
 }
-
+<div class="alert"></div>
 <div class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
@@ -44,42 +46,43 @@
                     <div class="card-header">
                         <strong>Banner Sil</strong>
                     </div>
+                    <form>
 
-                    <div class="card-body card-block">
-                        <div class="form-group">
-                            <label class=" form-control-label">Banner Resimleri</label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-image"></i></div>
-                               
-                                <select id="bannerId" name="bannerPath" class="vodiapicker form-control">
+                        <div class="card-body card-block ">
+                            <div class="form-group ">
+                                <label class=" form-control-label">Banner Resimleri</label>
+                                <div class="input-group" style="overflow: scroll; ">
+                                    <div class="input-group-addon "><i class="fa fa-image"></i></div>
+
+                                    @*<select id="selectedBanner" name="" class="vodiapicker form-control bannerId">*@
 
                                     @if (@Model != null)
                                     {
-                                        foreach (var banner in Model)
-                                        {
-                                            <option id="bannerId-@banner.id" value="@banner.id" data-alt="@banner.altName" data-thumbnail="@banner.bannerPath"></option>
 
+                                        foreach (banner bann in @Model)
+                                        {
+                                            <div style="margin-left: 50px;" class="col-md-12" >
+                                                <input  name="id" type="radio" value="@bann.id" data-id="@bann.id" data-alt="@bann.altName" data-thumbnail="@bann.bannerPath" />
+
+                    
+                                                <img style="margin: 0;padding: 0; margin-bottom: 10px;" class="col-md-6" src="@bann.bannerPath" /><br />
+                                            </div>
                                         }
+
                                     }
 
-                                </select>
-                                <div class="lang-select">
-                                    <button class="btn-select" value=""></button>
-                                    <div class="b">
-                                        <ul id="a"></ul>
+                                    <div class="form-group">
+
+                                        <a style="margin-left: 5px" class="btn btn-danger bannerDelete"><i class="fa fa-trash" title="Banner Sil"></i>Sil</a>
                                     </div>
-                                   
+
                                 </div>
-                                <div style="margin-top: 10%;"class="form-group">
-                                    
-                                    <a style="margin-left: 5px" class="btn btn-danger bannerDelete" ><i class="fa fa-trash" title="Banner Sil"></i>Sil</a>
-                                </div>
-                              
+
                             </div>
-                         
+
                         </div>
 
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6">
@@ -125,157 +128,71 @@
 
 
 @section js{
-  
+
+
     <script type="text/javascript">
+        
+        function failOk(m) {
+            var okFail = '<div class="col-sm-12">';
+            okFail += '<div class="alert  alert-danger alert-dismissible fade show" role="alert">';
+            okFail += ' <span class="badge badge-pill badge-success">Hata</span>' + m;
+            okFail += ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+            okFail += '<span aria-hidden="true">&times;</span>';
+            okFail += '</button>';
+            okFail += '</div>';
+            okFail += ' </div>';
+            return okFail;
+        }
+        function ok(m) {
+            var ok = '<div class="col-sm-12">';
+            ok += '<div class="alert  alert-success alert-dismissible fade show" role="alert">';
+            ok += ' <span class="badge badge-pill badge-success">Başarılı</span>' + m;
+            ok += ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+            ok += '<span aria-hidden="true">&times;</span>';
+            ok += '</button>';
+            ok += '</div>';
+            ok += ' </div>';
+            return ok;
+        }
+        
         $(".bannerDelete").click(function() {
-            var name = $("#bannerId").;
-            alert(name);
+
+            var id=$("input:checked").val()
+            $.ajax({
+                url: "/AdminPanel/banner/bannerDelete",
+                data: {id:id},
+                type: "POST",
+                success:function(data) {
+                    if (data.id == 1) {
+                        var mesaj = data.message;
+                        $(".alert").html(ok(mesaj));
+                        setTimeout(function () { $('#alert').hide('slow'); }, 5000);
+                        setTimeout(function () { document.location.replace("/AdminPanel/banner/Index") }, 2000);
+                    } else {
+                        $(".alert").html(failOk(mesaj));
+                        setTimeout(function () { $('#alert').hide('slow'); }, 5000);
+                        setTimeout(function () { document.location.replace("/AdminPanel/banner/Index") }, 2000);
+                    }
+                },
+                error:function(data) {
+                    if (data.id == 0) {
+                        var mesaj = data.message;
+                        $(".alert").html(failOk(mesaj));
+                        setTimeout(function () { $('#alert').hide('slow'); }, 5000);
+                        setTimeout(function () { document.location.replace("/AdminPanel/banner/Index") }, 2000);
+                    } else {
+                        $(".alert").html(failOk(mesaj));
+                        setTimeout(function () { $('#alert').hide('slow'); }, 5000);
+                        setTimeout(function () { document.location.replace("/AdminPanel/banner/Index") }, 2000);
+                    }
+                }
         });
-</script>
+
+        })
+    </script>
     
-    
-<script type="text/javascript">
-    var langArray = [];
-    $('.vodiapicker option').each(function () {
-        var img = $(this).attr("data-thumbnail");
-        var alt = $(this).attr("data-alt");
-        var st = 'style = "background-image: url(' + img + ')"';
-        
-        var text = this.innerText;
-        var value = $(this).val();
-        var item = '<li );"><img  src="' + img + '"  alt="' + alt + '"/><span>' + text + '</span></li>';
-        langArray.push(item);
-      
-    })
-    
-    $('#a').html(langArray);
-
-    //Set the button value to the first el of the array
-    $('.btn-select').html(langArray[0]);
-    $('.btn-select').attr('value', 'en');
-
-    //change button stuff on click
-    $('#a li').click(function () {
-        var img = $(this).find('img').attr("src");
-       
-        var value = $(this).find('img').attr('value');
-        var alt = $(this).attr("data-alt");
-        var text = this.innerText;
-        var item = '<li  "><img src="' + img + '"  alt="' + alt + '" /><span>' + text + '</span></li>';
-        $('.btn-select').html(item);
-        $('.btn-select').attr('value', value);
-        $(".b").toggle();
-        //console.log(value);
-    });
-
-    $(".btn-select").click(function () {
-        $(".b").toggle();
-    });
-
-    //check local storage for the lang
-    var sessionLang = localStorage.getItem('lang');
-    if (sessionLang) {
-        //find an item with value of sessionLang
-        var langIndex = langArray.indexOf(sessionLang);
-        $('.btn-select').html(langArray[langIndex]);
-        $('.btn-select').attr('value', sessionLang);
-    } else {
-        var langIndex = langArray.indexOf('ch');
-        
-        $('.btn-select').html(langArray[langIndex]);
-        //$('.btn-select').attr('value', 'en');
-    }
-
-</script>
 
 }
     
 
 
-@section css{
-    <style type="text/css">
-        .vodiapicker {
-            display: none;
-        }
-
-        #a {
-            padding-left: 0;
-        }
-
-            #a img, .btn-select img {
-                width: 150px;
-                
-            }
-
-            #a li {
-                list-style: none;
-                padding-top: 5px;
-                padding-bottom: 5px;
-            }
-
-                #a li:hover {
-                    background-color: #F4F3F3;
-                }
-
-                #a li img {
-                    margin: 5px;
-                }
-
-                #a li span, .btn-select li span {
-                    margin-left: 30px;
-                }
-
-        /* item list */
-
-        .b {
-            display: none;
-            width: 100%;
-            box-shadow: 0 6px 12px rgba(0,0,0,.175);
-            border: 1px solid rgba(0,0,0,.15);
-            border-radius: 5px;
-        }
-
-        .open {
-            display: show !important;
-        }
-
-        .btn-select {
-            margin-top: 10px;
-            width: 100%;
-            
-            height: 150px;
-            border-radius: 5px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-             
-        }
-
-            .btn-select li {
-                list-style: none;
-                float: left;
-                padding-bottom: 0;
-              
-
-    
-            }
-
-            .btn-select:hover li {
-                margin-left: 0;
-            }
-
-            .btn-select:hover {
-                background-color: #F4F3F3;
-                border: 1px solid transparent;
-                box-shadow: inset 0 0 0 1px #ccc;
-            }
-
-            .btn-select:focus {
-                outline: none;
-            }
-
-        .lang-select {
-            margin-left: 50px;
-             
-        }
-    </style>
-}

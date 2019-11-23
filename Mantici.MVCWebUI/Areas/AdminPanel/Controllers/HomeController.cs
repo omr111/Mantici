@@ -23,7 +23,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             AdminIndex adminIndex=new AdminIndex();
             adminIndex.Products = _productBll.ListAll();
             adminIndex.Branches = _branchBll.ListAll();
-            adminIndex.Rezervations = _rezervationBll.ListAll();
+            adminIndex.Rezervations = _rezervationBll.newListAll();
             adminIndex.Users = _userBll.ListAll();
             adminIndex.managementTeam = _userBll.managementTeam("Uye");
             return View(adminIndex);

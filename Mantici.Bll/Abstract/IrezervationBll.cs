@@ -7,6 +7,7 @@ namespace Mantici.Bll.Abstract
     public interface IrezervationBll
     {
         List<rezervation> ListAll(Expression<Func<rezervation, bool>> filter = null);
+        List<rezervation> newListAll();
         rezervation GetOne(Expression<Func<rezervation, bool>> filter);
         bool Add(rezervation rezervation);
         bool Update(rezervation rezervation);

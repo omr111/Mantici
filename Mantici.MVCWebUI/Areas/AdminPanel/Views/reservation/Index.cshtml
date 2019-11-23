@@ -1,0 +1,75 @@
+﻿@using Mantici.Entities.Models
+@model List<Mantici.Entities.Models.rezervation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+<div class="content mt-3">
+   
+            <div id="accordion">
+
+                @foreach (rezervation rez in Model)
+                {
+                    <div class="card">
+                        <div class="card-header" id="heading-@rez.id">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#col-@rez.id" aria-expanded="true" aria-controls="col-@rez.id">
+                                  
+                                        <div style="float: left !important"> @rez.CustomerName @rez.surname | @rez.rezerveDate</div>
+                                       
+                                   
+                                </button>
+                                @if (rez.showed == true)
+                                {
+                                    <div class="right" style="float: right !important;">
+                                        <small style="color: red;float: right !important;text-align: center; ">Görüldü</small>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="right" style="float: right !important;text-align: center;">
+                                        <small style="color: green; float: right !important;">Yeni Rezervasyon</small>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+
+                        <div id="col-@rez.id" class=" collapse" aria-labelledby="heading-@rez.id" data-parent="#accordion">
+                            <div class="card-body">
+                                <table id="task-table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>İsim</th>
+                                            <th>Soyad</th>
+                                            <th>Kişi</th>
+                                            <th>Tarih</th>
+                                            <th>Rezervasyon Açıklama</th>
+
+                                            <th>Sil</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr>
+                                            <td>@rez.CustomerName</td>
+                                            <td>@rez.surname</td>
+                                            <td>@rez.personCount</td>
+                                            <td>@rez.rezerveDate</td>
+                                            <td>@rez.description</td>
+
+
+                                            <td><a href="/AdminPanel/reservation/deleteReservation/@rez.id" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <div><button style="margin-left: 43%;width: 150px;" class="btn btn-success">Görüldü</button></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+      
+</div>

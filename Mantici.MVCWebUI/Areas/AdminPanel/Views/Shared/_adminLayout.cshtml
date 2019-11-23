@@ -13,12 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="~/Areas/AdminPanel/context/admin-panel/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Areas/AdminPanel/context/admin-panel/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Areas/AdminPanel/context/admin-panel/assets/css/style.css" rel="stylesheet" />
   
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="~/content/css/table.css" rel="stylesheet" />
+    
     @RenderSection("css",false)
 </head>
 <body>
@@ -80,12 +82,20 @@
                       
                     </li>
                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i style="font-size: 17px" class="menu-icon fa fa-calendar"></i>Rezervasyonlar</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-info"></i><a href="/AdminPanel/reservation/Index">Detay</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i style="font-size: 17px" class="menu-icon fa fa-image"></i>Banner</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-cog"></i><a href="/AdminPanel/banner/Index">Banner İşlemleri</a></li>
 
                         </ul>
                     </li>
+                   
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i style="font-size: 17px" class="menu-icon fa fa-building-o"></i>Şirket Bilgileri</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -120,19 +130,7 @@
                         
                     </div>
                 </div>
-                <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            <img class="user-avatar rounded-circle" src="~/Areas/AdminPanel/context/admin-panel/images/admin.jpg" alt="admin-avatar"/>
-                        </a>
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Profil</a>
-                         
-                        </div>
-                    </div>
-                    
-                </div>
+    
             </div>
         </header><!-- /header -->
         <!-- Header-->
@@ -147,7 +145,10 @@
 
    
     </div><!-- /#right-panel -->
-    <!-- Right Panel -->
+<!-- Right Panel -->
+
+  
+ 
     <script src="~/Areas/AdminPanel/context/admin-panel/vendors/jquery/dist/jquery.min.js"></script>
     <script src="~/content/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Areas/AdminPanel/context/admin-panel/vendors/popper.js/dist/umd/popper.min.js"></script>
@@ -155,7 +156,8 @@
     <script src="~/Areas/AdminPanel/context/admin-panel/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/Areas/AdminPanel/context/admin-panel/assets/js/widgets.js"></script>
     <script src="~/content/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/Areas/ckeditor/ckeditor.js"></script>
+<script src="~/Areas/ckeditor/ckeditor.js"></script>
+    <script src="~/content/js/table.js"></script>
 @RenderSection("js",false)
  
 

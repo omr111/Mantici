@@ -28,5 +28,25 @@ namespace Mantici.Bll.Concrete
 
             return false;
         }
+
+     public  banner getOneWithId(int id)
+       {
+           return _bannerDal.GetOne(x => x.id == id);
+       }
+
+     public bool deleteBanner(int id)
+       {
+           banner bnr = _bannerDal.GetOne(x => x.id == id);
+          bool result= _bannerDal.Delete(bnr);
+          if (result)
+           {
+               return true;
+           }
+           else
+           {
+               return false;
+           }
+           
+       }
     }
 }

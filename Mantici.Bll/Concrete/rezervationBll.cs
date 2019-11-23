@@ -20,6 +20,10 @@ namespace Mantici.Bll.Concrete
             return _rezervationDal.AllList();
         }
 
+        public List<rezervation> newListAll()
+        {
+            return _rezervationDal.AllList(x => x.showed == false);
+        }
         public rezervation GetOne(Expression<Func<rezervation, bool>> filter)
         {
             return _rezervationDal.GetOne(filter);

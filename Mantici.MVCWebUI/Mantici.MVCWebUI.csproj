@@ -3126,10 +3126,12 @@
     <Content Include="content\css\flaticon.css" />
     <Content Include="content\css\font-awesome.min.css" />
     <Content Include="content\css\magnific-popup.css" />
+    <Content Include="content\css\main.css" />
     <Content Include="content\css\nice-select.css" />
     <Content Include="content\css\owl.carousel.min.css" />
     <Content Include="content\css\slicknav.css" />
     <Content Include="content\css\style.css" />
+    <Content Include="content\css\table.css" />
     <Content Include="content\css\theme-default.css" />
     <Content Include="content\css\themify-icons.css" />
     <Content Include="content\css\videoSection.css" />
@@ -3162,6 +3164,7 @@
     <Content Include="content\js\plugins.js" />
     <Content Include="content\js\popper.min.js" />
     <Content Include="content\js\scrollIt.js" />
+    <Content Include="content\js\table.js" />
     <Content Include="content\js\vendor\jquery-1.12.4.min.js" />
     <Content Include="content\js\vendor\modernizr-3.5.0.min.js" />
     <Content Include="content\js\waypoints.min.js" />
@@ -3819,6 +3822,7 @@
     <Content Include="Areas\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\AdminPanel\Views\banner\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\reservation\Index.cshtml" />
     <None Include="content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="content\Scripts\jquery-3.4.1.js" />
     <Content Include="content\Scripts\jquery-3.4.1.min.js" />
@@ -3839,6 +3843,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\pictureController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\productController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\reservationController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\RoleController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\roleOfUserController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\userController.cs" />

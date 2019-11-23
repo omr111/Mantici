@@ -71,5 +71,44 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 
             
         }
+
+        [HttpPost]
+        public ActionResult bannerDelete(int id)
+        {
+            try
+            {
+                banner bnr = _bannerBll.getOneWithId(id);
+                if (bnr!=null)
+                {
+                    if (System.IO.File.Exists(Server.MapPath(bnr.bannerPath)))
+                    {
+                        System.IO.File.Delete(Server.MapPath(bnr.bannerPath));
+
+                    }
+
+                    bool resultDeleteBanner = _bannerBll.deleteBanner(id);
+
+                    if (resultDeleteBanner)
+                    {
+                        return Json(new { id = 1, message = "Banner Başarıyla Silindi." });
+                    }
+                    else
+                    {
+                        return Json(new { id = 0, message = "Bu Banner Silinemedi, Başka Bir Yerde Kullanılıyor Olabilir !" });
+                    }
+
+                }
+                else
+                {
+                    return Json(new { id = 0, message = "Silmek İstediğiniz Banner Bulunamadı!" });
+                }
+               
+                
+            }
+            catch (Exception e)
+            {
+                return Json(new { id = 0, message =e.Message });
+            }
+        }
     }
 }

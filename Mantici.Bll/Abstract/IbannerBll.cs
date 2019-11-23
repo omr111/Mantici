@@ -7,5 +7,7 @@ namespace Mantici.Bll.Abstract
     {
         List<banner> defaultBannerList();
         bool addBanner(banner banner);
+        banner getOneWithId(int id);
+        bool deleteBanner(int id);
     }
 }
