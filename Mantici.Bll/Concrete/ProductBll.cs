@@ -21,9 +21,9 @@ namespace Mantici.Bll.Concrete
             return _productDal.AllList();
         }
 
-        public Product GetOne(Expression<Func<Product, bool>> filter)
+        public Product GetOne(int id)
         {
-            return _productDal.GetOne(filter);
+            return _productDal.GetOne(x=>x.id==id);
         }
 
         public bool Add(Product product)

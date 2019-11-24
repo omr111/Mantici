@@ -21,6 +21,10 @@ namespace Mantici.Bll.Concrete
             return _reviewDal.AllList();
         }
 
+        public List<review> ListAllReviewsOfUser(int userId)
+        {
+            return _reviewDal.AllList(x => x.userID == userId);
+        }
         public review GetOne(Expression<Func<review, bool>> filter)
         {
             return _reviewDal.GetOne(filter);
@@ -65,6 +69,27 @@ namespace Mantici.Bll.Concrete
                 return false;
             }
 
+        }
+
+        public bool deleteAllReviewsOfUser(int id)
+        {
+            try
+            {
+                List<review> reviews= _reviewDal.AllList(x => x.userID == id);
+                if (reviews!=null)
+                {
+                    foreach (var review in reviews)
+                    {
+                        _reviewDal.Delete(review);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

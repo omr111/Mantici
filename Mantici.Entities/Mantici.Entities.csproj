@@ -60,7 +60,6 @@
     <Compile Include="Models\Mapping\CategoryMap.cs" />
     <Compile Include="Models\Mapping\CompanyInformationMap.cs" />
     <Compile Include="Models\Mapping\PhoneMap.cs" />
-    <Compile Include="Models\Mapping\PictureMap.cs" />
     <Compile Include="Models\Mapping\ProductMap.cs" />
     <Compile Include="Models\Mapping\reviewMap.cs" />
     <Compile Include="Models\Mapping\rezervationMap.cs" />
@@ -70,7 +69,6 @@
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\userMap.cs" />
     <Compile Include="Models\Phone.cs" />
-    <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\review.cs" />
     <Compile Include="Models\rezervation.cs" />

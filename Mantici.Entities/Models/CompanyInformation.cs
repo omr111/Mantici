@@ -17,6 +17,7 @@ namespace Mantici.Entities.Models
         public string email { get; set; }
         public string companyAddress { get; set; }
         public string companyPicturePath { get; set; }
+        public string videoPath { get; set; }
         public virtual ICollection<Phone> Phones { get; set; }
     }
 }

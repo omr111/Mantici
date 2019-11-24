@@ -19,8 +19,11 @@ namespace Mantici.Entities.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(150);
 
-            this.Property(t => t.coverPicture)
+            this.Property(t => t.coverPicturePath)
                 .HasMaxLength(150);
+
+            this.Property(t => t.pictureAlt)
+                .HasMaxLength(50);
 
             // Table & Column Mappings
             this.ToTable("Products");
@@ -28,7 +31,8 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.name).HasColumnName("name");
             this.Property(t => t.caption).HasColumnName("caption");
             this.Property(t => t.description).HasColumnName("description");
-            this.Property(t => t.coverPicture).HasColumnName("coverPicture");
+            this.Property(t => t.coverPicturePath).HasColumnName("coverPicturePath");
+            this.Property(t => t.pictureAlt).HasColumnName("pictureAlt");
             this.Property(t => t.categoryID).HasColumnName("categoryID");
             this.Property(t => t.pictureID).HasColumnName("pictureID");
             this.Property(t => t.price).HasColumnName("price");
@@ -37,9 +41,6 @@ namespace Mantici.Entities.Models.Mapping
             this.HasRequired(t => t.Category)
                 .WithMany(t => t.Products)
                 .HasForeignKey(d => d.categoryID);
-            this.HasOptional(t => t.Picture)
-                .WithMany(t => t.Products)
-                .HasForeignKey(d => d.pictureID);
 
         }
     }

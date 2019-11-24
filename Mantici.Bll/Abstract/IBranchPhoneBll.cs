@@ -8,6 +8,7 @@ namespace Mantici.Bll.Abstract
     public interface IBranchPhoneBll
     {
         List<BranchPhone> ListAll(Expression<Func<BranchPhone, bool>> filter = null);
+        List<BranchPhone> ListAllOftheUser(int id);
         BranchPhone GetOne(Expression<Func<BranchPhone, bool>> filter);
         bool Add(BranchPhone branchPhone);
         bool Update(BranchPhone branchPhone);

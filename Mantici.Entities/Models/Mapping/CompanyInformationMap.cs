@@ -26,6 +26,9 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.companyPicturePath)
                 .HasMaxLength(150);
 
+            this.Property(t => t.videoPath)
+                .HasMaxLength(150);
+
             // Table & Column Mappings
             this.ToTable("CompanyInformations");
             this.Property(t => t.id).HasColumnName("id");
@@ -35,6 +38,7 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.email).HasColumnName("email");
             this.Property(t => t.companyAddress).HasColumnName("companyAddress");
             this.Property(t => t.companyPicturePath).HasColumnName("companyPicturePath");
+            this.Property(t => t.videoPath).HasColumnName("videoPath");
         }
     }
 }

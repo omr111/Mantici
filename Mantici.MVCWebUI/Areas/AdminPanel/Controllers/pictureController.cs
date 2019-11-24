@@ -21,60 +21,39 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             return View();
         }
 
-        public static string pictureAdd(HttpPostedFileBase file, HttpContextBase context)
+
+        public static string pictureAddForProduct(HttpPostedFileBase file, HttpContextBase context)
         {
 
-            IPictureBll _pictureBll = new PictureBll(new PictureDal());
-            int picWidth = settings.pictureSize.Width;
-            int pichHeight = settings.pictureSize.Height;
-            string newName = Path.GetFileNameWithoutExtension(file.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(file.FileName);
-            Image orjResim = Image.FromStream(file.InputStream);
-            Bitmap pictureDraw = new Bitmap(orjResim, picWidth, pichHeight);
-            pictureDraw.Save(context.Server.MapPath("/content/img/productPicture/menuPicture/" + newName));
+            int picSmallWidth = settings.productPictureSize.Width;
+            int picSmallHeight = settings.productPictureSize.Height;
 
-            Picture pp = new Picture();
-            pp.smallPath = "/content/img/productPicture/menuPicture/" + newName;
-            //resmin alt'ı olarak kullanacağım filename'i
-            pp.pictureAlt = file.FileName;
-            bool result = _pictureBll.Add(pp);
-           if (result)
-           {
-               return pp.smallPath; 
-           }
-           else
-           {
-               return "";
-           }
-            
-        }
-
-        public static int pictureAddInt(HttpPostedFileBase file, HttpContextBase context)
-        {
-            IPictureBll _pictureBll = new PictureBll(new PictureDal());
-            int picSmallWidth = settings.BranchSmallSize.Width;
-            int picSmallHeight = settings.BranchSmallSize.Height;
-            int picBigWidth = settings.BranchBigSize.Width;
-            int picBigHeight = settings.BranchBigSize.Height;
-            string newName = Path.GetFileNameWithoutExtension(file.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(file.FileName);
+            string newName = Path.GetFileNameWithoutExtension(file.FileName) + Path.GetExtension(file.FileName);
             Image orjResim = Image.FromStream(file.InputStream);
             Bitmap pictureSmallDraw = new Bitmap(orjResim, picSmallWidth, picSmallHeight);
-            Bitmap pictureBigDraw = new Bitmap(orjResim, picBigWidth, picBigHeight);
-            pictureSmallDraw.Save(context.Server.MapPath("~/content/img/branchPicture/smallPicture/" + newName));
-            pictureBigDraw.Save(context.Server.MapPath("~/content/img/branchPicture/bigPicture/" + newName));
-            Picture pp = new Picture();
-            pp.smallPath = "/content/img/branchPicture/smallPicture/" + newName;
-            //resmin alt'ı olarak kullanacağım filename'i
-            pp.pictureAlt = file.FileName;
-            bool result = _pictureBll.Add(pp);
 
-            if (result)
-            {
-                return pp.id;
-            }
-            else
-            {
-                return 0;
-            }
+            pictureSmallDraw.Save(context.Server.MapPath("~/content/img/productPicture/menuPicture/" + newName));
+
+            string saveDBPath = "/content/img/productPicture/menuPicture/" + newName;
+            return saveDBPath;
+
+
+        }
+        public static string pictureAddForBranch(HttpPostedFileBase file, HttpContextBase context)
+        {
+           
+            int picSmallWidth = settings.BranchSmallSize.Width;
+            int picSmallHeight = settings.BranchSmallSize.Height;
+         
+            string newName = Path.GetFileNameWithoutExtension(file.FileName)  + Path.GetExtension(file.FileName);
+            Image orjResim = Image.FromStream(file.InputStream);
+            Bitmap pictureSmallDraw = new Bitmap(orjResim, picSmallWidth, picSmallHeight);
+           
+            pictureSmallDraw.Save(context.Server.MapPath("~/content/img/branchPicture/" + newName));
+           
+            string saveDBPath = "/content/img/branchPicture/" + newName;
+            return saveDBPath;
+
 
         }
     }

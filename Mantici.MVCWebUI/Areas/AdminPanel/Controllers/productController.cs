@@ -14,6 +14,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
     {
         ICategoryBll _categoryBll=new CategoryBll(new CategoryDal());
         IProductBll _productBll =new ProductBll(new ProductDal());
+     
         // GET: AdminPanel/product
         public ActionResult Index()
         {
@@ -30,68 +31,96 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult productAdd(Product product, HttpPostedFileBase file)
         {
-            product.coverPicture = pictureController.pictureAdd(file, HttpContext);
+            product.coverPicturePath = pictureController.pictureAddForProduct(file, HttpContext);
+            if (file.FileName.Length>50)
+            {
+                product.pictureAlt = file.FileName.Substring(0,49);
+            }
+            else
+            {
+                product.pictureAlt = file.FileName;
+            }
+            
             _productBll.Add(product);
             return RedirectToAction("Index", "product",new{area="AdminPanel"});
         }
-        public ActionResult productDelete(int id)
+        [HttpPost]
+        public int productDelete(int id)
         {
-            //Makale m = ctx.Makales.FirstOrDefault(x => x.id == makale.id);
-            //if (Resim != null)
-            //{
+      
+            Product pro = _productBll.GetOne(id);
+            
+            if (pro != null)
+            {
+               
 
-            //    Resim makaleResim = ctx.Resims.FirstOrDefault(x => x.id == m.KapakResimID);
+                if (System.IO.File.Exists(Server.MapPath(pro.coverPicturePath)))
+                {
+                    System.IO.File.Delete(Server.MapPath(pro.coverPicturePath));
 
-            //    if (System.IO.File.Exists(Server.MapPath("/Content/BuyukResim/" + makaleResim.BuyukResimYol)))
-            //    {
-            //        System.IO.File.Delete(Server.MapPath("/Content/BuyukResim/" + makaleResim.BuyukResimYol));
+                }
 
-            //    }
-            //    if (System.IO.File.Exists(Server.MapPath("/Content/BuyukResim/" + makaleResim.KucukResimYol)))
-            //    {
-            //        System.IO.File.Delete(Server.MapPath("/Content/BuyukResim/" + makaleResim.BuyukResimYol));
-            //    }
-
-            //    ctx.Entry(makaleResim).State = EntityState.Deleted;
-            //    ctx.SaveChanges();
-            //    m.KapakResimID = ResimKaydet(Resim, HttpContext);
-            //}
-            return View();
+                bool resultDelete = _productBll.Delete(pro.id);
+                if (resultDelete)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+               
+            }
+            return 0;
         }
-        //[ValidateInput(false)]
-        //public ActionResult productUpdate(int id)
-        //{
-          
-        //    return View();
-        //}
+        [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult productUpdate(Product product, HttpPostedFile file)
+        public int productUpdate(Product pro, HttpPostedFileBase file)
         {
-            //Makale m = ctx.Makales.FirstOrDefault(x => x.id == makale.id);
-            //if (Resim != null)
-            //{
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Product product = _productBll.GetOne(pro.id);
+                    if (product != null)
+                    {
+                        if (file != null)
+                        {
+                            if (System.IO.File.Exists(Server.MapPath(pro.coverPicturePath)))
+                            {
+                                System.IO.File.Delete(Server.MapPath(pro.coverPicturePath));
 
-            //    Resim makaleResim = ctx.Resims.FirstOrDefault(x => x.id == m.KapakResimID);
+                            }
 
-            //    if (System.IO.File.Exists(Server.MapPath("/Content/BuyukResim/" + makaleResim.BuyukResimYol)))
-            //    {
-            //        System.IO.File.Delete(Server.MapPath("/Content/BuyukResim/" + makaleResim.BuyukResimYol));
+                            product.coverPicturePath = pictureController.pictureAddForProduct(file, HttpContext);
+                            product.pictureAlt = pro.pictureAlt;
+                        }
 
-            //    }
-            //    if (System.IO.File.Exists(Server.MapPath("/Content/BuyukResim/" + makaleResim.KucukResimYol)))
-            //    {
-            //        System.IO.File.Delete(Server.MapPath("/Content/BuyukResim/" + makaleResim.BuyukResimYol));
-            //    }
-
-            //    ctx.Entry(makaleResim).State = EntityState.Deleted;
-            //    ctx.SaveChanges();
-            //    m.KapakResimID = ResimKaydet(Resim, HttpContext);
-            //}
-
-
-
-            return RedirectToAction("Index", "product",new {area="AdminPanel"});
+                        product.categoryID = pro.categoryID;
+                        product.caption = pro.caption;
+                        product.description = pro.description;
+                        product.price = pro.price;
+                        bool resultUpdate = _productBll.Update(product);
+                        if (resultUpdate)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                   
+                    }
+                    return 0;
+                }
+                return 0;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
         }
+     
     }
 }

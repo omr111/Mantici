@@ -27,6 +27,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
            
             return View(company);
         }
+        [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult companyEdit(CompanyInformation comInfo, HttpPostedFileBase companyLogo, HttpPostedFileBase companyPicturePath)
@@ -52,6 +53,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                     int companyPictureWidth = settings.companyPicture.Width;
                     int companyPictureHeight = settings.companyPicture.Height;
                     string newName = Path.GetFileNameWithoutExtension(companyPicturePath.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(companyPicturePath.FileName);
+                    
                     Image orjCompany = Image.FromStream(companyPicturePath.InputStream);
                     Bitmap companyPicturDraw = new Bitmap(orjCompany,companyPictureHeight,companyPictureWidth);
                     companyPicturDraw.Save(Server.MapPath("~/content/img/companyPicture/" + newName));
@@ -82,7 +84,9 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                 company.companyAddress = comInfo.companyAddress;
                 company.companyName = comInfo.companyName;
                 company.email = comInfo.email;
+                company.videoPath = comInfo.videoPath;
                bool result= _companyInformation.Update(company);
+               //todo uyarı mesajları yapılacak.
                if (result)
                {
                    return RedirectToAction("Index", "Company", new {area = "AdminPanel"});

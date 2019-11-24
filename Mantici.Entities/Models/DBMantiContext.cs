@@ -22,7 +22,6 @@ namespace Mantici.Entities.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<CompanyInformation> CompanyInformations { get; set; }
         public DbSet<Phone> Phones { get; set; }
-        public DbSet<Picture> Pictures { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<review> reviews { get; set; }
         public DbSet<rezervation> rezervations { get; set; }
@@ -40,7 +39,6 @@ namespace Mantici.Entities.Models
             modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new CompanyInformationMap());
             modelBuilder.Configurations.Add(new PhoneMap());
-            modelBuilder.Configurations.Add(new PictureMap());
             modelBuilder.Configurations.Add(new ProductMap());
             modelBuilder.Configurations.Add(new reviewMap());
             modelBuilder.Configurations.Add(new rezervationMap());

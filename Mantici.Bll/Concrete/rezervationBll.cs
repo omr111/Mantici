@@ -24,9 +24,9 @@ namespace Mantici.Bll.Concrete
         {
             return _rezervationDal.AllList(x => x.showed == false);
         }
-        public rezervation GetOne(Expression<Func<rezervation, bool>> filter)
+        public rezervation GetOne(int id)
         {
-            return _rezervationDal.GetOne(filter);
+            return _rezervationDal.GetOne(x=>x.id==id);
         }
 
         public bool Add(rezervation rezervation)

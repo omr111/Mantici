@@ -42,13 +42,13 @@ namespace Mantici.MVCWebUI.App_Classes
             }
 
         }
-        public static Size pictureSize
+        public static Size productPictureSize
         {
             get
             {
                 Size sonuc = new Size();
-                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["sw"]);
-                sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["sh"]);
+                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["productWidth"]);
+                sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["productHeight"]);
                 return sonuc;
             }
 

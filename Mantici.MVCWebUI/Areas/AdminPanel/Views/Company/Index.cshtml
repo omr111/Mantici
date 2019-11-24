@@ -5,6 +5,7 @@
 @model Mantici.Entities.Models.CompanyInformation
 <div id="numaraUyari"></div>
 <form action="/Company/companyEdit" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -56,7 +57,7 @@
                                             <option value="@phone.phoneNumber"></option>
 
                                         }
-                                    
+
                                     </datalist>
                                     <a style=" margin-left: 5px" class="btn btn-success numSave" data-id="@Model.id"><i class="fa fa-plus" title="Telefon Ekle"></i></a>
                                     <a style="margin-left: 5px" class="btn btn-danger numDelete" data-id="@Model.id"><i class="fa fa-trash" title="Telefon Sil"></i></a>
@@ -69,7 +70,7 @@
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
 
 
-                                    <input type="email" name="email" placeholder="Enter your email" class="form-control" value="@Model.email" />
+                                    <input type="email" name="email" placeholder="Enter your email" class="form-control" value="@Model.email"/>
 
 
                                 </div>
@@ -79,7 +80,7 @@
                                 <label class=" form-control-label">Adres</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-address-card-o"></i></div>
-                                    <input type="text" name="companyAddress" class="form-control " value="@Model.companyAddress" placeholder="Adresinizi Giriniz..." />
+                                    <input type="text" name="companyAddress" class="form-control " value="@Model.companyAddress" placeholder="Adresinizi Giriniz..."/>
                                 </div>
 
                             </div>
@@ -99,11 +100,19 @@
                                 </div>
 
                             </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Video Link</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-youtube-play"></i></div>
+                                    <input class="form-control" type="text" name="videoPath">
+                                </div>
+
+                            </div>
 
 
                             <div class="form-group">
 
-                                <input name="id" type="submit" class="btn btn-success" style="float: right" value="Güncelle" />
+                                <input name="id" type="submit" class="btn btn-success" style="float: right" value="Güncelle"/>
 
                             </div>
 

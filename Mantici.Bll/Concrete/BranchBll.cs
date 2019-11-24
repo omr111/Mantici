@@ -2,6 +2,8 @@
 using Mantici.Bll.Concrete.EfRepository;
 using Mantici.Dal.Abstract;
 using Mantici.Entities.Models;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Mantici.Bll.Concrete
 {
@@ -13,14 +15,15 @@ namespace Mantici.Bll.Concrete
         {
             _BranchDal = branchDal;
         }
-        public System.Collections.Generic.List<Entities.Models.Branch> ListAll(System.Linq.Expressions.Expression<System.Func<Entities.Models.Branch, bool>> filter = null)
+        public List<Branch> ListAll(Expression<System.Func<Branch, bool>> filter = null)
         {
             return _BranchDal.AllList();
         }
 
-        public Entities.Models.Branch GetOne(System.Linq.Expressions.Expression<System.Func<Entities.Models.Branch, bool>> filter)
+       
+        public Branch GetOne(int id)
         {
-            return _BranchDal.GetOne(filter);
+            return _BranchDal.GetOne(x=>x.id==id);
         }
 
         public bool Add(Entities.Models.Branch branch)

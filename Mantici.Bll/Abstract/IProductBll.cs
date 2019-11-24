@@ -8,7 +8,7 @@ namespace Mantici.Bll.Abstract
     public interface IProductBll
     {
         List<Product> ListAll(Expression<Func<Product, bool>> filter = null);
-        Product GetOne(Expression<Func<Product, bool>> filter);
+        Product GetOne(int id);
         bool Add(Product product);
         bool Update(Product product);
         bool Delete(int id);

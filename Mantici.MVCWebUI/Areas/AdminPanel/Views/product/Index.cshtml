@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
 }
-
+<div class="info"></div>
 <div class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
@@ -48,7 +48,7 @@
                                             <td>@pro.Category.categoryName</td>
                                             <td>@pro.price</td>
                                             <td><a href="/AdminPanel/product/productUpdate/@pro.id " class="btn btn-warning"><i class="fa fa-refresh"></i></a></td>
-                                            <td><a href="/AdminPanel/product/productDelete/@pro.id" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                            <td><button type="submit" data-id="@pro.id" class="btn btn-danger deleteProduct"><i class="fa fa-trash"></i></button></td>
                                         </tr>
 
                                     }
@@ -63,4 +63,59 @@
         </div>
     </div><!-- .animated -->
 </div>
+@section js{
+    <script type="text/javascript">
+        function infoMessageFail(msg) {
+            var okFail = '<div class="col-sm-12">';
+            okFail += '<div class="alert  alert-danger alert-dismissible fade show" role="alert">';
+            okFail += ' <span class="badge badge-pill badge-success">Hata</span> ' + msg;
+            okFail += ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+            okFail += '<span aria-hidden="true">&times;</span>';
+            okFail += '</button>';
+            okFail += '</div>';
+            okFail += ' </div>';
+            return okFail;
+        }
+        function infoMessageOK(msg) {
+            var ok = '<div class="col-sm-12">';
+            ok += '<div class="alert  alert-success alert-dismissible fade show" role="alert">';
+            ok += ' <span class="badge badge-pill badge-success">Başarılı</span> '+ msg;
+            ok += ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+            ok += '<span aria-hidden="true">&times;</span>';
+            ok += '</button>';
+            ok += '</div>';
+            ok += ' </div>';
+            return ok;
+        }
+        $(".deleteProduct").click(function() {
+            var productId = $(this).data("id");
+            var findTR = $(this).closest("tr");
+            $.ajax({
+                url: "/AdminPanel/product/productDelete",
+                type: "POST",
+                data: { id: productId },
+                success:function(data) {
+                    if (data == 1) {
+                        findTR.fadeOut(1000, function() {
+                            findTR.remove();
+                        });
+                        
+                        $(".info").html(infoMessageOK(" Ürün Başarıyla Silindi."));
+                        setTimeout(function () { $('.info').hide('slow'); }, 5000);
 
+                    } else {
+                        infoMessageFail(" Ürün Silme Sırasında Bir Hata Meydana Geldi!");
+                    
+                        setTimeout(function () { $('.info').hide('slow'); }, 5000);
+                    }
+                },
+                error:function() {
+                    infoMessageFail(" Ürün Silme Sırasında Bir Hata Meydana Geldi!");
+                 
+                    setTimeout(function () { $('.info').hide('slow'); }, 5000);
+                }
+            });
+
+        });
+    </script>
+}

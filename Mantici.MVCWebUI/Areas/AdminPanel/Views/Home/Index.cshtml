@@ -6,9 +6,9 @@
 @Html.Partial("_fastReach")
 @Html.Partial("_urunlerWidget",@Model.Products)
 @Html.Partial("_bayilerWidget",@Model.Branches)
-@Html.Partial("_rezervasyonWidget",@Model.Rezervations)
+@Html.Partial("_rezervasyonWidget",@Model.newReservationCount)
 
 @Html.Partial("_managementTeamWidget",@Model.managementTeam.Count)
-@Html.Partial("_totalRezervationWidget",@Model.Rezervations.Count)
+@Html.Partial("_totalRezervationWidget",@Model.defaultReservations.Count)
 @Html.Partial("_totalAccount",@Model.Users.Count)
 @Html.Partial("_activeMemberWidget")

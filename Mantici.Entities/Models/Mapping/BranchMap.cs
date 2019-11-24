@@ -29,6 +29,12 @@ namespace Mantici.Entities.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(250);
 
+            this.Property(t => t.BranchPicturePath)
+                .HasMaxLength(150);
+
+            this.Property(t => t.pictureAlt)
+                .HasMaxLength(50);
+
             // Table & Column Mappings
             this.ToTable("Branches");
             this.Property(t => t.id).HasColumnName("id");
@@ -37,13 +43,8 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.city).HasColumnName("city");
             this.Property(t => t.email).HasColumnName("email");
             this.Property(t => t.BranchAdress).HasColumnName("BranchAdress");
-            this.Property(t => t.BranchPictureID).HasColumnName("BranchPictureID");
-
-            // Relationships
-            this.HasOptional(t => t.Picture)
-                .WithMany(t => t.Branches)
-                .HasForeignKey(d => d.BranchPictureID);
-
+            this.Property(t => t.BranchPicturePath).HasColumnName("BranchPicturePath");
+            this.Property(t => t.pictureAlt).HasColumnName("pictureAlt");
         }
     }
 }

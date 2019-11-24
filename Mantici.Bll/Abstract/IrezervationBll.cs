@@ -8,7 +8,7 @@ namespace Mantici.Bll.Abstract
     {
         List<rezervation> ListAll(Expression<Func<rezervation, bool>> filter = null);
         List<rezervation> newListAll();
-        rezervation GetOne(Expression<Func<rezervation, bool>> filter);
+        rezervation GetOne(int id);
         bool Add(rezervation rezervation);
         bool Update(rezervation rezervation);
         bool Delete(int id);

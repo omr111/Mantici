@@ -19,5 +19,36 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             List<rezervation> rezervations = _rezervationBll.ListAll();
             return View(rezervations);
         }
+
+        [HttpPost]
+        public int deleteReservation(int id)
+        {
+
+            bool result = _rezervationBll.Delete(id);
+               if (result)
+               {
+                   return 1;
+               } return 0;
+            
+        }
+
+        [HttpPost]
+        public int reservationShowed(int id)
+        {
+            rezervation rez = _rezervationBll.GetOne(id);
+            if (ModelState.IsValid)
+            {
+                rez.showed = true;
+                bool result = _rezervationBll.Update(rez);
+                if (result)
+                {
+                    return 1;
+                }
+
+                return 0;
+            }
+            return 0;
+           
+        }
     }
 }

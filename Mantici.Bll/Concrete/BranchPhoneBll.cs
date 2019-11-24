@@ -19,7 +19,10 @@ namespace Mantici.Bll.Concrete
         {
             return _branchPhoneDal.AllList();
         }
-
+        public List<BranchPhone> ListAllOftheUser(int id)
+        {
+            return _branchPhoneDal.AllList(x=>x.BranchID==id);
+        }
         public BranchPhone GetOne(Expression<Func<BranchPhone, bool>> filter)
         {
             return _branchPhoneDal.GetOne(filter);

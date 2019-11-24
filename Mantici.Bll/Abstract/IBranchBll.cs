@@ -8,7 +8,8 @@ namespace Mantici.Bll.Abstract
     public interface IBranchBll
     {
         List<Branch> ListAll(Expression<Func<Branch, bool>> filter = null);
-        Branch GetOne(Expression<Func<Branch, bool>> filter);
+        
+        Branch GetOne(int id);
         bool Add(Branch branch);
         bool Update(Branch branch);
         bool Delete(int id);
