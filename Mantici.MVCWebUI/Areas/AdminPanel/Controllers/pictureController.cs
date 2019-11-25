@@ -21,7 +21,23 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             return View();
         }
 
+        public static string IconAddForService(HttpPostedFileBase file, HttpContextBase context)
+        {
 
+            int iconWidth = settings.serviceIconSize.Width;
+            int iconHeight = settings.serviceIconSize.Height;
+
+            string newName = Path.GetFileNameWithoutExtension(file.FileName) + Path.GetExtension(file.FileName);
+            Image orjResim = Image.FromStream(file.InputStream);
+            Bitmap iconDraw = new Bitmap(orjResim, iconWidth, iconHeight);
+
+            iconDraw.Save(context.Server.MapPath("~/content/img/serviceIcon/" + newName));
+
+            string saveDBPath = "/content/img/serviceIcon/" + newName;
+            return saveDBPath;
+
+
+        }
         public static string pictureAddForProduct(HttpPostedFileBase file, HttpContextBase context)
         {
 

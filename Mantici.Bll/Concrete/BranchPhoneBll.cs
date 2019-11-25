@@ -23,9 +23,9 @@ namespace Mantici.Bll.Concrete
         {
             return _branchPhoneDal.AllList(x=>x.BranchID==id);
         }
-        public BranchPhone GetOne(Expression<Func<BranchPhone, bool>> filter)
+        public BranchPhone GetOne(string phoneNo, int compId)
         {
-            return _branchPhoneDal.GetOne(filter);
+            return _branchPhoneDal.GetOne(x => x.BranchPhone1 == phoneNo && x.BranchID == compId);
         }
 
         public bool Add(BranchPhone branchPhone)

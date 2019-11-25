@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IbannerBll.cs" />
     <Compile Include="Abstract\IBranchBll.cs" />
+    <Compile Include="Abstract\IBranchesApplicationBll.cs" />
     <Compile Include="Abstract\IBranchPhoneBll.cs" />
     <Compile Include="Abstract\ICategoryBll.cs" />
     <Compile Include="Abstract\ICompanyInformationBll.cs" />
@@ -60,9 +61,11 @@
     <Compile Include="Abstract\IrezervedFoodBll.cs" />
     <Compile Include="Abstract\IroleBll.cs" />
     <Compile Include="Abstract\IroleOfUserBll.cs" />
+    <Compile Include="Abstract\IserviceBll.cs" />
     <Compile Include="Abstract\IuserBll.cs" />
     <Compile Include="Concrete\bannerBll.cs" />
     <Compile Include="Concrete\BranchBll.cs" />
+    <Compile Include="Concrete\BranchesApplicationBll.cs" />
     <Compile Include="Concrete\BranchPhoneBll.cs" />
     <Compile Include="Concrete\CategoryBll.cs" />
     <Compile Include="Concrete\CompanyInformationBll.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Concrete\rezervedFoodBll.cs" />
     <Compile Include="Concrete\roleBll.cs" />
     <Compile Include="Concrete\roleOfUserBll.cs" />
+    <Compile Include="Concrete\serviceBll.cs" />
     <Compile Include="Concrete\userBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

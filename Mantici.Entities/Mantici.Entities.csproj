@@ -50,11 +50,13 @@
   <ItemGroup>
     <Compile Include="Models\banner.cs" />
     <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\BranchesApplication.cs" />
     <Compile Include="Models\BranchPhone.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CompanyInformation.cs" />
     <Compile Include="Models\DBMantiContext.cs" />
     <Compile Include="Models\Mapping\bannerMap.cs" />
+    <Compile Include="Models\Mapping\BranchesApplicationMap.cs" />
     <Compile Include="Models\Mapping\BranchMap.cs" />
     <Compile Include="Models\Mapping\BranchPhoneMap.cs" />
     <Compile Include="Models\Mapping\CategoryMap.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Models\Mapping\rezervedFoodMap.cs" />
     <Compile Include="Models\Mapping\roleMap.cs" />
     <Compile Include="Models\Mapping\roleOfUserMap.cs" />
+    <Compile Include="Models\Mapping\serviceMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\userMap.cs" />
     <Compile Include="Models\Phone.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Models\rezervedFood.cs" />
     <Compile Include="Models\role.cs" />
     <Compile Include="Models\roleOfUser.cs" />
+    <Compile Include="Models\service.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

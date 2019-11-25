@@ -7,6 +7,7 @@ using Mantici.Bll.Abstract;
 using Mantici.Bll.Concrete;
 using Mantici.Bll.Concrete.EfRepository;
 using Mantici.Entities.Models;
+using Mantici.MVCWebUI.Areas.AdminPanel.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
@@ -27,7 +28,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             List<Category> categories = _categoryBll.ListAll();
             return View(categories);
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult productAdd(Product product, HttpPostedFileBase file)
         {
@@ -73,10 +74,29 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             }
             return 0;
         }
+
+        public ActionResult productUpdate(int id)
+        {
+            Product product=_productBll.GetOne(id);
+            productUpdateModel updateModel=new productUpdateModel();
+            if (product!=null   )
+            {
+                updateModel.Product = product;
+                updateModel.Categories = _categoryBll.ListAll();
+                return View(updateModel);
+            }
+            else
+            {
+                TempData["productUpdateError"] = "Güncellemek İstediğiniz Ürün Bulunamadı !";
+                return RedirectToAction("Index", "product", new {area = "AdminPanel"});
+            }
+
+           
+        }
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         [HttpPost]
-        public int productUpdate(Product pro, HttpPostedFileBase file)
+        public ActionResult productUpdate(Product pro, HttpPostedFileBase file)
         {
             try
             {
@@ -87,9 +107,9 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                     {
                         if (file != null)
                         {
-                            if (System.IO.File.Exists(Server.MapPath(pro.coverPicturePath)))
+                            if (System.IO.File.Exists(Server.MapPath(product.coverPicturePath)))
                             {
-                                System.IO.File.Delete(Server.MapPath(pro.coverPicturePath));
+                                System.IO.File.Delete(Server.MapPath(product.coverPicturePath));
 
                             }
 
@@ -97,6 +117,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                             product.pictureAlt = pro.pictureAlt;
                         }
 
+                        product.name = pro.name;
                         product.categoryID = pro.categoryID;
                         product.caption = pro.caption;
                         product.description = pro.description;
@@ -104,21 +125,37 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                         bool resultUpdate = _productBll.Update(product);
                         if (resultUpdate)
                         {
-                            return 1;
+                            return RedirectToAction("Index","product",new{area="AdminPanel"});
                         }
                         else
                         {
-                            return 0;
+                            TempData["productUpdateError"] = "Ürün Güncellenemedi,Lütfen Tekrar Deneyin";
+                      
+                            return View();
                         }
                    
                     }
-                    return 0;
+                    else
+                    {
+                        TempData["productUpdateError"] = "Güncellemek İstediğiniz Ürün Bulunamadı !";
+                      
+                        return View();
+                    }
+                
                 }
-                return 0;
+                else
+                {
+                    TempData["productUpdateError"] = "Geçersiz Veriler Kayıt Edilmeye Çalışıldı !";
+                      
+                    return View();
+                }
+            
             }
             catch (Exception e)
             {
-                return 0;
+                TempData["productUpdateError"] = e.Message;
+                      
+                return View();
             }
         }
      

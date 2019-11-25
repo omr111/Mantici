@@ -9,7 +9,7 @@ namespace Mantici.Bll.Abstract
     {
         List<BranchPhone> ListAll(Expression<Func<BranchPhone, bool>> filter = null);
         List<BranchPhone> ListAllOftheUser(int id);
-        BranchPhone GetOne(Expression<Func<BranchPhone, bool>> filter);
+        BranchPhone GetOne(string phoneNo, int compId);
         bool Add(BranchPhone branchPhone);
         bool Update(BranchPhone branchPhone);
         bool Delete(int id);
