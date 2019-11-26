@@ -17,6 +17,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         IBranchPhoneBll _branchPhone=new BranchPhoneBll(new BranchPhoneDal());
         IBranchesApplicationBll _applicationBll=new BranchesApplicationBll(new BranchesApplicationDal());
         // GET: AdminPanel/Branches
+        [Authorize]
         public ActionResult Index()
         {
            
@@ -31,28 +32,45 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult branchAdd(Branch branch, string[] BranchPhone1, HttpPostedFileBase file)
         {
-            
-            branch.BranchPicturePath = pictureController.pictureAddForBranch(file, HttpContext);
-            if (file.FileName.Length > 50)
+
+            try
             {
-                branch.pictureAlt = file.FileName.Substring(0, 49);
-            }
-            else
-            {
-                branch.pictureAlt = file.FileName;
-            }
-            _branchBll.Add(branch);
-            for (int i = 0; i < BranchPhone1.Length; i++)
-            {
-                if (BranchPhone1[i] != "")
+                if (ModelState.IsValid)
                 {
-                    BranchPhone branchPhone = new BranchPhone();
-                    branchPhone.BranchID = branch.id;
-                    branchPhone.BranchPhone1 = BranchPhone1[i];
-                    _branchPhone.Add(branchPhone);
+                    if (file != null)
+                    {
+                        branch.BranchPicturePath = pictureController.pictureAddForBranch(file, HttpContext);
+                        if (file.FileName.Length > 50)
+                        {
+                            branch.pictureAlt = file.FileName.Substring(0, 49);
+                        }
+                        else
+                        {
+                            branch.pictureAlt = file.FileName;
+                        }
+                    }
+                    _branchBll.Add(branch);
+                    for (int i = 0; i < BranchPhone1.Length; i++)
+                    {
+                        if (BranchPhone1[i] != "")
+                        {
+                            BranchPhone branchPhone = new BranchPhone();
+                            branchPhone.BranchID = branch.id;
+                            branchPhone.BranchPhone1 = BranchPhone1[i];
+                            _branchPhone.Add(branchPhone);
+                        }
+                    }
+                    return RedirectToAction("Index", "Branches", new { area = "AdminPanel" });
                 }
+                ViewData["branchAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
+                return View();
+               
             }
-            return RedirectToAction("Index","Branches",new{area="AdminPanel"});
+            catch (Exception e)
+            {
+                ViewData["branchAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
+                return View();
+            }
         }
 
         [HttpPost]

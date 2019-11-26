@@ -3125,6 +3125,7 @@
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\flaticon.css" />
     <Content Include="content\css\font-awesome.min.css" />
+    <Content Include="content\css\loginCss\main.css" />
     <Content Include="content\css\magnific-popup.css" />
     <Content Include="content\css\main.css" />
     <Content Include="content\css\nice-select.css" />
@@ -3134,6 +3135,7 @@
     <Content Include="content\css\table.css" />
     <Content Include="content\css\theme-default.css" />
     <Content Include="content\css\themify-icons.css" />
+    <Content Include="content\css\loginCss\util.css" />
     <Content Include="content\css\videoSection.css" />
     <Content Include="content\fonts\fa-brands-400.svg" />
     <Content Include="content\fonts\fa-regular-400.svg" />
@@ -3145,6 +3147,8 @@
     <Content Include="content\img\bannerPicture\sliders-taze-dogal-hizli-ekonomik-1495033405.jpg" />
     <Content Include="content\img\bannerPicture\sliders-taze-dogal-hizli-ekonomik-1495033420.jpg" />
     <Content Include="content\img\bannerPicture\sliders-taze-dogal-hizli-ekonomik-1495033435.jpg" />
+    <Content Include="content\img\loginImg\bg-01.jpg" />
+    <Content Include="content\img\loginImg\icons\favicon.ico" />
     <Content Include="content\js\ajax-form.js" />
     <Content Include="content\js\bootstrap.min.js" />
     <Content Include="content\js\contact.js" />
@@ -3169,6 +3173,7 @@
     <Content Include="content\js\vendor\modernizr-3.5.0.min.js" />
     <Content Include="content\js\waypoints.min.js" />
     <Content Include="content\js\wow.min.js" />
+    <Content Include="content\css\loginCss\login.css" />
     <Content Include="content\patocss\main.css" />
     <Content Include="content\patocss\util.css" />
     <Content Include="content\videoCssJs\modal.css" />
@@ -3858,9 +3863,13 @@
     <Compile Include="Areas\AdminPanel\Models\productUpdateModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\usersAndRoles.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\menuController.cs" />
+    <Compile Include="Controllers\userController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeModels.cs" />
+    <Compile Include="Models\userRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4070,6 +4079,9 @@
     <Content Include="Views\Shared\_videoArea.cshtml" />
     <Content Include="Views\Shared\_feedbackArea.cshtml" />
     <Content Include="Views\Shared\_brandsArea.cshtml" />
+    <Content Include="Views\user\Index.cshtml" />
+    <Content Include="Views\user\signIn.cshtml" />
+    <Content Include="Views\menu\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4090,9 +4102,10 @@
     <Folder Include="content\img\productPicture\menuPicture\" />
     <Folder Include="content\img\serviceIcon\" />
     <Folder Include="content\img\slider\" />
+    <Folder Include="content\img\userPictures\" />
     <Folder Include="content\img\userPicture\" />
     <Folder Include="content\videos\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\banner\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\packages\popper\index.d.ts" />

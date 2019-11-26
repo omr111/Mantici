@@ -1,0 +1,130 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" style="margin: 0;padding: 0;">
+<head>
+    <title>Kayıt Sayfası</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/content/css/loginCss/util.css" rel="stylesheet" />
+    <link href="~/content/css/loginCss/main.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+
+                @using (Html.BeginForm("signIn", "user", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login100-form validate-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<form action="/user/signIn" method="post" class="login100-form validate-form" enctype="multipart/form-data">*@
+                    <div class="infosaveUser">
+                        @if (ViewData["userError"] != null)
+                        {
+        
+                            <div class="col-sm-12">
+
+                                <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                                    <span class="badge badge-pill badge-success">Hata</span> @ViewData["userError"].ToString()
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <span class="login100-form-title p-b-34">
+                        Hesap Kayıt
+                    </span>
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                        <input id="first-name" class="input100" type="text" required="required" name="name" maxlength="10" placeholder="Kullanıcı Adı...">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-inp ut m-b-20" data-validate="Type password">
+                        <input class="input100" type="password" name="password" required="required" maxlength="20" placeholder="Şifre...">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                        <input class="input100" type="text" name="personelName" required="required" maxlength="50" placeholder="Adınız...">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                        <input class="input100" type="text" name="surname" required="required" maxlength="50" placeholder="Soyadınız...">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                        <input class="input100" type="email" name="email" required="required" maxlength="50" placeholder="Email Adresiniz...">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                        <input style="margin-top: 20px;" class="input100" type="file" name="file" placeholder="Fotoğraf...">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Giriş Yap
+                        </button>
+                    </div>
+
+                    <div class="w-full text-center p-t-27 p-b-239">
+                        <span class="txt1">
+                            Unuttun
+                        </span>
+
+                        <a href="#" class="txt2">
+                            Kullanıcı Adı / Şifre ?
+                        </a>
+                    </div>
+
+
+                    @*</form>*@
+                }
+                <div class="login100-more" style="background-image: url('/content/img/loginImg/bg-01.jpg'); ">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<script src="~/content/Scripts/jquery-3.4.1.js"></script>*@
+    <script src="~/content/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/content/Scripts/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+ 
+
+    function infoMessageFail(msg) {
+        var okFail = '<div class="col-sm-12">';
+        okFail += '<div class="alert  alert-danger alert-dismissible fade show" role="alert">';
+        okFail += ' <span class="badge badge-pill badge-success">Hata</span> ' + msg;
+        okFail += ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+        okFail += '<span aria-hidden="true">&times;</span>';
+        okFail += '</button>';
+        okFail += '</div>';
+        okFail += ' </div>';
+        return okFail;
+        function OnSuccess(data) {
+            alert(data.message);
+            if (data.errorId == 1) {
+                $(".infosaveUser").html(ok(data.message));
+                setTimeout(function () { $('.infosaveUser').hide('slow'); }, 2000);
+                document.location.replace("/user/Index");
+            } else {
+                $(".infosaveUser").html(okFail(data.message));
+                setTimeout(function () { $('.infosaveUser').hide('slow'); }, 5000);
+            }
+        }
+        function OnFailure(data) {
+            $(".infosaveUser").html(okFail(data.message));
+            setTimeout(function () { $('.infosaveUser').hide('slow'); }, 5000);
+        }
+    }
+</script>

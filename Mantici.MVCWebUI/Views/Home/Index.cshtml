@@ -1,29 +1,29 @@
-﻿
+﻿@model Mantici.MVCWebUI.Models.HomeModels
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- slider_area-start -->
-@Html.Partial("_sliderArea", false)
+@Html.Partial("_sliderArea", Model.Banners)
 <!-- slider_area-end -->
 <!-- service_area-start -->
-@Html.Partial("_serviceArea", false)
+@Html.Partial("_serviceArea", Model.Services)
 
 <!-- service_area-end -->
 <!-- menuSlider_start -->
-@Html.Partial("_menuSlider", false)
+@Html.Partial("_menuSlider", Model.menuSliders)
 <!-- menuSlider_end -->
 <!-- order_area_start -->
-@Html.Partial("_orderArea", false)
+@Html.Partial("_orderArea", Model.menuList)
 <!-- order_area_end -->
 <!--TODO: VİDEO BURAYA EKLENECEK-->
-@Html.Partial("_videoArea", false)
+@Html.Partial("_videoArea", Model.company.videoPath)
 
 <!--VİDEO BİTTİ-->
 <!-- testmonial_area_start -->
 @Html.Partial("_feedbackArea", false)
 <!-- testmonial_area_end -->
 <!-- brand_area-start -->
-@Html.Partial("_brandsArea", false)
+@*@Html.Partial("_brandsArea", false)*@
 

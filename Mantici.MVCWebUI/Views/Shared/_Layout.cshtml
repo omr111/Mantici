@@ -53,10 +53,10 @@
                                 <nav >
                                     <ul class="mein_menu_list" id="navigation">
                                         <li><a href="#">Anasayfa</a></li>
-                                        <li><a href="#">Servisler</a></li>
-                                        <li><a href="#">Menü</a></li>
-                                       
-                                        <li><a href="#">Bayilik Başvuru Form</a></li>
+                                        <li><a href="/menu/Index">Menü</a></li>
+                                        
+                                        <li><a href="#">Hakkımızda</a></li>
+                                        <li ><a  href="#">Bayi Başvuru formu</a></li>
                                         <div class="logo-img d-none d-lg-block">
                                             <a href="#">
 
@@ -71,7 +71,17 @@
                                             <a href="#">İletişim</a>
                                             
                                         </li>
-                                        <li><a href="#">Hakkımızda</a></li>
+                                        <li><a href="#">Hizmetler</a></li>
+                                        @if (User.Identity.IsAuthenticated == false)
+                                        {
+                                            <li><a href="/user/Index">Giriş</a></li>
+
+
+                                        }
+                                        else
+                                        {
+                                            <li><a href="/user/logOut">Çıkış</a></li>
+                                        }
                                     </ul>
                                 </nav>
                             </div>

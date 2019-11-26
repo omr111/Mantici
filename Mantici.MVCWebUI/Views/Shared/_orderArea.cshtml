@@ -1,4 +1,6 @@
-﻿<div class="order_area">
+﻿@using Mantici.Entities.Models
+@model List<Mantici.Entities.Models.Product>
+<div class="order_area">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -9,120 +11,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-md-6">
-                <div class="single_order">
-                    <div class="order_thumb">
-                        <img src="img/order/order-1.png" alt="">
-                        <div class="order_prise">
-                            <span>10.00</span>
+            @foreach (Product pro in Model)
+            {
+                <div class="col-xl-4 col-md-6">
+                    <div class="single_order">
+                        <div class="order_thumb">
+                            <img src="@pro.coverPicturePath" alt="@pro.pictureAlt">
+                            <div class="order_prise">
+                                <span>@pro.price</span>
+                            </div>
+                        </div>
+                        <div class="order_info">
+                            <h3><a href="#">@pro.name</a></h3>
+                            <p>
+                                @pro.caption
+                            </p>
+                            <a href="#" class="boxed_btn">Order Now!</a>
                         </div>
                     </div>
-                    <div class="order_info">
-                        <h3><a href="#">Weastern Set Meal 01</a></h3>
-                        <p>
-                            Chicken Fried Rice | Crispy Chicken fry <br>
-                            Weastern Pickle | Mixed Vegetable <br>
-                            Soft Drinks
-                        </p>
-                        <a href="#" class="boxed_btn">Order Now!</a>
-                    </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="single_order">
-                    <div class="order_thumb">
-                        <img src="img/order/order-2.png" alt="">
-                        <div class="order_prise">
-                            <span>10.00</span>
-                        </div>
-                    </div>
-                    <div class="order_info">
-                        <h3><a href="#">Weastern Set Meal 02</a></h3>
-                        <p>
-                            Chicken Fried Rice | Crispy Chicken fry <br>
-                            Weastern Pickle | Mixed Vegetable <br>
-                            Soft Drinks
-                        </p>
-                        <a href="#" class="boxed_btn">Order Now!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="single_order">
-                    <div class="order_thumb">
-                        <img src="img/order/order-3.png" alt="">
-                        <div class="order_prise">
-                            <span>10.00</span>
-                        </div>
-                    </div>
-                    <div class="order_info">
-                        <h3><a href="#">Weastern Set Meal 03</a></h3>
-                        <p>
-                            Chicken Fried Rice | Crispy Chicken fry <br>
-                            Weastern Pickle | Mixed Vegetable <br>
-                            Soft Drinks
-                        </p>
-                        <a href="#" class="boxed_btn">Order Now!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="single_order">
-                    <div class="order_thumb">
-                        <img src="img/order/order-4.png" alt="">
-                        <div class="order_prise">
-                            <span>10.00</span>
-                        </div>
-                    </div>
-                    <div class="order_info">
-                        <h3><a href="#">Weastern Set Meal 01</a></h3>
-                        <p>
-                            Chicken Fried Rice | Crispy Chicken fry <br>
-                            Weastern Pickle | Mixed Vegetable <br>
-                            Soft Drinks
-                        </p>
-                        <a href="#" class="boxed_btn">Order Now!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="single_order">
-                    <div class="order_thumb">
-                        <img src="img/order/order-5.png" alt="">
-                        <div class="order_prise">
-                            <span>10.00</span>
-                        </div>
-                    </div>
-                    <div class="order_info">
-                        <h3><a href="#">Weastern Set Meal 02</a></h3>
-                        <p>
-                            Chicken Fried Rice | Crispy Chicken fry <br>
-                            Weastern Pickle | Mixed Vegetable <br>
-                            Soft Drinks
-                        </p>
-                        <a href="#" class="boxed_btn">Order Now!</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="single_order">
-                    <div class="order_thumb">
-                        <img src="img/order/order-6.png" alt="">
-                        <div class="order_prise">
-                            <span>10.00</span>
-                        </div>
-                    </div>
-                    <div class="order_info">
-                        <h3><a href="#">Weastern Set Meal 03</a></h3>
-                        <p>
-                            Chicken Fried Rice | Crispy Chicken fry <br>
-                            Weastern Pickle | Mixed Vegetable <br>
-                            Soft Drinks
-                        </p>
-                        <a href="#" class="boxed_btn">Order Now!</a>
-                    </div>
-                </div>
-            </div>
+            }
+            
+        
         </div>
     </div>
 </div>

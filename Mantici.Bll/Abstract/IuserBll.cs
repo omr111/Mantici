@@ -10,6 +10,8 @@ namespace Mantici.Bll.Abstract
         List<user> whereRole(string userRole);
         List<user> managementTeam(string userRole);
         user GetOne(int id);
+        user GetOneWithNick(string nick);
+        user logIn(string nick, string pass);
         bool Add(user user);
         bool Update(user user);
         bool Delete(int id);

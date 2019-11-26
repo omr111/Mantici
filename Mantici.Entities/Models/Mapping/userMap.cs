@@ -13,19 +13,23 @@ namespace Mantici.Entities.Models.Mapping
             // Properties
             this.Property(t => t.name)
                 .IsRequired()
+                .HasMaxLength(10);
+
+            this.Property(t => t.personelName)
+                .IsRequired()
                 .HasMaxLength(50);
 
             this.Property(t => t.surname)
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.nick)
-                .IsRequired()
-                .HasMaxLength(10);
-
             this.Property(t => t.email)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            this.Property(t => t.password)
+                .IsRequired()
+                .HasMaxLength(20);
 
             this.Property(t => t.userPicturePath)
                 .HasMaxLength(150);
@@ -34,9 +38,10 @@ namespace Mantici.Entities.Models.Mapping
             this.ToTable("users");
             this.Property(t => t.id).HasColumnName("id");
             this.Property(t => t.name).HasColumnName("name");
+            this.Property(t => t.personelName).HasColumnName("personelName");
             this.Property(t => t.surname).HasColumnName("surname");
-            this.Property(t => t.nick).HasColumnName("nick");
             this.Property(t => t.email).HasColumnName("email");
+            this.Property(t => t.password).HasColumnName("password");
             this.Property(t => t.userPicturePath).HasColumnName("userPicturePath");
             this.Property(t => t.isBlock).HasColumnName("isBlock");
         }

@@ -32,18 +32,39 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult productAdd(Product product, HttpPostedFileBase file)
         {
-            product.coverPicturePath = pictureController.pictureAddForProduct(file, HttpContext);
-            if (file.FileName.Length>50)
+            try
             {
-                product.pictureAlt = file.FileName.Substring(0,49);
+                if (ModelState.IsValid)
+                {
+                    if (file != null)
+                    {
+                        product.coverPicturePath = pictureController.pictureAddForProduct(file, HttpContext);
+
+
+                        if (file.FileName.Length > 50)
+                        {
+                            product.pictureAlt = file.FileName.Substring(0, 49);
+                        }
+                        else
+                        {
+                            product.pictureAlt = file.FileName;
+                        }
+                    }
+                    _productBll.Add(product);
+                    return RedirectToAction("Index", "product", new { area = "AdminPanel" });
+                }
+                else
+                {
+                    ViewData["productAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
+                    return View();
+                }
             }
-            else
+            catch (Exception e)
             {
-                product.pictureAlt = file.FileName;
+                ViewData["productAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
+                return View();
             }
-            
-            _productBll.Add(product);
-            return RedirectToAction("Index", "product",new{area="AdminPanel"});
+          
         }
         [HttpPost]
         public int productDelete(int id)

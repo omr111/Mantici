@@ -11,7 +11,21 @@
 
 
     <!-- content-->
-   
+    <div class="infosaveUser">
+        @if (ViewData["productAddingError"] != null)
+        {
+        
+            <div class="col-sm-12">
+
+                <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                    <span class="badge badge-pill badge-success">Hata</span> @ViewData["productAddingError"].ToString()
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">

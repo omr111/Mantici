@@ -12,7 +12,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
     public class RoleController : Controller
     {
-        IroleBll _roleBll=new roleBll(new roleDal());
+       
         // GET: AdminPanel/Role
         public ActionResult Index()
         {

@@ -20,6 +20,17 @@ namespace Mantici.MVCWebUI.App_Classes
             }
 
         }
+        public static Size userPicture
+        {
+            get
+            {
+                Size sonuc = new Size();
+                sonuc.Width = Convert.ToInt32(ConfigurationManager.AppSettings["userWidth"]);
+                sonuc.Height = Convert.ToInt32(ConfigurationManager.AppSettings["userHeight"]);
+                return sonuc;
+            }
+
+        }
         public static Size serviceIconSize
         {
             get

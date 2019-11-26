@@ -10,7 +10,7 @@ using Mantici.MVCWebUI.Areas.AdminPanel.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
-    
+    [Authorize(Roles = "Moderator")]
     public class HomeController : Controller
     {
         IuserBll _userBll=new userBll(new userDal());

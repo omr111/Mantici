@@ -2,6 +2,7 @@
 using Mantici.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using Mantici.Bll.Abstract;
 
@@ -21,6 +22,11 @@ namespace Mantici.Bll.Concrete
             return _rolOfUserDal.AllList();
         }
 
+        public List<roleOfUser> listAllRoleTheUser(string username)
+        {
+            List<roleOfUser> roleOfUsers = _rolOfUserDal.AllList(x => x.user.name == username);
+           return roleOfUsers;
+        }
         public roleOfUser GetOneWithRoleId(int roleId, int userId)
         {
             return _rolOfUserDal.GetOne(x=>x.user.id==userId &&x.roleID==roleId);
