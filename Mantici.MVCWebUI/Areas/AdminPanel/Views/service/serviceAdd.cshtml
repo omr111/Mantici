@@ -1,4 +1,4 @@
-﻿
+﻿@model Mantici.Entities.Models.service
 @{
     ViewBag.Title = "serviceAdd";
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
@@ -23,17 +23,20 @@
                                 <label class=" form-control-label">Hizmet Başlık</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
-                                    <input type="text" name="serviceName" class="form-control" maxlength="99" required="Lütfen bir servis başlığı giriniz.">
+                                    @*<input type="text" name="serviceName" class="form-control" maxlength="99" required="Lütfen bir servis başlığı giriniz.">*@
+                                    @Html.TextAreaFor(m => m.serviceName, new { @class = "form-control" })
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.serviceName,"",new {@style="color:red"})
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Hizmet Açıklama</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
-                                    <textarea type="text" name="serviceInfo" class="form-control" maxlength="254" required="Lütfen bir açıklama giriniz."></textarea>
+                                    @Html.TextAreaFor(m => m.serviceInfo, new { @class = "form-control" })
+                                   
+                                    @*<textarea type="text" name="serviceInfo" class="form-control" maxlength="254" required="Lütfen bir açıklama giriniz."></textarea>*@
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.serviceInfo,"",new{@style="color:red"})
                             </div>
                             
 
@@ -49,16 +52,17 @@
                                 <label class=" form-control-label">Icon</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                    <input class="form-control" type="file" name="file">
+                                    @*<input class="form-control" type="file" name="file">*@
+                                    @Html.TextBoxFor(m=>m.serviceIcon,new {type="file",@class="form-control"})
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.serviceIcon,"",new {@style="color:red"})
                             </div>
 
 
                             <div class="form-group">
 
                                 <input type="submit" value="Onayla" class="btn btn-success" style="float: right" />
-
+                             
                             </div>
 
                         </div>

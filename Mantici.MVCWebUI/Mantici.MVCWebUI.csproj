@@ -3131,6 +3131,7 @@
     <Content Include="content\css\nice-select.css" />
     <Content Include="content\css\owl.carousel.min.css" />
     <Content Include="content\css\slicknav.css" />
+    <Content Include="content\css\sliderCss.css" />
     <Content Include="content\css\style.css" />
     <Content Include="content\css\table.css" />
     <Content Include="content\css\theme-default.css" />
@@ -3147,8 +3148,10 @@
     <Content Include="content\img\bannerPicture\sliders-taze-dogal-hizli-ekonomik-1495033405.jpg" />
     <Content Include="content\img\bannerPicture\sliders-taze-dogal-hizli-ekonomik-1495033420.jpg" />
     <Content Include="content\img\bannerPicture\sliders-taze-dogal-hizli-ekonomik-1495033435.jpg" />
+    <Content Include="content\img\banner\banner-3.png" />
     <Content Include="content\img\loginImg\bg-01.jpg" />
     <Content Include="content\img\loginImg\icons\favicon.ico" />
+    <Content Include="content\img\userPictures\admin.jpg" />
     <Content Include="content\js\ajax-form.js" />
     <Content Include="content\js\bootstrap.min.js" />
     <Content Include="content\js\contact.js" />
@@ -3168,6 +3171,8 @@
     <Content Include="content\js\plugins.js" />
     <Content Include="content\js\popper.min.js" />
     <Content Include="content\js\scrollIt.js" />
+    <Content Include="content\js\slick.js" />
+    <Content Include="content\js\sliderJs.js" />
     <Content Include="content\js\table.js" />
     <Content Include="content\js\vendor\jquery-1.12.4.min.js" />
     <Content Include="content\js\vendor\modernizr-3.5.0.min.js" />
@@ -3834,6 +3839,7 @@
     <Content Include="Areas\AdminPanel\Views\service\serviceAdd.cshtml" />
     <Content Include="Areas\AdminPanel\Views\service\serviceUpdate.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Branches\branchRequestList.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\review\Index.cshtml" />
     <None Include="content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="content\Scripts\jquery-3.4.1.js" />
     <Content Include="content\Scripts\jquery-3.4.1.min.js" />
@@ -3855,6 +3861,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\pictureController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\productController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\reservationController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\reviewController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\RoleController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\roleOfUserController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\serviceController.cs" />
@@ -3862,12 +3869,15 @@
     <Compile Include="Areas\AdminPanel\Models\AdminIndex.cs" />
     <Compile Include="Areas\AdminPanel\Models\productUpdateModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\usersAndRoles.cs" />
+    <Compile Include="Controllers\aboutController.cs" />
+    <Compile Include="Controllers\contactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\menuController.cs" />
     <Compile Include="Controllers\userController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\contactModel.cs" />
     <Compile Include="Models\HomeModels.cs" />
     <Compile Include="Models\userRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4082,6 +4092,8 @@
     <Content Include="Views\user\Index.cshtml" />
     <Content Include="Views\user\signIn.cshtml" />
     <Content Include="Views\menu\Index.cshtml" />
+    <Content Include="Views\contact\Index.cshtml" />
+    <Content Include="Views\Home\slider.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4102,9 +4114,9 @@
     <Folder Include="content\img\productPicture\menuPicture\" />
     <Folder Include="content\img\serviceIcon\" />
     <Folder Include="content\img\slider\" />
-    <Folder Include="content\img\userPictures\" />
     <Folder Include="content\img\userPicture\" />
     <Folder Include="content\videos\" />
+    <Folder Include="Views\about\" />
     <Folder Include="Views\banner\" />
   </ItemGroup>
   <ItemGroup>

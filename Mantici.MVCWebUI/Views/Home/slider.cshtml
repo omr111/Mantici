@@ -1,0 +1,27 @@
+﻿@using Mantici.Entities.Models
+@model List<Mantici.Entities.Models.banner>
+
+<div class="slider_area zigzag_bg_2">
+
+    <div class="slider_sctive owl-carousel">
+        @foreach (banner bnr in Model)
+        {
+            <div class="single_slider slider_img_1" style="background-image: url('@bnr.bannerPath'); ">
+
+                <div class="single_slider-iner">
+
+                    <div class="slider_contant text-center">
+
+                        <p>
+                            @bnr.text
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+          
+        }
+    </div>
+</div>
+

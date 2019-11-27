@@ -1,0 +1,169 @@
+﻿@model Mantici.MVCWebUI.Models.contactModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <!-- header-start -->
+
+<!-- header-end -->
+<!-- breadcam_area_start -->
+<div class="breadcam_area breadcam_bg_1 zigzag_bg_2">
+    <div class="breadcam_inner">
+        <div class="breadcam_text" >
+            <h3 style="color:green">İletişim</h3>
+            <p style="color:green">
+                Bizimle Şikayetleriniz İçin İletişime Geçebilir, <br/> Hakkımızda Ne Düşündüğünüzü Bizimle ve İnsanlarla Paylaşabilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- breadcam_area_end -->
+<!-- ================ contact section start ================= -->
+<section class="contact-section">
+    <div class="container">
+    
+        <div class="d-none d-sm-block mb-5 pb-4">
+
+
+
+        </div>
+        <div id="reviewInfo">
+            @if (Session["reviewInfo"] != null)
+            {
+
+                if (Session["reviewInfo"].ToString() == "Yorum Başarıyla Gönderildi." || Session["reviewInfo"].ToString() == "Mesaj Başarıyla Gönderildi.")
+                {
+                    <div class="col-sm-12">
+                        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+
+                            <span class="badge badge-pill badge-success">Başarılı</span> @Session["reviewInfo"].ToString()
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    Session["reviewInfo"] = null;
+                }
+                else
+                {
+                    <div class="col-sm-12">
+                        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+
+                            <span class="badge badge-pill badge-success">Hata</span> @Session["reviewInfo"].ToString()
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    Session["reviewInfo"] = null;
+                }
+          
+        
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">İletişim Kur</h2>
+            </div>
+            <div class="col-lg-8">
+                <form class="form-contact contact_form" action="/contact/sendMail" method="post" >
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input style="border: 1px solid green !important;" value="@Model.user.personelName" class="form-control" name="visitorName"  title="Adınızı Girmeniz Gerekli !" required="required" maxlength="50" type="text" placeholder="Adınız...">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input style="border: 1px solid green !important;" value="@Model.user.surname" class="form-control" name="visitorSurname" title="Soyadınızı Girmeniz Gerekli !"  required="required" maxlength="50" type="text"  placeholder="Soyadınız...">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input style="border: 1px solid green !important;" value="@Model.user.email" title="Email Adresiniz Girmeniz Gerekli !" class=" form-control" name="email" type="email" required="required" maxlength="70" placeholder="Email...">
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input style="border: 1px solid green !important;" class="form-control" name="visitorName"  title="Adınızı Girmeniz Gerekli !" required="required" maxlength="50" type="text" placeholder="Adınız...">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input style="border: 1px solid green !important;" class="form-control" name="visitorSurname" title="Soyadınızı Girmeniz Gerekli !"  required="required" maxlength="50" type="text"  placeholder="Soyadınız...">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input style="border: 1px solid green !important;" title="Email Adresiniz Girmeniz Gerekli !" class=" form-control" name="email"type="email" required="required" maxlength="70" placeholder="Email...">
+                                </div>
+                            </div>
+                        }
+                        <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <select name="selection" class="form-control" title="İletişim Nedeni Belirtiniz!" style="border: 1px solid green !important; height: 45px" required="required">
+
+                                   
+                                    <option>Email Gönder</option>
+                                    <option>Eleştiri-Görüş</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input style="border: 1px solid green !important;" class=" form-control" name="subject" type="text" required="required" maxlength="100" placeholder="Konu Başlığı" title="Lütfen Bir Konu Belirtin!">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+
+                                <textarea style="border: 1px solid green !important;" class=" form-control w-100" name="comment"  cols="30" rows="9" required="required" placeholder="Mesaj İçeriği" title="Mesaj Bölümü Boş Geçilemez."></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm boxed-btn">Gönder</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-home"></i></span>
+                    <div class="media-body">
+                        <h3>@Model.CompanyInformation.companyAddress</h3>
+
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                    <div class="media-body">
+                        @foreach (var modelPhone in Model.CompanyInformation.Phones)
+                        {
+                            <h3>@modelPhone.phoneNumber</h3>
+                        }
+
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-email"></i></span>
+                    <div class="media-body">
+                        <h3>@Model.CompanyInformation.email</h3>
+                        <small>Görüşleriniz Bizim İçin Önemlidir.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ contact section end ================= -->

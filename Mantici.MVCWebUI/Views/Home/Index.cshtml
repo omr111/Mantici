@@ -5,7 +5,7 @@
 }
 
 <!-- slider_area-start -->
-@Html.Partial("_sliderArea", Model.Banners)
+@*@Html.Partial("_sliderArea", Model.Banners)*@
 <!-- slider_area-end -->
 <!-- service_area-start -->
 @Html.Partial("_serviceArea", Model.Services)
@@ -18,11 +18,11 @@
 @Html.Partial("_orderArea", Model.menuList)
 <!-- order_area_end -->
 <!--TODO: VİDEO BURAYA EKLENECEK-->
-@Html.Partial("_videoArea", Model.company.videoPath)
+@Html.Partial("_videoArea", Model.company)
 
 <!--VİDEO BİTTİ-->
 <!-- testmonial_area_start -->
-@Html.Partial("_feedbackArea", false)
+@Html.Partial("_feedbackArea", Model.Reviews)
 <!-- testmonial_area_end -->
 <!-- brand_area-start -->
 @*@Html.Partial("_brandsArea", false)*@

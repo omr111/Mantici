@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/content/img/logo/logo.png">
     <!-- Place favicon.ico in the root directory -->
     <!-- CSS here -->
     <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
@@ -30,81 +30,85 @@
     <link href="~/content/patocss/util.css" rel="stylesheet" />
     <link href="~/content/patocss/main.css" rel="stylesheet" />
     
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="~/content/css/sliderCss.css" rel="stylesheet" />
     
-
+    @RenderSection("css",false)
 
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
 <body>
 
-    <!--[if lte IE 9]>
+<!--[if lte IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
     <!-- header-start -->
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-10 col-lg-10">
-                            <div class="main-menu d-none d-lg-block" >
-                                <nav >
-                                    <ul class="mein_menu_list" id="navigation">
-                                        <li><a href="#">Anasayfa</a></li>
-                                        <li><a href="/menu/Index">Menü</a></li>
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-10 col-lg-10">
+                        <div class="main-menu d-none d-lg-block" >
+                            <nav >
+                                <ul class="mein_menu_list" id="navigation">
+                                    <li><a href="/Home/Index">Anasayfa</a></li>
+                                    <li><a href="/menu/Index">Menü</a></li>
                                         
-                                        <li><a href="#">Hakkımızda</a></li>
-                                        <li ><a  href="#">Bayi Başvuru formu</a></li>
-                                        <div class="logo-img d-none d-lg-block">
-                                            <a href="#">
+                                    <li><a href="/about/Index">Hakkımızda</a></li>
+                                    <li ><a  href="#">Bayi Başvuru formu</a></li>
+                                    <div class="logo-img d-none d-lg-block">
+                                        <a href="#">
 
-                                                <img src="~/content/img/logo/logo.png" />
-                                            </a>
-                                        </div>
-                                        <li>
-                                            <a href="#">Bayiler</a>
-                                        </li>
+                                            <img src="~/content/img/logo/logo.png" />
+                                        </a>
+                                    </div>
+                                    <li>
+                                        <a href="#">Bayiler</a>
+                                    </li>
                                        
-                                        <li>
-                                            <a href="#">İletişim</a>
+                                    <li>
+                                        <a href="/contact/Index">İletişim</a>
                                             
-                                        </li>
-                                        <li><a href="#">Hizmetler</a></li>
-                                        @if (User.Identity.IsAuthenticated == false)
-                                        {
-                                            <li><a href="/user/Index">Giriş</a></li>
+                                    </li>
+                                    <li><a href="#">Hizmetler</a></li>
+                                    @if (User.Identity.IsAuthenticated == false)
+                                    {
+                                        <li><a href="/user/Index">Giriş</a></li>
 
 
-                                        }
-                                        else
-                                        {
-                                            <li><a href="/user/logOut">Çıkış</a></li>
-                                        }
-                                    </ul>
-                                </nav>
-                            </div>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="/user/logOut">Çıkış</a></li>
+                                    }
+                                </ul>
+                            </nav>
                         </div>
-                        <div class="col-xl-2 col-lg-2 d-none d-lg-block">
-                            <div class="custom_order">
-                                <a href="#" class="boxed_btn_white" style="background-color: #78b454 !important;">Rezervasyon</a>
-                            </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 d-none d-lg-block">
+                        <div class="custom_order">
+                            <a href="#" class="boxed_btn_white" style="background-color: #78b454 !important;">Rezervasyon</a>
                         </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                        <div class="logo-img-small d-sm-block d-md-block d-lg-none">
-                            <a href="index.html">
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                    <div class="logo-img-small d-sm-block d-md-block d-lg-none">
+                        <a href="index.html">
                                 
-                                <img src="~/content/img/logo/logo.png" alt=""/>
-                            </a>
-                        </div>
+                            <img src="~/content/img/logo/logo.png" alt=""/>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+@{
+    Html.RenderAction("slider","Home");
+}
     <!-- header-end -->
     @RenderBody()
    
@@ -238,19 +242,23 @@
     <script src="~/content/js/jquery.slicknav.min.js"></script>
     <script src="~/content/js/jquery.magnific-popup.min.js"></script>
     <script src="~/content/js/plugins.js"></script>
-
+ 
 
 
     <!--contact js-->
-    <script src="~/content/js/contact.js"></script>
+    @*<script src="~/content/js/contact.js"></script>*@
     <script src="~/content/js/jquery.ajaxchimp.min.js"></script>
-    <script src="~/content/js/jquery.form.js"></script>
+    @*<script src="~/content/js/jquery.form.js"></script>
     <script src="~/content/js/jquery.validate.min.js"></script>
-    <script src="~/content/js/mail-script.js"></script>
+    <script src="~/content/js/mail-script.js"></script>*@
     <script src="~/content/js/main.js"></script>
+    @RenderSection("js", false)
 
 
-
+   
+    <script src="~/content/js/slick.js"></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>*@
+<script src="~/content/js/sliderJs.js"></script>
 
 
 

@@ -1,6 +1,28 @@
-﻿<div class="video_area video_bg zigzag_bg_1 zigzag_bg_2 ">
-    <div class="video_area_inner">
-        <!--Bu tagler silinip, bir slider bulunup eklenecek-->
-        <h4>menü slider ekle</h4>
+﻿@model List<Mantici.Entities.Models.Product>
+
+
+    <div class="container">
+        <h2>Our  Partners/ Our Clients</h2>
+        <section class="customer-logos slider">
+            @foreach (Mantici.Entities.Models.Product pro in Model)
+            {
+
+                <div class="single_order">
+                    <div class="order_thumb">
+                        <img src="@pro.coverPicturePath" alt="@pro.pictureAlt">
+                        <div class="order_prise">
+                            <span>@pro.price</span>
+                        </div>
+                    </div>
+                    <div class="order_info">
+                        <h3><a href="#">@pro.name</a></h3>
+
+                    </div>
+                </div>
+
+            }
+
+        </section>
+
     </div>
-</div>
+

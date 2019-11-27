@@ -85,16 +85,31 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                 company.companyName = comInfo.companyName;
                 company.email = comInfo.email;
                 company.videoPath = comInfo.videoPath;
+                company.videoText = comInfo.videoText;
+                if (string.IsNullOrEmpty(company.videoText))
+                {
+                    ModelState.AddModelError("videoText","Boş");
+                }
+                else
+                {
+                     company.videoText = comInfo.videoText;
+                }
+               
+             
+
+            
+
                bool result= _companyInformation.Update(company);
                //todo uyarı mesajları yapılacak.
                if (result)
                {
                    return RedirectToAction("Index", "Company", new {area = "AdminPanel"});
-               } return RedirectToAction("Index", "Company", new { area = "AdminPanel" });
+               } return View("Index");
             }
             catch (Exception e)
             {
-                return RedirectToAction("Index", "Company", new { area = "AdminPanel" });
+                ModelState.AddModelError("hata",e.Message);
+                return View("Index");
             }
           
             

@@ -13,8 +13,8 @@ namespace Mantici.MVCWebUI.Models
         public List<Product> menuSliders { get; set; }
         public List<Product> menuList { get; set; }
         public CompanyInformation company { get; set; }
-        //TODO feedback eklenecek adminpanelden
-        //public List<feedback> feedbacks { get; set; }
+      
+        public List<review> Reviews { get; set; }
 
 
 

@@ -20,6 +20,14 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.visitorSurname)
                 .HasMaxLength(50);
 
+            this.Property(t => t.email)
+                .IsRequired()
+                .HasMaxLength(70);
+
+            this.Property(t => t.subject)
+                .IsRequired()
+                .HasMaxLength(100);
+
             // Table & Column Mappings
             this.ToTable("reviews");
             this.Property(t => t.id).HasColumnName("id");
@@ -27,6 +35,8 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.userID).HasColumnName("userID");
             this.Property(t => t.visitorName).HasColumnName("visitorName");
             this.Property(t => t.visitorSurname).HasColumnName("visitorSurname");
+            this.Property(t => t.email).HasColumnName("email");
+            this.Property(t => t.subject).HasColumnName("subject");
 
             // Relationships
             this.HasOptional(t => t.user)

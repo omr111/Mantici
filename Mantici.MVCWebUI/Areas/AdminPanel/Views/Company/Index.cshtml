@@ -4,8 +4,11 @@
 }
 @model Mantici.Entities.Models.CompanyInformation
 <div id="numaraUyari"></div>
+
+
 <form action="/Company/companyEdit" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
+
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -70,7 +73,7 @@
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
 
 
-                                    <input type="email" name="email" placeholder="Enter your email" class="form-control" value="@Model.email"/>
+                                    <input type="email" name="email" placeholder="Enter your email" maxlength="70" class="form-control" value="@Model.email" />
 
 
                                 </div>
@@ -80,7 +83,7 @@
                                 <label class=" form-control-label">Adres</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-address-card-o"></i></div>
-                                    <input type="text" name="companyAddress" class="form-control " value="@Model.companyAddress" placeholder="Adresinizi Giriniz..."/>
+                                    <input type="text" name="companyAddress" class="form-control " maxlength="250" required="required" value="@Model.companyAddress" placeholder="Adresinizi Giriniz..." />
                                 </div>
 
                             </div>
@@ -108,11 +111,21 @@
                                 </div>
 
                             </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Video Üstü Metin</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-youtube-play"></i></div>
+                   
+                                    <input class="form-control" type="text" value="@Model.videoText" required="required" maxlength="100" name="videoText">
+
+                                </div>
+
+                            </div>
 
 
                             <div class="form-group">
 
-                                <input name="id" type="submit" class="btn btn-success" style="float: right" value="Güncelle"/>
+                                <input name="id" type="submit" class="btn btn-success" style="float: right" value="Güncelle" />
 
                             </div>
 
@@ -123,7 +136,10 @@
             </div><!--row end-->
         </div><!-- .animated -->
     </div>
+    
+    
 </form>
+
 @section js{
     <!--Numara Kayıt Etme-->
     <script type="text/javascript">

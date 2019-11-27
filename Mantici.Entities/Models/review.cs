@@ -10,6 +10,8 @@ namespace Mantici.Entities.Models
         public Nullable<int> userID { get; set; }
         public string visitorName { get; set; }
         public string visitorSurname { get; set; }
+        public string email { get; set; }
+        public string subject { get; set; }
         public virtual user user { get; set; }
     }
 }

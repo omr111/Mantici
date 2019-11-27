@@ -16,16 +16,23 @@ namespace Mantici.MVCWebUI.Controllers
         IserviceBll _serviceBll=new serviceBll(new serviceDal());
         IProductBll _productBll=new ProductBll(new ProductDal());
        ICompanyInformationBll _company=new CompanyInformationBll(new CompanyInformationDal());
+       IreviewBll _reviewBll=new reviewBll(new reviewDal());
         // GET: Home
         public ActionResult Index()
         {
             HomeModels homeModels=new HomeModels();
-            homeModels.Banners = _bannerBll.defaultBannerList();
+            //homeModels.Banners = _bannerBll.defaultBannerList();
             homeModels.Services = _serviceBll.defaultServiceList().OrderByDescending(x => x.id).Take(6).ToList();;
             homeModels.menuList = _productBll.ListAll().OrderByDescending(x => x.id).Take(6).ToList();
             homeModels.menuSliders=_productBll.ListAll();
             homeModels.company = _company.GetOneWitId(2);
+            homeModels.Reviews = _reviewBll.ListAll();
             return View(homeModels);
+        }
+
+        public PartialViewResult slider()
+        {
+            return PartialView(_bannerBll.defaultBannerList());
         }
     }
 }

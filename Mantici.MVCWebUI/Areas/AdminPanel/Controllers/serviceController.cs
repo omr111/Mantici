@@ -29,10 +29,22 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult serviceAdd(service srv, HttpPostedFileBase file)
         {
-            srv.serviceIcon = pictureController.IconAddForService(file, HttpContext);
+            //todo resim null gelirse hata verdir.
+            if (ModelState.IsValid)
+            {
+                if (file!=null)
+                {
+                    srv.serviceIcon = pictureController.IconAddForService(file, HttpContext);
+                }
+         
 
-            _serviceBll.addService(srv);
-            return RedirectToAction("Index", "service", new { area = "AdminPanel" });
+                _serviceBll.addService(srv);
+                return RedirectToAction("Index", "service", new { area = "AdminPanel" });
+            }
+            else
+            {
+                return View("serviceAdd");
+            }
         }
         [HttpPost]
         public int serviceDelete(int id)
