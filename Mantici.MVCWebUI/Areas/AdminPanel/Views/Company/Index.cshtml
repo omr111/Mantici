@@ -6,7 +6,7 @@
 <div id="numaraUyari"></div>
 
 
-<form action="/Company/companyEdit" method="post" enctype="multipart/form-data">
+<form action="/AdminPanel/Company/companyEdit" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
 
     <div class="content mt-3">
@@ -25,7 +25,7 @@
                                     <div class="input-group-addon"><i class="fa fa-building"></i></div>
                                     <input type="text" name="companyName" class="form-control" value="@Model.companyName">
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.companyName,"",new {@style="color:red"})
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label"><i class="fa fa-info-circle"></i> Hakkımızda</label>
@@ -33,7 +33,7 @@
 
                                     <textarea id="ckEditor" style="overflow: scroll;" type="text" name="companyAbout" class="form-control" rows="10">@Html.Raw(Model.companyAbout)</textarea>
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.companyAbout,"",new{@style="color:red"})
                             </div>
 
 
@@ -60,7 +60,7 @@
                                             <option value="@phone.phoneNumber"></option>
 
                                         }
-
+                                        
                                     </datalist>
                                     <a style=" margin-left: 5px" class="btn btn-success numSave" data-id="@Model.id"><i class="fa fa-plus" title="Telefon Ekle"></i></a>
                                     <a style="margin-left: 5px" class="btn btn-danger numDelete" data-id="@Model.id"><i class="fa fa-trash" title="Telefon Sil"></i></a>
@@ -72,11 +72,10 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
 
-
                                     <input type="email" name="email" placeholder="Enter your email" maxlength="70" class="form-control" value="@Model.email" />
 
-
                                 </div>
+                                @Html.ValidationMessageFor(m=>m.email,"",new{@style="color:red"})
                             </div>
 
                             <div class="form-group">
@@ -85,7 +84,7 @@
                                     <div class="input-group-addon"><i class="fa fa-address-card-o"></i></div>
                                     <input type="text" name="companyAddress" class="form-control " maxlength="250" required="required" value="@Model.companyAddress" placeholder="Adresinizi Giriniz..." />
                                 </div>
-
+                                @Html.ValidationMessageFor(m => m.companyAddress, "", new { @style = "color:red" })
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Şirket Logo</label>
@@ -93,6 +92,7 @@
                                     <div class="input-group-addon"><i class="fa fa-picture-o"></i></div>
                                     <input type="file" name="companyLogo" class="form-control ">
                                 </div>
+                                @Html.ValidationMessageFor(m=>m.companyLogo,"",new{@style="color:red"})
                             </div>
 
                             <div class="form-group">
@@ -101,25 +101,25 @@
                                     <div class="input-group-addon"><i class="fa fa-file"></i></div>
                                     <input class="form-control" type="file" name="companyPicturePath">
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.companyPicturePath,"",new{@style="color:red"})
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Video Link</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-youtube-play"></i></div>
-                                    <input class="form-control" type="text" name="videoPath">
+                                    <input class="form-control" value="@Model.videoPath" type="text" name="videoPath">
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.videoPath,"",new{@style="color:red"})
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Video Üstü Metin</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-youtube-play"></i></div>
                    
-                                    <input class="form-control" type="text" value="@Model.videoText" required="required" maxlength="100" name="videoText">
-
+                                    @*<input class="form-control" type="text" value="@Model.videoText" required="required" maxlength="100" name="videoText">*@
+                                    @Html.TextBoxFor(m => m.videoText, new { @class = "form-control" })
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.videoText,"",new{@style="color:red"})
                             </div>
 
 

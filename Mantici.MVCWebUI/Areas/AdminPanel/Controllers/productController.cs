@@ -25,13 +25,14 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 
         public ActionResult productAdd()
         {
-            List<Category> categories = _categoryBll.ListAll();
-            return View(categories);
+            ViewBag.category = _categoryBll.ListAll();
+            return View();
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult productAdd(Product product, HttpPostedFileBase file)
         {
+            
             try
             {
                 if (ModelState.IsValid)
@@ -55,14 +56,16 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                 }
                 else
                 {
-                    ViewData["productAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
-                    return View();
+                    //ViewData["productAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
+                    ViewBag.category = _categoryBll.ListAll();
+                    return View("productAdd");
                 }
             }
             catch (Exception e)
             {
                 ViewData["productAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
-                return View();
+                ViewBag.category = _categoryBll.ListAll();
+                return View("productAdd");
             }
           
         }
@@ -119,8 +122,13 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult productUpdate(Product pro, HttpPostedFileBase file)
         {
+            productUpdateModel updateModel = new productUpdateModel();
+            updateModel.Product = pro;
+            updateModel.Categories = _categoryBll.ListAll();
             try
             {
+             
+                
                 if (ModelState.IsValid)
                 {
                     Product product = _productBll.GetOne(pro.id);
@@ -151,32 +159,33 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                         else
                         {
                             TempData["productUpdateError"] = "Ürün Güncellenemedi,Lütfen Tekrar Deneyin";
-                      
-                            return View();
+                            return View(updateModel);
+                            
+                            
                         }
                    
                     }
                     else
                     {
                         TempData["productUpdateError"] = "Güncellemek İstediğiniz Ürün Bulunamadı !";
-                      
-                        return View();
+
+                        return View(updateModel);
                     }
                 
                 }
                 else
                 {
                     TempData["productUpdateError"] = "Geçersiz Veriler Kayıt Edilmeye Çalışıldı !";
-                      
-                    return View();
+
+                    return View("productUpdate",updateModel);
                 }
             
             }
             catch (Exception e)
             {
                 TempData["productUpdateError"] = e.Message;
-                      
-                return View();
+
+                return View(updateModel);
             }
         }
      

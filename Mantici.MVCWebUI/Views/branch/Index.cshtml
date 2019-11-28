@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Mantici.Entities.Models
+@model List<Mantici.Entities.Models.Branch>
+    @if (Model != null)
+    {
+
+        <div class="col-md-12">
+            <div class="wrapper">
+                <h1>Şubelerimiz</h1>
+                <div class="cols">
+                    @foreach (Branch branch in Model)
+                    {
+
+                        <div class="col-md-4 colleft">
+                            <div class="col" ontouchstart="this.classList.toggle('hover');">
+                                <div class="container">
+                                    <div class="front" style="background-image: url(@branch.BranchPicturePath)">
+                                        <div class="inner">
+                                            <p>@branch.BranchName</p>
+                                            <span>@branch.area | @branch.city</span>
+                                        </div>
+                                    </div>
+                                    <div class="back">
+                                        <div class="inner">
+                                            <div class="container">
+                                                <h6 style="font-weight: 900; color:#40a557">Email</h6>
+                                                <h6 style="color:#fffff9">@branch.email</h6>
+                                                <h6 style="font-weight: 900; color:#40a557">Telefon</h6>
+                                                @foreach (var phone in branch.BranchPhones)
+                                                {
+                                                    <h6 style="color:#fffff9">@phone.BranchPhone1</h6>
+                                                }
+                                                <h6 style="font-weight: 900; color:#40a557">Adres</h6>
+                                                <h6 style="color:#fffff9">@branch.BranchAdress</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+
+
+        <div style="min-height: 500px">
+
+            <h1>Henüz Bayi Bulunmamaktadır.</h1>
+        </div>
+    }

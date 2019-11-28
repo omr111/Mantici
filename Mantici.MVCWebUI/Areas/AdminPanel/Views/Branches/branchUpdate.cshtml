@@ -4,20 +4,21 @@
     ViewBag.Title = "branchUpdate";
     Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
 }
-@using(Html.BeginForm("branchUpdate","Branches",FormMethod.Post, new{enctype="multipart/form-data"}))
-{ 
+@*@using(Html.BeginForm("branchUpdate","Branches",FormMethod.Post, new{enctype="multipart/form-data"}))
+{*@ 
+<form action="/AdminPanel/Branches/branchUpdate" method="post" enctype="multipart/form-data">
 
     @Html.AntiForgeryToken()
 
     <!-- content-->
     <div id="numaraUyari"></div>
     <div id="errorOfbranch">
-        @if (TempData["branchUpdateError"] != null)
+        @if (ViewData["branchUpdateError"] != null)
         {
             <div class="col-sm-12">
 
                 <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-                    <span class="badge badge-pill badge-success">Hata</span> @TempData["branchUpdateError"].ToString()
+                    <span class="badge badge-pill badge-success">Hata</span> @ViewData["branchUpdateError"].ToString()
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -29,7 +30,7 @@
     <script type="text/javascript">
         setTimeout(function () { $('#errorOfbranch').hide('slow'); }, 5000);
     </script>
-    
+
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -43,30 +44,38 @@
                                 <label class=" form-control-label">Bayi Adı</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
-                                    <input type="text" name="BranchName" value="@Model.BranchName" class="form-control">
+                                    @*<input type="text" name="BranchName" value="@Model.BranchName" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.BranchName,new{@class="form-control"})
+                                    @Html.HiddenFor(m=>m.id)
                                 </div>
-
+                                @Html.ValidationMessageFor(m => m.BranchName, "", new { @style = "color:red" })
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Bölge</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
-                                    <input type="text" name="area" value="@Model.area"class="form-control">
+                                    @*<input type="text" name="area" value="@Model.area" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.area,new{@class="form-control"})
                                 </div>
+                                @Html.ValidationMessageFor(m => m.area, "", new { @style = "color:red" })
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Şehir</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
-                                    <input type="text" name="city" value="@Model.city" class="form-control">
+                                    @*<input type="text" name="city" value="@Model.city" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.city,new{@class="form-control"})
                                 </div>
+                                @Html.ValidationMessageFor(m => m.city, "", new { @style = "color:red" })
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Adres</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-address-book"></i></div>
-                                    <input type="text" name="BranchAdress" value="@Model.BranchAdress"class="form-control">
+                                    @*<input type="text" name="BranchAdress" value="@Model.BranchAdress" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.BranchAdress,new{@class="form-control"})
                                 </div>
+                                @Html.ValidationMessageFor(m => m.BranchAdress, "", new { @style = "color:red" })
                             </div>
 
 
@@ -84,7 +93,7 @@
                                     <div class="input-group-addon"><i class="fa fa-phone"></i></div>
 
                                     <input style="margin-left: 10px; margin-top: 4px" list="browsers" id="selectedPhone" name="browser" maxlength="11" type="tel">
-                                   
+
                                     <datalist id="browsers">
                                         @if (Model.BranchPhones.Count > 0)
                                         {
@@ -104,14 +113,18 @@
                                 <label class=" form-control-label">E-mail</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                    <input type="email" name="email" value="@Model.email" class="form-control">
+                                    @*<input type="email" name="email" value="@Model.email" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.email,new{@class="form-control"})
                                 </div>
+                                @Html.ValidationMessageFor(m=>m.email,"",new{@style="color:red"})
                             </div>
+
                             <div class="form-group">
                                 <label class=" form-control-label">Resim</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                    <input class="form-control" type="file" name="file" placeholder="Resim düzenlemek istemiyorsanız burayı boş bırakın !">
+                                    @Html.TextBox("file","file",new{@type="file", @class="form-control"})
+                                    @*<input class="form-control" type="file" name="file" placeholder="Resim düzenlemek istemiyorsanız burayı boş bırakın !">*@
                                 </div>
 
                             </div>
@@ -138,7 +151,7 @@
 
     <!-- .content -->
 
-}
+</form>
 
 @section js{
     <!--Numara Kayıt Etme-->

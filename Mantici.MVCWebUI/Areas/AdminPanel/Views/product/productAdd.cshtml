@@ -1,5 +1,6 @@
 ﻿@using Mantici.Entities.Models
-@model List<Mantici.Entities.Models.Category>
+@model Product
+
 
 @{
     ViewBag.Title = "productAdd";
@@ -41,7 +42,7 @@
                                     <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
                                     <input type="text" name="name" class="form-control">
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.name,"",new {@style="color:red"})
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Ürün Kısa Açıklama</label>
@@ -49,7 +50,7 @@
                                     <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
                                     <input type="text" name="caption" class="form-control">
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.caption,"",new {@style="color:red"})
                             </div>
                             <div class="form-group">
                                 <label class=" form-control-label">Fiyat</label>
@@ -57,7 +58,7 @@
                                     <div class="input-group-addon"><i class="fa fa-turkish-lira"></i></div>
                                     <input type="number" name="price" class="form-control ">
                                 </div>
-
+                                @Html.ValidationMessageFor(m=>m.price,"",new {@style="color:red"})
                             </div>
 
                         </div>
@@ -72,12 +73,14 @@
                                     <div class="input-group-addon"><i class="fa fa-list"></i></div>
                                     <select class="form-control" name="categoryID">
                                         <option></option>
-                                        @foreach (Category category in Model)
+                                        @foreach (Category category in ViewBag.category)
                                         {
                                             <option value="@category.id">@category.categoryName</option>
                                         }
                                     </select>
+                                   
                                 </div>
+                                @Html.ValidationMessageFor(m=>m.categoryID,"",new {@style="color:red"})
                             </div>
 
                             <div class="form-group">

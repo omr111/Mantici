@@ -16,8 +16,8 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         // GET: AdminPanel/review
         public ActionResult Index()
         {
-            
-            return View(_reviewBll.ListAll());
+            ViewBag.reviews = _reviewBll.ListAll();
+            return View();
         }
         [HttpPost]
         public int reviewDelete(int id)

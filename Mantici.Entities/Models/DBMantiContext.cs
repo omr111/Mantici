@@ -30,6 +30,7 @@ namespace Mantici.Entities.Models
         public DbSet<roleOfUser> roleOfUsers { get; set; }
         public DbSet<role> roles { get; set; }
         public DbSet<service> services { get; set; }
+        public DbSet<sliderProduct> sliderProducts { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<user> users { get; set; }
 
@@ -49,6 +50,7 @@ namespace Mantici.Entities.Models
             modelBuilder.Configurations.Add(new roleOfUserMap());
             modelBuilder.Configurations.Add(new roleMap());
             modelBuilder.Configurations.Add(new serviceMap());
+            modelBuilder.Configurations.Add(new sliderProductMap());
             modelBuilder.Configurations.Add(new sysdiagramMap());
             modelBuilder.Configurations.Add(new userMap());
         }

@@ -16,8 +16,7 @@ namespace Mantici.Entities.Models.Mapping
                 .HasMaxLength(70);
 
             this.Property(t => t.area)
-                .IsFixedLength()
-                .HasMaxLength(30);
+                .HasMaxLength(50);
 
             this.Property(t => t.city)
                 .HasMaxLength(30);

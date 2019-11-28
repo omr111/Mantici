@@ -37,84 +37,84 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 
             try
             {
-                if (companyPicturePath != null )
+                if (ModelState.IsValid)
                 {
-                    if (System.IO.File.Exists(Server.MapPath(company.companyPicturePath)))
+                    if (companyPicturePath != null)
                     {
-                        FileStream fs=new FileStream(Server.MapPath(company.companyPicturePath),FileMode.OpenOrCreate);
+                        if (System.IO.File.Exists(Server.MapPath(company.companyPicturePath)))
+                        {
+                            FileStream fs = new FileStream(Server.MapPath(company.companyPicturePath), FileMode.OpenOrCreate);
 
-                        fs.Flush();
-                        fs.Close();
-                       
-                        System.IO.File.Delete(Server.MapPath(company.companyPicturePath));
+                            fs.Flush();
+                            fs.Close();
+
+                            System.IO.File.Delete(Server.MapPath(company.companyPicturePath));
+
+                        }
+
+                        int companyPictureWidth = settings.companyPicture.Width;
+                        int companyPictureHeight = settings.companyPicture.Height;
+                        string newName = Path.GetFileNameWithoutExtension(companyPicturePath.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(companyPicturePath.FileName);
+
+                        Image orjCompany = Image.FromStream(companyPicturePath.InputStream);
+                        Bitmap companyPicturDraw = new Bitmap(orjCompany, companyPictureHeight, companyPictureWidth);
+                        companyPicturDraw.Save(Server.MapPath("~/content/img/companyPicture/" + newName));
+
+                        company.companyPicturePath = "/content/img/companyPicture/" + newName;
 
                     }
-                    
-                    int companyPictureWidth = settings.companyPicture.Width;
-                    int companyPictureHeight = settings.companyPicture.Height;
-                    string newName = Path.GetFileNameWithoutExtension(companyPicturePath.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(companyPicturePath.FileName);
-                    
-                    Image orjCompany = Image.FromStream(companyPicturePath.InputStream);
-                    Bitmap companyPicturDraw = new Bitmap(orjCompany,companyPictureHeight,companyPictureWidth);
-                    companyPicturDraw.Save(Server.MapPath("~/content/img/companyPicture/" + newName));
-                    
-                    company.companyPicturePath = "/content/img/companyPicture/" + newName;
-                    
-                }
 
-                if (companyLogo != null)
-                {
-                    if (System.IO.File.Exists(Server.MapPath(company.companyLogo)))
+                    if (companyLogo != null)
                     {
-                        
-                        System.IO.File.Delete(Server.MapPath(company.companyLogo));
-                       
+                        if (System.IO.File.Exists(Server.MapPath(company.companyLogo)))
+                        {
+
+                            System.IO.File.Delete(Server.MapPath(company.companyLogo));
+
+                        }
+
+                        int companyLogoWidth = settings.companyLogo.Width;
+                        int companyLogoHeight = settings.companyLogo.Height;
+                        string newName = Path.GetFileNameWithoutExtension(companyLogo.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(companyLogo.FileName);
+                        Image orjResim = Image.FromStream(companyLogo.InputStream);
+                        Bitmap companyLogoDraw = new Bitmap(orjResim, companyLogoWidth, companyLogoHeight);
+                        companyLogoDraw.Save(Server.MapPath("~/content/img/logo/" + newName));
+
+                        company.companyLogo = "/content/img/logo/" + newName;
                     }
+                    company.companyAbout = comInfo.companyAbout;
+                    company.companyAddress = comInfo.companyAddress;
+                    company.companyName = comInfo.companyName;
+                    company.email = comInfo.email;
+                    company.videoPath = comInfo.videoPath;
+                    company.videoText = comInfo.videoText;
+                    company.videoText = comInfo.videoText;
+                
 
-                    int companyLogoWidth = settings.companyLogo.Width;
-                    int companyLogoHeight = settings.companyLogo.Height;
-                    string newName = Path.GetFileNameWithoutExtension(companyLogo.FileName) + "-" + Guid.NewGuid() + Path.GetExtension(companyLogo.FileName);
-                    Image orjResim = Image.FromStream(companyLogo.InputStream);
-                    Bitmap companyLogoDraw = new Bitmap(orjResim, companyLogoWidth, companyLogoHeight);
-                    companyLogoDraw.Save(Server.MapPath("~/content/img/logo/" + newName));
-
-                    company.companyLogo = "/content/img/logo/" + newName;
-                }
-                company.companyAbout = comInfo.companyAbout;
-                company.companyAddress = comInfo.companyAddress;
-                company.companyName = comInfo.companyName;
-                company.email = comInfo.email;
-                company.videoPath = comInfo.videoPath;
-                company.videoText = comInfo.videoText;
-                if (string.IsNullOrEmpty(company.videoText))
-                {
-                    ModelState.AddModelError("videoText","Boş");
+                   
+                    bool result = _companyInformation.Update(company);
+                    //todo uyarı mesajları yapılacak.
+                    if (result)
+                    {
+                        return RedirectToAction("Index", "Company", new { area = "AdminPanel" });
+                    } return RedirectToAction("Index", "Company", new { area = "AdminPanel" });
                 }
                 else
                 {
-                     company.videoText = comInfo.videoText;
+                    return View("Index", company);
                 }
+
                
-             
-
-            
-
-               bool result= _companyInformation.Update(company);
-               //todo uyarı mesajları yapılacak.
-               if (result)
-               {
-                   return RedirectToAction("Index", "Company", new {area = "AdminPanel"});
-               } return View("Index");
             }
             catch (Exception e)
             {
-                ModelState.AddModelError("hata",e.Message);
+
                 return View("Index");
             }
           
             
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public string phoneAdd(int companyId, string selectedPhone)
         {

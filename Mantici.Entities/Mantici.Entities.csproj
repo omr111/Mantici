@@ -69,6 +69,7 @@
     <Compile Include="Models\Mapping\roleMap.cs" />
     <Compile Include="Models\Mapping\roleOfUserMap.cs" />
     <Compile Include="Models\Mapping\serviceMap.cs" />
+    <Compile Include="Models\Mapping\sliderProductMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\userMap.cs" />
     <Compile Include="Models\Phone.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Models\role.cs" />
     <Compile Include="Models\roleOfUser.cs" />
     <Compile Include="Models\service.cs" />
+    <Compile Include="Models\sliderProduct.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

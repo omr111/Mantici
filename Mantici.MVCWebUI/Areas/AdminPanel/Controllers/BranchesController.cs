@@ -28,7 +28,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         {
             return View();
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult branchAdd(Branch branch, string[] BranchPhone1, HttpPostedFileBase file)
         {
@@ -62,14 +62,18 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                     }
                     return RedirectToAction("Index", "Branches", new { area = "AdminPanel" });
                 }
-                ViewData["branchAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
-                return View();
+                else
+                {
+                    ViewData["branchAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
+                    return View("branchAdd");
+                }
+                
                
             }
             catch (Exception e)
             {
                 ViewData["branchAddingError"] = "Lütfen Tüm Verileri Eksiksiz Girin !";
-                return View();
+                return View("branchAdd");
             }
         }
 
@@ -111,16 +115,20 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 
         public ActionResult branchUpdate(int id)
         {
-            Branch branch = _branchBll.GetOne(id);
-            if (branch!=null)
-            {
-                return View(branch);
-            }
-            else
-            {
-                TempData["branchUpdateError"] = "Güncellemek İstediğiniz Bayi Bulunamadı !";
-                return RedirectToAction("Index","Branches",new{area="AdminPanel"});
-            }
+            
+                Branch branch = _branchBll.GetOne(id);
+                if (branch != null)
+                {
+                    return View(branch);
+                }
+                else
+                {
+                    ViewData["branchUpdateError"] = "Güncellemek İstediğiniz Bayi Bulunamadı !";
+                    return RedirectToAction("Index", "Branches", new { area = "AdminPanel" });
+                }
+          
+           
+            
         
         }
 
@@ -160,33 +168,33 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                         }
                         else
                         {
-                            TempData["branchUpdateError"] = "Bayi Güncellenemedi,Lütfen Tekrar Deneyin";
+                            ViewData["branchUpdateError"] = "Bayi Güncellenemedi,Lütfen Tekrar Deneyin";
 
-                            return View();
+                            return View(br);
                         }
 
                     }
                     else
                     {
-                        TempData["branchUpdateError"] = "Güncellemek İstediğiniz Bayi Bulunamadı !";
+                        ViewData["branchUpdateError"] = "Güncellemek İstediğiniz Bayi Bulunamadı !";
 
-                        return View();
+                        return View(br);
                     }
 
                 }
                 else
                 {
-                    TempData["branchUpdateError"] = "Geçersiz Veriler Kayıt Edilmeye Çalışıldı !";
+                    ViewData["branchUpdateError"] = "Geçersiz Veriler Kayıt Edilmeye Çalışıldı !";
 
-                    return View();
+                    return View(br);
                 }
 
             }
             catch (Exception e)
             {
-                TempData["branchUpdateError"] = e.Message;
+                ViewData["branchUpdateError"] = e.Message;
 
-                return View();
+                return View(br);
             }
         }
         [HttpPost]

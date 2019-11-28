@@ -45,15 +45,16 @@
                                 <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
                                 <input type="text" value="@Model.Product.name" name="name" class="form-control">
                             </div>
-
+                            @Html.ValidationMessageFor(m=>m.Product.name,"",new{@style="color:red"})
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Ürün Kısa Açıklama</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
                                 <input type="text" name="caption" class="form-control" value="@Model.Product.caption">
+                                @Html.ValidationMessageFor(m=>m.Product.caption,"",new{@style="color:red"})
                             </div>
-
+                           
                         </div>
                         <div class="form-group">
                             <label class=" form-control-label">Fiyat</label>
@@ -61,7 +62,7 @@
                                 <div class="input-group-addon"><i class="fa fa-turkish-lira"></i></div>
                                 <input type="number" name="price" class="form-control " value="@Convert.ToInt32(Model.Product.price)">
                             </div>
-
+                            @Html.ValidationMessageFor(m => m.Product.price, "", new {@style = "color:red" })
                         </div>
 
                     </div>
@@ -84,7 +85,7 @@
                                 </select>
                             </div>
                         </div>
-
+                      
                         <div class="form-group">
                             <label class=" form-control-label">Resim</label>
                             <div class="input-group">

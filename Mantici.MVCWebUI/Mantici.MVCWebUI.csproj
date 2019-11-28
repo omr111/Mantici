@@ -3123,8 +3123,10 @@
     <Content Include="content\199 Flatter Catering  DOC\syntax-highlighter\styles\shThemeRDark.css" />
     <Content Include="content\css\animate.css" />
     <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\branchSnippetCss.css" />
     <Content Include="content\css\flaticon.css" />
     <Content Include="content\css\font-awesome.min.css" />
+    <Content Include="content\css\footerCss.css" />
     <Content Include="content\css\loginCss\main.css" />
     <Content Include="content\css\magnific-popup.css" />
     <Content Include="content\css\main.css" />
@@ -3877,6 +3879,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\branchController.cs" />
     <Compile Include="Models\contactModel.cs" />
     <Compile Include="Models\HomeModels.cs" />
     <Compile Include="Models\userRoleProvider.cs" />
@@ -4094,6 +4097,7 @@
     <Content Include="Views\menu\Index.cshtml" />
     <Content Include="Views\contact\Index.cshtml" />
     <Content Include="Views\Home\slider.cshtml" />
+    <Content Include="Views\branch\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

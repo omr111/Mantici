@@ -32,7 +32,9 @@
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="~/content/css/sliderCss.css" rel="stylesheet" />
-    
+
+    <link href="~/content/css/branchSnippetCss.css" rel="stylesheet" />
+    <link href="~/content/css/footerCss.css" rel="stylesheet" />
     @RenderSection("css",false)
 
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
@@ -45,32 +47,37 @@
     <![endif]-->
     <!-- header-start -->
 <header>
-    <div class="header-area ">
+    @section css{
+        <script>
+
+        </script>
+    }
+    <div class="header-area">
         <div id="sticky-header" class="main-header-area">
-            <div class="container">
+            <div class="container col-md-12">
                 <div class="row align-items-center">
                     <div class="col-xl-10 col-lg-10">
-                        <div class="main-menu d-none d-lg-block" >
-                            <nav >
+                        <div class="main-menu d-none d-lg-block">
+                            <nav>
                                 <ul class="mein_menu_list" id="navigation">
                                     <li><a href="/Home/Index">Anasayfa</a></li>
                                     <li><a href="/menu/Index">Menü</a></li>
-                                        
+
                                     <li><a href="/about/Index">Hakkımızda</a></li>
-                                    <li ><a  href="#">Bayi Başvuru formu</a></li>
+                                    <li><a href="/Branch/BranchApplication">Bayi Başvuru formu</a></li>
                                     <div class="logo-img d-none d-lg-block">
                                         <a href="#">
 
-                                            <img src="~/content/img/logo/logo.png" />
+                                            <img src="~/content/img/logo/logo.png"/>
                                         </a>
                                     </div>
                                     <li>
                                         <a href="#">Bayiler</a>
                                     </li>
-                                       
+
                                     <li>
                                         <a href="/contact/Index">İletişim</a>
-                                            
+
                                     </li>
                                     <li><a href="#">Hizmetler</a></li>
                                     @if (User.Identity.IsAuthenticated == false)
@@ -89,7 +96,7 @@
                     </div>
                     <div class="col-xl-2 col-lg-2 d-none d-lg-block">
                         <div class="custom_order">
-                            <a href="#" class="boxed_btn_white" style="background-color: #78b454 !important;">Rezervasyon</a>
+                            <a href="/Reservation/Index" class="boxed_btn_white" style="background-color: #78b454 !important;">Rezervasyon</a>
                         </div>
                     </div>
                     <div class="col-12">
@@ -97,7 +104,7 @@
                     </div>
                     <div class="logo-img-small d-sm-block d-md-block d-lg-none">
                         <a href="index.html">
-                                
+
                             <img src="~/content/img/logo/logo.png" alt=""/>
                         </a>
                     </div>
@@ -111,9 +118,180 @@
 }
     <!-- header-end -->
     @RenderBody()
-   
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Footer -->
+    <footer style="background-color: #78b454" class="pt-5 pb-4" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                    <h5 class="mb-4 font-weight-bold">ABOUT US</h5>
+                    <p class="mb-4">Etiam laoreet in ex quis efficitur.</p>
+                    <ul class="f-address">
+                        <li>
+                            <div class="row">
+                                <div class="col-1"><i class="fas fa-map-marker"></i></div>
+                                <div class="col-10">
+                                    <h6 class="font-weight-bold mb-0">Address:</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-1"><i class="far fa-envelope"></i></div>
+                                <div class="col-10">
+                                    <h6 class="font-weight-bold mb-0">Have any questions?</h6>
+                                    <p><a href="#">Support@userthemes.com</a></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-1"><i class="fas fa-phone-volume"></i></div>
+                                <div class="col-10">
+                                    <h6 class="font-weight-bold mb-0">Address:</h6>
+                                    <p><a href="#">+XX (0) XX XX-XXXX-XXXX</a></p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                    <h5 class="mb-4 font-weight-bold">Menüler</h5>
+                    <ul class="f-address">
+                        <li style="margin-bottom: 16px;">
+                            <div class="row">
+                                <div class="col-1"><i class="fa fa-home"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
+                                  
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 16px;">
+                            <div class="row">
+                                <div class="col-1"><i class="fa fa-list"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Menü </a> </p>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 16px;">
+                            <div class="row">
+                                <div class="col-1"><i class="fa fa-info-circle"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Hakkımızda </a></p>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 16px;">
+                            <div class="row">
+                                <div class="col-1"><i class="fa fa-code-fork"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Bayiler </a></p>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 16px;">
+                            <div class="row">
+                                <div class="col-1"><i class="fa fa-heart"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">İletişim </a></p>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li">
+                            <div class="row">
+                                <div class="col-1"><i style="color:#3d3934" class="fa fa-building"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Hizmetler </a></p>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                    <h5 class="mb-4 font-weight-bold">LATEST UPDATES</h5>
+                    <ul class="recent-post">
+                        <li>
+                            <label class="mr-3">28 <br><span>APR</span></label>
+                            <span>Rendomised words which dont look eveable.</span>
+                        </li>
+                        <li>
+                            <label class="mr-3">29 <br><span>APR</span></label>
+                            <span>Rendomised words which dont look eveable.</span>
+                        </li>
+                        <li>
+                            <label class="mr-3">30 <br><span>APR</span></label>
+                            <span>Rendomised words which dont look eveable.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                    <h5 class="mb-4 font-weight-bold">Sosyal Medya</h5>
+                    
+                    <ul class="social-pet mt-4">
+                        <li style="margin-bottom: 30px;">
+                            <div class="row">
+                                <div class="col-1 socialMedia"><i style="color:#0141a2" class="fab fa-facebook-f"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
+                                  
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 30px;">
+                            <div class="row">
+                                <div class="col-1 socialMedia"><i style="color:#57aced" class="fab fa-twitter"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
+                                  
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 30px;">
+                            <div class="row">
+                                <div class="col-1 socialMedia"><i style="color:#dd4f43" class="fab fa-google-plus-g"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
+                                  
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-1 "><i style="color: #6b27b2;font-size: 20px" class="fab fa-instagram"></i></div>
+                                <div class="col-10">
+                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
+                                  
+                                </div>
+                            </div>
+                        </li>
+                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright -->
+    <section class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="text-center text-white">
+                        &copy; 2018 Your Company. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- footer-start -->
-    <footer class="footer_area footer-bg zigzag_bg_1" style="background-color: #40a557">
+    @*<footer class="footer_area" style="background-color: #40a557; max-height: 300px;">
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -192,7 +370,7 @@
                             <p class="footer-text">
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <script>document.write(new Date().getFullYear());</script> <h6>Tüm Hakları Saklıdır | Bilgisayar Mühendisi Ömer ÇETİNKAYA | 0531 365 13 56</h6>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
@@ -210,7 +388,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>*@
     <!-- footer-end -->
     <!--<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document" data-dismiss="modal">

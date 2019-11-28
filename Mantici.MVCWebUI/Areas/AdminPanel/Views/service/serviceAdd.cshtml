@@ -24,7 +24,7 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
                                     @*<input type="text" name="serviceName" class="form-control" maxlength="99" required="Lütfen bir servis başlığı giriniz.">*@
-                                    @Html.TextAreaFor(m => m.serviceName, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.serviceName, new { @class = "form-control" })
                                 </div>
                                 @Html.ValidationMessageFor(m=>m.serviceName,"",new {@style="color:red"})
                             </div>

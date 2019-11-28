@@ -16,8 +16,8 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         // GET: AdminPanel/reservation
         public ActionResult Index()
         {
-            List<rezervation> rezervations = _rezervationBll.ListAll();
-            return View(rezervations);
+            ViewBag.reservation = _rezervationBll.ListAll();
+            return View();
         }
 
         [HttpPost]

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Mantici.Entities.Models
 {
@@ -11,7 +12,7 @@ namespace Mantici.Entities.Models
         }
 
         public int id { get; set; }
-        [Required("Bu alan boþ geçilemez!"), MaxLength(50, ErrorMessage = "En fazla 50 karakter girebilirsiniz")]
+      
         public string categoryName { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
