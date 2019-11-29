@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,600,600i,700&display=swap");
+﻿@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,600,600i,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,600,600i,700&display=swap");
 /* line 1, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_extend.scss */
 .flex-center-start {
@@ -1328,14 +1328,14 @@ h3 {
 
 /* line 1, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_order.scss */
 .order_area {
-  padding-top: 150px;
+  padding-top: 20px;
   padding-bottom: 90px;
 }
 
 @media (max-width: 767px) {
   /* line 1, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_order.scss */
   .order_area {
-    padding-top: 60px;
+    padding-top: 30px;
     padding-bottom: 0px;
   }
 }
@@ -1378,7 +1378,7 @@ h3 {
 /* line 29, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_order.scss */
 .order_area .single_order .order_thumb .order_prise span::before {
   position: absolute;
-  content: "$";
+  content: "₺ ";
   left: -5px;
   top: -1px;
   color: #78b454;
@@ -1596,30 +1596,40 @@ h3 {
   padding: 50px 50px 46px 40px;
   border-radius: 10px;
   background: #fff;
+  width: 100%;
 }
 
 @media (max-width: 767px) {
   /* line 13, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_testmonial.scss */
   .testmonial_area .single_testmonial {
     display: block !important;
+      height: auto;
+      padding-bottom: 160px;
   }
 }
 
 /* line 20, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_testmonial.scss */
 .testmonial_area .single_testmonial .testmonial_thumb {
   margin-right: 25px;
+    float: left;
+   
 }
 
 @media (max-width: 767px) {
   /* line 20, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_testmonial.scss */
   .testmonial_area .single_testmonial .testmonial_thumb {
     margin-bottom: 30px;
+    height: 100px;
+    width: 100px;
+      float: left;
+
   }
 }
 
 /* line 26, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_testmonial.scss */
 .testmonial_area .single_testmonial img {
   width: auto;
+
 }
 
 /* line 30, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_testmonial.scss */

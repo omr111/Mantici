@@ -21,6 +21,10 @@ namespace Mantici.Bll.Concrete
             return _productDal.AllList();
         }
 
+        public List<Product> listTatliMeze(int tatliId, int mezeId)
+        {
+            return _productDal.AllList(x => x.categoryID == tatliId || x.categoryID == mezeId);
+        }
         public Product GetOne(int id)
         {
             return _productDal.GetOne(x=>x.id==id);

@@ -17,7 +17,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="~/content/img/logo/logo.png">
     <!-- Place favicon.ico in the root directory -->
     <!-- CSS here -->
+  
+   
+   
     <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
+
+    @RenderSection("css", false)
+
     <link href="~/content/css/owl.carousel.min.css" rel="stylesheet" />
     <link href="~/content/css/magnific-popup.css" rel="stylesheet" />
     <link href="~/content/css/font-awesome.min.css" rel="stylesheet" />
@@ -29,14 +35,14 @@
     <link href="~/content/css/style.css" rel="stylesheet" />
     <link href="~/content/patocss/util.css" rel="stylesheet" />
     <link href="~/content/patocss/main.css" rel="stylesheet" />
-    
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   
+   
     <link href="~/content/css/sliderCss.css" rel="stylesheet" />
-
-    <link href="~/content/css/branchSnippetCss.css" rel="stylesheet" />
+    <link href="~/content/css/loginCss/sliderCss2.css" rel="stylesheet" />
+  
     <link href="~/content/css/footerCss.css" rel="stylesheet" />
-    @RenderSection("css",false)
 
+  
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -47,11 +53,7 @@
     <![endif]-->
     <!-- header-start -->
 <header>
-    @section css{
-        <script>
-
-        </script>
-    }
+  
     <div class="header-area">
         <div id="sticky-header" class="main-header-area">
             <div class="container col-md-12">
@@ -72,7 +74,7 @@
                                         </a>
                                     </div>
                                     <li>
-                                        <a href="#">Bayiler</a>
+                                        <a href="/branch/Index">Bayiler</a>
                                     </li>
 
                                     <li>
@@ -119,177 +121,9 @@
     <!-- header-end -->
     @RenderBody()
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <!-- Footer -->
-    <footer style="background-color: #78b454" class="pt-5 pb-4" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-                    <h5 class="mb-4 font-weight-bold">ABOUT US</h5>
-                    <p class="mb-4">Etiam laoreet in ex quis efficitur.</p>
-                    <ul class="f-address">
-                        <li>
-                            <div class="row">
-                                <div class="col-1"><i class="fas fa-map-marker"></i></div>
-                                <div class="col-10">
-                                    <h6 class="font-weight-bold mb-0">Address:</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-1"><i class="far fa-envelope"></i></div>
-                                <div class="col-10">
-                                    <h6 class="font-weight-bold mb-0">Have any questions?</h6>
-                                    <p><a href="#">Support@userthemes.com</a></p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-1"><i class="fas fa-phone-volume"></i></div>
-                                <div class="col-10">
-                                    <h6 class="font-weight-bold mb-0">Address:</h6>
-                                    <p><a href="#">+XX (0) XX XX-XXXX-XXXX</a></p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-                    <h5 class="mb-4 font-weight-bold">Menüler</h5>
-                    <ul class="f-address">
-                        <li style="margin-bottom: 16px;">
-                            <div class="row">
-                                <div class="col-1"><i class="fa fa-home"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
-                                  
-                                </div>
-                            </div>
-                        </li>
-                        <li style="margin-bottom: 16px;">
-                            <div class="row">
-                                <div class="col-1"><i class="fa fa-list"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Menü </a> </p>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li style="margin-bottom: 16px;">
-                            <div class="row">
-                                <div class="col-1"><i class="fa fa-info-circle"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Hakkımızda </a></p>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li style="margin-bottom: 16px;">
-                            <div class="row">
-                                <div class="col-1"><i class="fa fa-code-fork"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Bayiler </a></p>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li style="margin-bottom: 16px;">
-                            <div class="row">
-                                <div class="col-1"><i class="fa fa-heart"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">İletişim </a></p>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li">
-                            <div class="row">
-                                <div class="col-1"><i style="color:#3d3934" class="fa fa-building"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Hizmetler </a></p>
-
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-                    <h5 class="mb-4 font-weight-bold">LATEST UPDATES</h5>
-                    <ul class="recent-post">
-                        <li>
-                            <label class="mr-3">28 <br><span>APR</span></label>
-                            <span>Rendomised words which dont look eveable.</span>
-                        </li>
-                        <li>
-                            <label class="mr-3">29 <br><span>APR</span></label>
-                            <span>Rendomised words which dont look eveable.</span>
-                        </li>
-                        <li>
-                            <label class="mr-3">30 <br><span>APR</span></label>
-                            <span>Rendomised words which dont look eveable.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-                    <h5 class="mb-4 font-weight-bold">Sosyal Medya</h5>
-                    
-                    <ul class="social-pet mt-4">
-                        <li style="margin-bottom: 30px;">
-                            <div class="row">
-                                <div class="col-1 socialMedia"><i style="color:#0141a2" class="fab fa-facebook-f"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
-                                  
-                                </div>
-                            </div>
-                        </li>
-                        <li style="margin-bottom: 30px;">
-                            <div class="row">
-                                <div class="col-1 socialMedia"><i style="color:#57aced" class="fab fa-twitter"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
-                                  
-                                </div>
-                            </div>
-                        </li>
-                        <li style="margin-bottom: 30px;">
-                            <div class="row">
-                                <div class="col-1 socialMedia"><i style="color:#dd4f43" class="fab fa-google-plus-g"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
-                                  
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-1 "><i style="color: #6b27b2;font-size: 20px" class="fab fa-instagram"></i></div>
-                                <div class="col-10">
-                                    <p class="mb-0"><a href="#">Anasayfa</a></p>
-                                  
-                                </div>
-                            </div>
-                        </li>
-                     
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Copyright -->
-    <section class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 ">
-                    <div class="text-center text-white">
-                        &copy; 2018 Your Company. All Rights Reserved.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @{
+        Html.RenderAction("footer","Home");
+    }
     <!-- footer-start -->
     @*<footer class="footer_area" style="background-color: #40a557; max-height: 300px;">
         <div class="footer-top">
@@ -401,12 +235,14 @@
             </div>
         </div>
     </div>-->
-    <!-- JS here -->
-    <script src="~/content/Scripts/jquery-3.4.1.min.js"></script>
+<!-- JS here -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+@*<script src="~/content/Scripts/jquery-3.4.1.min.js"></script>*@
     <script src="~/content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/content/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="~/content/js/popper.min.js"></script>
-    <script src="~/content/js/bootstrap.min.js"></script>
+<script src="~/content/js/popper.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    @*<script src="~/content/js/bootstrap.min.js"></script>*@
     <script src="~/content/js/owl.carousel.min.js"></script>
     <script src="~/content/js/isotope.pkgd.min.js"></script>
     <script src="~/content/js/ajax-form.js"></script>
@@ -424,11 +260,11 @@
 
 
     <!--contact js-->
-    @*<script src="~/content/js/contact.js"></script>*@
+ 
     <script src="~/content/js/jquery.ajaxchimp.min.js"></script>
     @*<script src="~/content/js/jquery.form.js"></script>
     <script src="~/content/js/jquery.validate.min.js"></script>
-    <script src="~/content/js/mail-script.js"></script>*@
+   *@
     <script src="~/content/js/main.js"></script>
     @RenderSection("js", false)
 

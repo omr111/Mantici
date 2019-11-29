@@ -1,6 +1,6 @@
 
 			footer {
-				color: #fff;
+				color: #ccc;
 				background-attachment: fixed;
 				background-color:#222;
         background-image: url(https://s7.postimg.org/uyf0oioaz/footer-bg.png);
@@ -8,10 +8,10 @@
 				background-position: bottom;
 			}
 			footer p {
-				color: #ccc;				
+				color: #fff;				
 			}
 	   footer a {
-				color: #ccc;	
+				color: #fff;	
               		
 			}
 			/*.social-pet li {
@@ -55,7 +55,7 @@
                 }*/
 			.recent-post li {
 				display: block;
-				color: #ccc;
+				color: #fff;
 				margin-bottom: 25px;
 			}
 			.recent-post li label {
@@ -80,7 +80,7 @@
                 float: left;
 			}
 			.f-address li a {
-				color: #ccc;
+				color: #fff;
 			}
 			/*=-Copyright-=*/
 			.copyright {

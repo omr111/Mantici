@@ -20,7 +20,7 @@ namespace Mantici.Entities.Models
         [Required(ErrorMessage = "Bu alan boþ geçilemez."), MaxLength(150, ErrorMessage = "En fazla 150 karakter girebilirsiniz.")]
         public string caption { get; set; }
 
-        [Required(ErrorMessage = "Bu alan boþ geçilemez.")]
+
         public string description { get; set; }
 
     

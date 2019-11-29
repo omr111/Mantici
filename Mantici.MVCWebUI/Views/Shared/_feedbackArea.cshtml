@@ -15,22 +15,29 @@
                 <div class="testmonial_active owl-carousel">
                     @foreach (review review in Model)
                     {
-                        <div   class="single_testmonial d-flex">
-                            <div class="testmonial_thumb">
+                        <div  style="width: 100%;" class="single_testmonial d-flex">
+                            <div  class="testmonial_thumb">
+                          
                                 @if (review.userID != null)
                                 {
-                                    <img style="border-radius: 50px !important ;" src="@review.user.userPicturePath" alt="user">
+                                    if (review.user.userPicturePath != null || !string.IsNullOrEmpty(review.user.userPicturePath))
+                                    {
+                                        <img style="border-radius: 50px !important ;" src="@review.user.userPicturePath" alt="user">
+                                    }
+                                    else
+                                    {
+                                        <img style="border-radius: 50px !important; width: 100px !important;height: 100px !important" src="~/content/img/userPictures/admin.jpg" alt="user"/>
+
+                                    }
                                 }
                                 else
                                 {
-                                    <img style="border-radius: 50px !important ;"  src="~/content/img/userPictures/admin.jpg" alt="user" />
+                                    <img style="border-radius: 50px !important; width: 100px !important;height: 100px !important" src="~/content/img/userPictures/admin.jpg" alt="user"/>
                                 }
-
+                                
                             </div>
                             <div class="testmonial_author">
                                 <h3>@review.visitorName @review.visitorSurname</h3>
-
-
                                 <p>
                                     @review.comment
                                 </p>

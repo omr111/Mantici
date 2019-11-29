@@ -24,7 +24,7 @@ namespace Mantici.MVCWebUI.Controllers
             //homeModels.Banners = _bannerBll.defaultBannerList();
             homeModels.Services = _serviceBll.defaultServiceList().OrderByDescending(x => x.id).Take(6).ToList();;
             homeModels.menuList = _productBll.ListAll().OrderByDescending(x => x.id).Take(6).ToList();
-            homeModels.menuSliders=_productBll.ListAll();
+            homeModels.menuSliders=_productBll.listTatliMeze(1,4);
             homeModels.company = _company.GetOneWitId(2);
             homeModels.Reviews = _reviewBll.ListAll();
             return View(homeModels);
@@ -33,6 +33,13 @@ namespace Mantici.MVCWebUI.Controllers
         public PartialViewResult slider()
         {
             return PartialView(_bannerBll.defaultBannerList());
+        }
+
+        public PartialViewResult footer()
+        {
+            ViewBag.productToFooter = _productBll.ListAll().OrderByDescending(x => x.id).Take(4);
+            return PartialView(_company.GetOneWitId(2));
+
         }
     }
 }
