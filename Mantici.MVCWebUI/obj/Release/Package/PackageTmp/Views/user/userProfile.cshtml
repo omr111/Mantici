@@ -1,0 +1,447 @@
+﻿@model Mantici.Entities.Models.user
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ayha.Net | Kullanıcı Profil Sayfası</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    @*<link href="~/content/css/userProfile.css" rel="stylesheet" />*@
+    <link href="~/content/css/loginCss/userProfile.css" rel="stylesheet" />
+    @{
+        Html.RenderAction("favicon","Home");
+    }
+</head>
+<body>
+    
+    <div class="container main-secction">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+
+                    <img src="~/content/img/userBanner.png" />
+                </div>
+
+                <div class="row  col-md-12 user-left-part">
+
+                <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+                    <form action="/user/pictureUpdate" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        @Html.TextBoxFor(m => m.id, new { @type = "hidden" })
+                        <div class="row">
+
+                            <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+                                @if (!string.IsNullOrEmpty(Model.userPicturePath))
+                                {
+                                    <img src="@Model.userPicturePath" alt="ayha-net-user" class="rounded-circle">
+                                }
+                                else
+                                {
+                                    <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle">
+                                }
+
+
+                              
+                            </div>
+                            
+                            <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center" style="margin-top:20px;">
+                                <input type="file" name="file" style="margin-top: 30px;" />
+                                <button  class="btn btn-success btn-block follow">Resim Değiştir</button>
+                                <a href="/Home/Index" class="btn btn-success btn-block follow">Anasayfaya Dön</a>
+                            </div>
+                            <div class="row user-detail-row">
+                                <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                    <div class="border"></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+              
+                    <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                        <div class="row profile-right-section-row">
+                        <div class="col-md-12 profile-header">
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                                    <div class="infosaveUser">
+                                        @if (ViewData["userProfileError"] != null)
+                                        {
+
+                                            <div class="col-sm-12">
+
+                                                <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                                                    <span class="badge badge-pill badge-success">Hata</span> @ViewData["userProfileError"].ToString()
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        }
+                      
+                                    </div>
+                                    <script type="text/javascript">
+                                        setTimeout(function () { $('.infosaveUser').hide('slow'); }, 2000);
+                                    </script>
+                                    <h1>@Model.name</h1>
+                                    @if (Model.roleOfUsers.Count > 0)
+                                    {
+                                        string role = "";
+
+                                        foreach (var uye in Model.roleOfUsers)
+                                        {
+                                            role += uye.role.roleName + " ";
+
+                                        }
+                                        <h6>
+                                            @role
+                                        </h6>
+                                    }
+                                    else
+                                    {
+                                        <h6>
+                                            Uye
+                                        </h6>
+                                    }
+
+                                </div>
+
+                            </div>
+                        </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i class="fas fa-user-circle"></i>Kişi Bilgileri</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#buzz" role="tab" data-toggle="tab"><i class="fas fa-info-circle"></i>Profil Güncelle</a>
+                                            </li>
+                                        </ul>
+
+
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                                                <div class="container">
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-4" style="float: left">
+                                                            <label for="nameSurname">Kullanıcı Adı :</label>
+                                                        </div>
+                                                        <div class="col-md-8" style="float: left">
+                                                            <label for="nameSurname" style="margin-bottom: 20px">@Model.name</label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-4" style="float: left">
+                                                            <label for="nameSurname">Adı :</label>
+                                                        </div>
+                                                        <div class="col-md-8" style="float: left">
+                                                            <label for="nameSurname" style="margin-bottom: 20px">@Model.personelName</label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div style="clear: both"></div>
+
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-4" style="float: left">
+                                                            <label for="nameSurname">Soyadı :</label>
+                                                        </div>
+                                                        <div class="col-md-8" style="float: left">
+                                                            <label for="nameSurname" style="margin-bottom: 20px">@Model.surname</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div style="clear: both"></div>
+
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-4" style="float: left">
+                                                            <label for="nameSurname">Email :</label>
+                                                        </div>
+                                                        <div class="col-md-8" style="float: left">
+                                                            <label for="nameSurname" style="margin-bottom: 20px">@Model.email</label>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div style="clear: both"></div>
+
+                                                    <div class="form-group">
+
+                                                        <div class="col-md-4" style="float: left">
+                                                            <label for="nameSurname">Durumu :</label>
+                                                        </div>
+                                                        <div class="col-md-8" style="float: left">
+                                                            @if (Model.isBlock)
+                                                            {
+                                                                <label for="nameSurname" style="margin-bottom: 20px">Yasaklı</label>
+                                                            }
+                                                            else
+                                                            {
+                                                                <label for="nameSurname" style="margin-bottom: 20px">Aktif</label>
+                                                            }
+
+
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                            <div role="tabpanel" class="tab-pane fade" id="buzz">
+                                                <form action="/user/userProfileUpdate" method="post">
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.TextBoxFor(m=>m.id,new{@type="hidden"})
+                                                    @Html.TextBoxFor(m=>m.password,new{@type="hidden"})
+                                                    <div class="container">
+                                                        @Html.ValidationMessageFor(m=>m.name,"",new{@style="color:red"})
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-4" style="float: left">
+                                                                <label for="nameSurname">Kullanıcı Adı :</label>
+                                                            </div>
+
+                                                            <div class="col-md-8" style="float: left">
+                                                                <input class="form-control" name="name" type="text" style="margin-bottom: 20px" value="@Model.name"/>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        @Html.ValidationMessageFor(m => m.personelName, "", new {@style = "color:red"})
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-4" style="float: left">
+                                                                <label for="nameSurname">Adı :</label>
+                                                            </div>
+                                                            <div class="col-md-8" style="float: left">
+
+                                                                <input class="form-control" name="personelName" type="text" style="margin-bottom: 20px" value="@Model.personelName"/>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div style="clear: both"></div>
+                                                        @Html.ValidationMessageFor(m => m.surname, "", new {@style = "color:red"})
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-4" style="float: left">
+                                                                <label for="nameSurname">Soyadı :</label>
+                                                            </div>
+                                                            <div class="col-md-8" style="float: left">
+                                                                <input name="surname" class="form-control" type="text" style="margin-bottom: 20px" value="@Model.surname"/>
+                                                            </div>
+                                                          
+                                                        </div>
+
+                                                        <div style="clear: both"></div>
+                                                        @Html.ValidationMessageFor(m => m.email, "", new { @style = "color:red"})
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-4" style="float: left">
+                                                                <label for="nameSurname">Email :</label>
+                                                            </div>
+                                                            <div class="col-md-8" style="float: left">
+                                                                <input name="email" class="form-control" type="email" style="margin-bottom: 20px" value="@Model.email"/>
+                                                            </div>
+                                                            
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-4" style="float: left">
+                                                                <label for="nameSurname">Yeni Şifre :</label>
+                                                            </div>
+                                                            <div class="col-md-8" style="float: left">
+                                                                <input name="newPass" class="form-control" type="password" style="margin-bottom: 20px"/>
+                                                            </div>
+
+                                                        </div>
+                                                        <div style="clear: both"></div>
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-4" style="float: left">
+                                                                <label for="nameSurname">Durumu :</label>
+                                                            </div>
+                                                            <div class="col-md-8" style="float: left">
+                                                                @if (Model.isBlock)
+                                                                {
+                                                                    <label for="nameSurname" style="margin-bottom: 20px">Yasaklı</label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label for="nameSurname" style="margin-bottom: 20px">Aktif</label>
+                                                                }
+
+
+                                                            </div>
+
+                                                            <input name="newPass" class="btn btn-success" type="submit" style="margin-bottom: 20px;float:right"/>
+
+
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+ 
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    @*<div class="container emp-profile" style="margin-left: 20%">
+
+            <div class="row" style="float: left">
+                <form method="post" action="/user/pictureUpdate" id="formPictureUpdate" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="container">
+                                <div class="profile-img">
+                                    <img src="@Model.userPicturePath" id="myPicture" alt="ayha-net-uye" />
+                                    <div class="file btn btn-lg btn-primary">
+                                        <a style="cursor:pointer">Fotoğraf Değiştir <input type="file" name="file" id="file" /> </a>
+
+
+                                    </div>
+                                    @Html.HiddenFor(m=>m.id)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <button style="margin-left: 30px; margin-top: -20px; width:150px; " class="btn btn-success" type="submit">Değiştir</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <form method="post" id="identityUpdate">
+            <div style="float: left" class="row">
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            @Model.name
+                        </h5>
+                        @if (Model.roleOfUsers.Count > 0)
+                        {
+                            string role = "";
+
+                            foreach (var uye in Model.roleOfUsers)
+                            {
+                                role += uye.role.roleName + " ";
+
+                            }
+                            <h6>
+                                @role
+                            </h6>
+                        }
+                        else
+                        {
+                            <h6>
+                                Uye
+                            </h6>
+                        }
+
+
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active">Üye Bilgileri</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Kullanıcı Adı</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.name</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Ad</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.personelName</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Soyad</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.surname</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.email</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+            <script src="~/content/Scripts/jquery-3.4.1.js"></script>
+            <script src="~/content/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+
+
+
+
+</body>
+</html>

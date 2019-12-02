@@ -11,6 +11,7 @@ using Mantici.Entities.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class roleOfUserController : Controller
     {
         IroleOfUserBll _roleOfUserBll =new roleOfUserBll(new roleOfUserDal());
@@ -35,7 +36,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                         if (isHave == null)
                         {
                             roleOfUser roleOfUsr = new roleOfUser();
-                            roleOfUsr.roleID = 4;//Uye
+                            roleOfUsr.roleID = 6;//Uye
                             roleOfUsr.userID = userId;
                             _roleOfUserBll.Add(roleOfUsr);
                         }

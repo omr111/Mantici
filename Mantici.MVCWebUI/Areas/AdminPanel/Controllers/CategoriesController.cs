@@ -10,6 +10,7 @@ using Mantici.Entities.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class CategoriesController : Controller
     {
         ICategoryBll _categoryBll=new CategoryBll(new CategoryDal());

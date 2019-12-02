@@ -1,0 +1,14 @@
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\Mantici.Bll.dll.config
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\Mantici.Bll.dll
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\Mantici.Bll.pdb
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\EntityFramework.dll
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\EntityFramework.SqlServer.dll
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\Mantici.Dal.dll
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\Mantici.Entities.dll
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\Mantici.Dal.pdb
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\Mantici.Entities.pdb
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\EntityFramework.xml
+D:\omr111-GitHub\Mantici\Mantici.Bll\bin\Release\EntityFramework.SqlServer.xml
+D:\omr111-GitHub\Mantici\Mantici.Bll\obj\Release\Mantici.Bll.csprojResolveAssemblyReference.cache
+D:\omr111-GitHub\Mantici\Mantici.Bll\obj\Release\Mantici.Bll.dll
+D:\omr111-GitHub\Mantici\Mantici.Bll\obj\Release\Mantici.Bll.pdb

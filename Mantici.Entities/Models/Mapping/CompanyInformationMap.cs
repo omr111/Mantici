@@ -32,6 +32,21 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.videoText)
                 .HasMaxLength(100);
 
+            this.Property(t => t.facebookUrl)
+                .HasMaxLength(250);
+
+            this.Property(t => t.youtubeUrl)
+                .HasMaxLength(250);
+
+            this.Property(t => t.InstagramUrl)
+                .HasMaxLength(250);
+
+            this.Property(t => t.twitterUrl)
+                .HasMaxLength(250);
+
+            this.Property(t => t.emailPassword)
+                .HasMaxLength(50);
+
             // Table & Column Mappings
             this.ToTable("CompanyInformations");
             this.Property(t => t.id).HasColumnName("id");
@@ -43,6 +58,11 @@ namespace Mantici.Entities.Models.Mapping
             this.Property(t => t.companyPicturePath).HasColumnName("companyPicturePath");
             this.Property(t => t.videoPath).HasColumnName("videoPath");
             this.Property(t => t.videoText).HasColumnName("videoText");
+            this.Property(t => t.facebookUrl).HasColumnName("facebookUrl");
+            this.Property(t => t.youtubeUrl).HasColumnName("youtubeUrl");
+            this.Property(t => t.InstagramUrl).HasColumnName("InstagramUrl");
+            this.Property(t => t.twitterUrl).HasColumnName("twitterUrl");
+            this.Property(t => t.emailPassword).HasColumnName("emailPassword");
         }
     }
 }

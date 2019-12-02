@@ -32,6 +32,11 @@ namespace Mantici.Bll.Concrete
             return _userDal.GetOne(x => x.name == nick);
         }
 
+        public user GetOneWithMail(string mail)
+        {
+            return _userDal.GetOne(x => x.email == mail);
+        }
+
         public user logIn(string nick, string pass)
         {
             return _userDal.GetOne(x => x.name == nick && x.password == pass);

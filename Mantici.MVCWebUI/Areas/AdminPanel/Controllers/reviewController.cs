@@ -10,6 +10,7 @@ using Mantici.Entities.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class reviewController : Controller
     {
         IreviewBll _reviewBll = new reviewBll(new reviewDal());
@@ -32,7 +33,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                 {
                     return 0;
                 }
-                return 0;
+               
         }
            
         

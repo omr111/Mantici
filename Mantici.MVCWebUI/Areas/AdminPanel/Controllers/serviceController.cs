@@ -10,6 +10,7 @@ using Mantici.Entities.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class serviceController : Controller
     {
         IserviceBll _serviceBll=new serviceBll(new serviceDal());

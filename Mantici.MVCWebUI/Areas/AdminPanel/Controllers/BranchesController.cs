@@ -11,6 +11,7 @@ using Mantici.Entities.Models.Mapping;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class BranchesController : Controller
     {
         IBranchBll _branchBll=new BranchBll(new BranchDal());
@@ -156,7 +157,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                         }
 
                         branch.BranchName = br.BranchName;
-                        branch.area = br.BranchAdress;
+                        branch.area = br.area;
                         branch.city = br.city;
                         branch.email = br.email;
                         branch.BranchAdress = br.BranchAdress;

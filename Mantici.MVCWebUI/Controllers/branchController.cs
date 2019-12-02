@@ -35,7 +35,7 @@ namespace Mantici.MVCWebUI.Controllers
                 if (result)
                 {
                     ViewData["applicationInfo"] = "Başvurunuz Gönderildi.";
-                    return RedirectToAction("branchApplication");
+                    return View("branchApplication");
                 }
                 else
                 {

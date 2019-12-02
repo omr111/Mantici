@@ -13,11 +13,12 @@ namespace Mantici.MVCWebUI.Controllers
 {
     public class aboutController : Controller
     {
-      
+      ICompanyInformationBll _companyInformationBll =new CompanyInformationBll(new CompanyInformationDal());
        // GET: about
         public ActionResult Index()
         {
-            return View();
+
+            return View(_companyInformationBll.GetOneWitId(2));
         }
       
 

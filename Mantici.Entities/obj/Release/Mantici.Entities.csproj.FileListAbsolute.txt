@@ -1,0 +1,9 @@
+D:\omr111-GitHub\Mantici\Mantici.Entities\bin\Release\Mantici.Entities.dll.config
+D:\omr111-GitHub\Mantici\Mantici.Entities\bin\Release\Mantici.Entities.dll
+D:\omr111-GitHub\Mantici\Mantici.Entities\bin\Release\Mantici.Entities.pdb
+D:\omr111-GitHub\Mantici\Mantici.Entities\bin\Release\EntityFramework.dll
+D:\omr111-GitHub\Mantici\Mantici.Entities\bin\Release\EntityFramework.SqlServer.dll
+D:\omr111-GitHub\Mantici\Mantici.Entities\bin\Release\EntityFramework.xml
+D:\omr111-GitHub\Mantici\Mantici.Entities\bin\Release\EntityFramework.SqlServer.xml
+D:\omr111-GitHub\Mantici\Mantici.Entities\obj\Release\Mantici.Entities.dll
+D:\omr111-GitHub\Mantici\Mantici.Entities\obj\Release\Mantici.Entities.pdb

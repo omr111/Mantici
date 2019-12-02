@@ -17,6 +17,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
         IProductBll _productBll=new ProductBll(new ProductDal());
         IBranchBll _branchBll=new BranchBll(new BranchDal());
         IrezervationBll _rezervationBll=new rezervationBll(new rezervationDal());
+        ICompanyInformationBll _company=new CompanyInformationBll(new CompanyInformationDal());
         // GET: AdminPanel/Home
         public ActionResult Index()
         {
@@ -28,6 +29,10 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             adminIndex.Users = _userBll.ListAll();
             adminIndex.managementTeam = _userBll.managementTeam("Uye");
             return View(adminIndex);
+        }
+        public PartialViewResult favicon()
+        {
+            return PartialView(_company.GetOneWitId(2));
         }
     }
 }

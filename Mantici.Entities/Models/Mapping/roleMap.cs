@@ -13,8 +13,7 @@ namespace Mantici.Entities.Models.Mapping
             // Properties
             this.Property(t => t.roleName)
                 .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .HasMaxLength(50);
 
             // Table & Column Mappings
             this.ToTable("roles");

@@ -1,0 +1,132 @@
+﻿@model Mantici.Entities.Models.rezervation
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="col-md-12">
+
+        <h2 class="form-title" style="margin-top: 30px; color:#78b454;">İŞ ORTAKLIĞI SİSTEMİMİZ</h2>
+        <h4 class="form-title" style="text-align: center">Güvenilir ve saygın yatırımcılara kapımız her zaman açık.</h4>
+        <img src="~/content/img/reservation.png" style="margin-left: 42%;width: 200px; height: 150px;margin-top: 20px; margin-bottom: 20px;" alt="ayha.net-reservation"/>
+
+        <div class="infoReservation">
+            @if (ViewData["reservationInfo"] != null)
+            {
+                if (ViewData["reservationInfo"].ToString() == "Rezervasyon Sırasında Bir Hata Meydana Geldi. Lütfen Tekrar Deneyiniz.")
+                {
+                    <div class="col-sm-12">
+
+                        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                            <span class="badge badge-pill badge-success">Hata</span> @ViewData["reservationInfo"].ToString()
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-sm-12">
+
+                        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                            <span class="badge badge-pill badge-success">Başarılı</span> @ViewData["reservationInfo"].ToString()
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                }
+            }
+            <script type="text/javascript">
+                setTimeout(function () { $('.infoReservation').hide('slow'); }, 2000);
+            </script>
+        </div>
+
+        <form method="POST" action="/reservation/Index">
+            @Html.AntiForgeryToken()
+            <div class="container">
+                <div class="form-group">
+
+                    <label for="nameSurname"><i style="font-size: 20px; color:#78b454;" class="fa fa-user "></i> </label>
+                    <input style="height: 40px; margin-bottom: 20px; " maxlength="70" type="text" class="col-md-10" name="CustomerName" id="nameSurname" placeholder="Ad..." />
+
+                </div>
+                @Html.ValidationMessageFor(m => m.CustomerName, "", new { @style = "color:red" })
+                <div class="form-group">
+
+                    <label for="nameSurname"><i style="font-size: 20px; color:#78b454;" class="fa fa-user "></i> </label>
+                    <input style="height: 40px; margin-bottom: 20px; " maxlength="70" type="text" class="col-md-10" name="surname" id="nameSurname" placeholder="Soyad..." />
+
+                </div>
+                @Html.ValidationMessageFor(m => m.surname, "", new { @style = "color:red" })
+                <div class="form-group">
+
+                    <label for="phoneNo"><i style="font-size: 20px; color:#78b454;" class="fa fa-phone "></i> </label>
+                    <input style="height: 40px; margin-bottom: 20px; " maxlength="11" type="text" class="col-md-10" name="phoneNo" id="phoneNo" placeholder="Telefon Numarası..." />
+
+                </div>
+                @Html.ValidationMessageFor(m => m.phoneNo, "", new { @style = "color:red" })
+                <div class="form-group">
+
+                    <label for="personCount"><i style="font-size: 20px; color:#78b454;" class="fa fa-user "></i> </label>
+                    <input style="height: 40px; margin-bottom: 20px; " type="number" maxlength="11" class="col-md-10" name="personCount" id="personCount" placeholder="Kişi Sayısı..." />
+
+                </div>
+                @Html.ValidationMessageFor(m => m.personCount, "", new { @style = "color:red" })
+                <div class="form-group">
+
+                    <label for="datetime"><i style="font-size: 20px; color:#78b454;" class="far fa-calendar-alt"></i> </label>
+                    @*<div class="container">
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>*@
+                 
+                    <input style="height: 40px; margin-bottom: 20px; " data-format="dd/MM/yyyy hh:mm:ss" type="datetime-local" class="col-md-10" id="datetime" maxlength="250" name="rezerveDate" placeholder="Rezervasyon Tarihi..." />
+
+                </div>
+                @Html.ValidationMessageFor(m => m.rezerveDate, "", new { @style = "color:red" })
+                <i style="font-size: 20px; color:#78b454;" class="far fa-comments"></i>
+                <div class="form-group">
+
+                    <label for="message"></label>
+                    <textarea cols="5" rows="7" class="col-md-10" maxlength="500" name="description" id="message" placeholder="Lütfen Mesajınızı Yazınız..."></textarea>
+
+                </div>
+                @Html.ValidationMessageFor(m => m.description, "", new { @style = "color:red" })
+                <div class="form-group">
+
+                    <input type="submit" value="Gönder" class="btn btn-success" />
+
+                </div>
+            </div>
+
+        </form>
+       
+    </div>
+
+
+
+</div>
+@*<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" />
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>*@

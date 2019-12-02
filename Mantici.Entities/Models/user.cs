@@ -23,7 +23,7 @@ namespace Mantici.Entities.Models
         [Required(ErrorMessage = "Bu alan boþ geçilemez."), MaxLength(50, ErrorMessage = "En fazla 50 karakter girebilirsiniz.")]
         public string surname { get; set; }
 
-        [Required(ErrorMessage = "Bu alan boþ geçilemez."), MaxLength(50, ErrorMessage = "En fazla 50 karakter girebilirsiniz."),EmailAddress(ErrorMessage = "Geçerli bir mail adresi giriniz.")]
+        [Required(ErrorMessage = "Bu alan boþ geçilemez."), MaxLength(50, ErrorMessage = "En fazla 50 karakter girebilirsiniz."), EmailAddress(ErrorMessage = "Geçerli bir mail adresi giriniz.")]
         public string email { get; set; }
 
         [Required(ErrorMessage = "Bu alan boþ geçilemez."), MaxLength(20, ErrorMessage = "En fazla 20 karakter girebilirsiniz.")]

@@ -10,6 +10,7 @@ using Mantici.Entities.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class reservationController : Controller
     {
         IrezervationBll _rezervationBll=new rezervationBll(new rezervationDal());

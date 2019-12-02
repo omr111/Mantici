@@ -13,6 +13,7 @@ using System.IO;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class pictureController : Controller
     {
         // GET: AdminPanel/picture

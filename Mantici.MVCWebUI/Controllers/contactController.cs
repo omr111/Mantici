@@ -14,13 +14,14 @@ using System.Text;
 
 namespace Mantici.MVCWebUI.Controllers
 {
+    [AllowAnonymous]
     public class contactController : Controller
     {
         // GET: contact
         ICompanyInformationBll _companyInformation=new CompanyInformationBll(new CompanyInformationDal());
         IuserBll _userBll=new userBll(new userDal());
         private IreviewBll _reviewBll = new reviewBll(new reviewDal());
-        // GET: about
+        
         public ActionResult Index()
         {
             contactModel model = new contactModel();
@@ -42,18 +43,26 @@ namespace Mantici.MVCWebUI.Controllers
         [HttpPost]
         public ActionResult sendMail(review review,string selection)
         {
+           
             try
             {
                 if (ModelState.IsValid)
                 {
                     if (selection == "Email Gönder")
                     {
+                        CompanyInformation company = _companyInformation.GetOneWitId(2);
+
+                      
+                  
+                        // mail adresi ve şifresi ne ise adminpanelden company information'dan mail ve şifreyi de aynısını yapmalı!
                         var senderEmail = new MailAddress(review.email.Trim(), "");
-                        var receivereEmail = new MailAddress("iletisim@ayha.net", "Receiver");
-                        var password = "SiFre34";
+                        var receivereEmail = new MailAddress(company.email.Trim(), "Receiver");
+                        var password = company.emailPassword.Trim();
+                      
                         var sub = review.subject;
                         var body = review.comment;
                         var smtp = new SmtpClient
+                          
                         {
                             Timeout = 10000,
                             Host = "mail.ayha.net",

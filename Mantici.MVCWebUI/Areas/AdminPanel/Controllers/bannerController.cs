@@ -13,6 +13,7 @@ using System.IO;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class bannerController : Controller
     {
         IbannerBll _bannerBll=new bannerBll(new bannerDal());

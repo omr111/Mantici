@@ -23,10 +23,10 @@ namespace Mantici.Entities.Models
 
         public string description { get; set; }
 
-    
+
         public string coverPicturePath { get; set; }
 
-      
+
         public string pictureAlt { get; set; }
         [Required(ErrorMessage = "Bu alan boþ geçilemez.")]
         public int categoryID { get; set; }

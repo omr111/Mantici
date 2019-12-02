@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "serviceUpdate";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+@model  Mantici.Entities.Models.service
+<div id="errorOfService">
+    @if (TempData["serviceUpdateError"]!=null)
+    {
+        <div class="col-sm-12">
+
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-success">Hata</span> @TempData["serviceUpdateError"].ToString()
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    }
+   
+</div>
+<script type="text/javascript">
+    setTimeout(function () { $('#errorOfService').hide('slow'); }, 5000);
+</script>
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+
+            @using (Html.BeginForm("serviceUpdate", "service", FormMethod.Post, new {enctype = "multipart/form-data"}))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Hizmet Giriş</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <div class="form-group">
+                                    <label class=" form-control-label">Hizmet Başlık</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
+                                        <input type="text" value="@Model.serviceName" name="serviceName" class="form-control" maxlength="99" required="Lütfen bir servis başlığı giriniz.">
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Hizmet Açıklama</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
+                                        <textarea type="text" name="serviceInfo" class="form-control" maxlength="254" required="Lütfen bir açıklama giriniz.">@Model.serviceInfo</textarea>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body card-block">
+
+
+                                <div class="form-group">
+                                    <label class=" form-control-label">Icon</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
+                                        <input class="form-control" type="file" name="file">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <input type="submit" value="Onayla" class="btn btn-success" style="float: right"/>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div><!--row end-->
+            }
+        </div><!-- .animated -->
+    </div>
+    <!-- .content -->
+

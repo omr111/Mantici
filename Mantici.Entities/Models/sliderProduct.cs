@@ -7,6 +7,5 @@ namespace Mantici.Entities.Models
     {
         public int id { get; set; }
         public int productId { get; set; }
-        public virtual Product Product { get; set; }
     }
 }

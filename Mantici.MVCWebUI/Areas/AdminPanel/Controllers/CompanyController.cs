@@ -16,6 +16,7 @@ using Image = System.Drawing.Image;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class CompanyController : Controller
     {
         IPhoneBll _phoneBll=new PhoneBll(new PhoneDal());
@@ -89,6 +90,14 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
                     company.videoPath = comInfo.videoPath;
                     company.videoText = comInfo.videoText;
                     company.videoText = comInfo.videoText;
+                    company.InstagramUrl = comInfo.InstagramUrl;
+                    company.facebookUrl = comInfo.facebookUrl;
+                    company.youtubeUrl = comInfo.youtubeUrl;
+                    company.twitterUrl = comInfo.twitterUrl;
+                    if (comInfo.emailPassword != "")
+                    {
+                        company.emailPassword = comInfo.emailPassword;
+                    }
                 
 
                    

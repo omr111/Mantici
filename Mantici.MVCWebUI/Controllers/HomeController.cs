@@ -23,8 +23,8 @@ namespace Mantici.MVCWebUI.Controllers
             HomeModels homeModels=new HomeModels();
             //homeModels.Banners = _bannerBll.defaultBannerList();
             homeModels.Services = _serviceBll.defaultServiceList().OrderByDescending(x => x.id).Take(6).ToList();;
-            homeModels.menuList = _productBll.ListAll().OrderByDescending(x => x.id).Take(6).ToList();
-            homeModels.menuSliders=_productBll.listTatliMeze(1,4);
+            homeModels.menuList = _productBll.ListAll().Take(6).ToList();
+            homeModels.menuSliders=_productBll.ListAll().OrderByDescending(x => x.id).ToList();;
             homeModels.company = _company.GetOneWitId(2);
             homeModels.Reviews = _reviewBll.ListAll();
             return View(homeModels);
@@ -40,6 +40,21 @@ namespace Mantici.MVCWebUI.Controllers
             ViewBag.productToFooter = _productBll.ListAll().OrderByDescending(x => x.id).Take(4);
             return PartialView(_company.GetOneWitId(2));
 
+        }
+
+        public PartialViewResult logo()
+        {
+            return PartialView(_company.GetOneWitId(2));
+        }
+
+        public PartialViewResult MobilLogo()
+        {
+            return PartialView(_company.GetOneWitId(2));
+        }
+
+        public PartialViewResult favicon()
+        {
+            return PartialView(_company.GetOneWitId(2));
         }
     }
 }

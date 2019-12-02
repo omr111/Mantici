@@ -11,6 +11,7 @@ using Mantici.MVCWebUI.Areas.AdminPanel.Models;
 
 namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class productController : Controller
     {
         ICategoryBll _categoryBll=new CategoryBll(new CategoryDal());

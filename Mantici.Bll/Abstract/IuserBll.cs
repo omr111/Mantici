@@ -11,6 +11,7 @@ namespace Mantici.Bll.Abstract
         List<user> managementTeam(string userRole);
         user GetOne(int id);
         user GetOneWithNick(string nick);
+        user GetOneWithMail(string mail);
         user logIn(string nick, string pass);
         bool Add(user user);
         bool Update(user user);
