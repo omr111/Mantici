@@ -24,11 +24,20 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
 
         public static string IconAddForService(HttpPostedFileBase file, HttpContextBase context)
         {
-
+            
             int iconWidth = settings.serviceIconSize.Width;
             int iconHeight = settings.serviceIconSize.Height;
+            string newName = "";
+            if (file.FileName.Length>10)
+            {
 
-            string newName = Path.GetFileNameWithoutExtension(file.FileName) + Path.GetExtension(file.FileName);
+                newName = Path.GetFileNameWithoutExtension(file.FileName.Substring(0, 10)) + Guid.NewGuid() + Path.GetExtension(file.FileName);
+            }
+            else
+            {
+                newName = Path.GetFileNameWithoutExtension(file.FileName)+Guid.NewGuid() + Path.GetExtension(file.FileName);
+            }
+            
             Image orjResim = Image.FromStream(file.InputStream);
             Bitmap iconDraw = new Bitmap(orjResim, iconWidth, iconHeight);
 
@@ -45,7 +54,17 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             int picSmallWidth = settings.productPictureSize.Width;
             int picSmallHeight = settings.productPictureSize.Height;
 
-            string newName = Path.GetFileNameWithoutExtension(file.FileName) + Path.GetExtension(file.FileName);
+            string newName = "";
+            if (file.FileName.Length > 10)
+            {
+
+                newName = Path.GetFileNameWithoutExtension(file.FileName.Substring(0, 10)) + Guid.NewGuid() + Path.GetExtension(file.FileName);
+            }
+            else
+            {
+                newName = Path.GetFileNameWithoutExtension(file.FileName) + Guid.NewGuid() + Path.GetExtension(file.FileName);
+            }
+
             Image orjResim = Image.FromStream(file.InputStream);
             Bitmap pictureSmallDraw = new Bitmap(orjResim, picSmallWidth, picSmallHeight);
 
@@ -61,8 +80,18 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
            
             int picSmallWidth = settings.BranchSmallSize.Width;
             int picSmallHeight = settings.BranchSmallSize.Height;
-         
-            string newName = Path.GetFileNameWithoutExtension(file.FileName)  + Path.GetExtension(file.FileName);
+
+            string newName = "";
+            if (file.FileName.Length > 10)
+            {
+
+                newName = Path.GetFileNameWithoutExtension(file.FileName.Substring(0, 10)) + Guid.NewGuid() + Path.GetExtension(file.FileName);
+            }
+            else
+            {
+                newName = Path.GetFileNameWithoutExtension(file.FileName) + Guid.NewGuid() + Path.GetExtension(file.FileName);
+            }
+
             Image orjResim = Image.FromStream(file.InputStream);
             Bitmap pictureSmallDraw = new Bitmap(orjResim, picSmallWidth, picSmallHeight);
            

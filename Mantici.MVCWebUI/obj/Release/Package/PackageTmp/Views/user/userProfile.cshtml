@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>ayha.Net | Kullanıcı Profil Sayfası</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     @*<link href="~/content/css/userProfile.css" rel="stylesheet" />*@
     <link href="~/content/css/loginCss/userProfile.css" rel="stylesheet" />
     @{
@@ -321,126 +321,10 @@
         </div>
  
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-    @*<div class="container emp-profile" style="margin-left: 20%">
-
-            <div class="row" style="float: left">
-                <form method="post" action="/user/pictureUpdate" id="formPictureUpdate" enctype="multipart/form-data">
-                    @Html.AntiForgeryToken()
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="container">
-                                <div class="profile-img">
-                                    <img src="@Model.userPicturePath" id="myPicture" alt="ayha-net-uye" />
-                                    <div class="file btn btn-lg btn-primary">
-                                        <a style="cursor:pointer">Fotoğraf Değiştir <input type="file" name="file" id="file" /> </a>
-
-
-                                    </div>
-                                    @Html.HiddenFor(m=>m.id)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <button style="margin-left: 30px; margin-top: -20px; width:150px; " class="btn btn-success" type="submit">Değiştir</button>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-            <form method="post" id="identityUpdate">
-            <div style="float: left" class="row">
-                <div class="col-md-6">
-                    <div class="profile-head">
-                        <h5>
-                            @Model.name
-                        </h5>
-                        @if (Model.roleOfUsers.Count > 0)
-                        {
-                            string role = "";
-
-                            foreach (var uye in Model.roleOfUsers)
-                            {
-                                role += uye.role.roleName + " ";
-
-                            }
-                            <h6>
-                                @role
-                            </h6>
-                        }
-                        else
-                        {
-                            <h6>
-                                Uye
-                            </h6>
-                        }
-
-
-
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active">Üye Bilgileri</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                </div>
-                <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Kullanıcı Adı</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Model.name</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Ad</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Model.personelName</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Soyad</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Model.surname</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Email</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Model.email</p>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            </form>
-        </div>
-
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-            <script src="~/content/Scripts/jquery-3.4.1.js"></script>
-            <script src="~/content/Scripts/jquery.unobtrusive-ajax.js"></script>*@
-
-
+   
 
 
 </body>

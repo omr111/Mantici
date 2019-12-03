@@ -1,0 +1,172 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>ayha.net | Taze, Doğal, Hızlı ve Ekonomik</title>
+    <meta name="description" content="Taze, doğal, hızlı ve ekonomik bir yemek deneyimi için hizmetinizdeyiz. Porsiyon ve paketli ürünlerimize göz atmak için sayfamıza bekleriz.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Ayha, restoran, yemek, mantı, lezzet, taze, doğal, kahvaltı" />
+    <meta name="robots" content="Ayha, restoran, yemek, mantı, lezzet, taze, doğal, kahvaltı" />
+    <meta name="googlebot" content="Ayha, restoran, yemek, mantı, lezzet, taze, doğal, kahvaltı" />
+   
+    @{
+        Html.RenderAction("favicon","Home");
+    }
+    <!-- Place favicon.ico in the root directory -->
+    <!-- CSS here -->
+  
+   
+   
+    <link href="~/content/css/bootstrap.min.css" rel="stylesheet" />
+
+    @RenderSection("css", false)
+
+    <link href="~/content/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/content/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/content/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/content/css/nice-select.css" rel="stylesheet" />
+    <link href="~/content/css/flaticon.css" rel="stylesheet" />
+    <link href="~/content/css/animate.css" rel="stylesheet" />
+    <link href="~/content/css/slicknav.css" rel="stylesheet" />
+    <link href="~/content/css/style.css" rel="stylesheet" />
+    <link href="~/content/patocss/util.css" rel="stylesheet" />
+    <link href="~/content/patocss/main.css" rel="stylesheet" />
+    
+   
+    <link href="~/content/css/sliderCss.css" rel="stylesheet" />
+    <link href="~/content/css/loginCss/sliderCss2.css" rel="stylesheet" />
+  
+    <link href="~/content/css/footerCss.css" rel="stylesheet" />
+
+  
+</head>
+
+<body>
+
+<header>
+  
+    <div class="header-area">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container col-md-12">
+                <div class="row align-items-center">
+                    <div class="col-xl-10 col-lg-10">
+                        <div class="main-menu d-none d-lg-block">
+                            <nav>
+                                <ul class="mein_menu_list" id="navigation">
+                                    <li style="right: 5px;"><a href="/Home/Index">Anasayfa</a></li>
+                                    <li style="right: 5px;"><a href="/menu/Index">Menü</a></li>
+
+                                    <li style="right: 5px;"><a href="/about/Index">Hakkımızda</a></li>
+                                    <li style="right: 5px;"><a href="/Branch/BranchApplication">Bayi Başvuru form</a></li>
+                                    @{
+                                        Html.RenderAction("logo","Home");
+                                    }
+                                    <li style="left: 10px">
+                                        <a href="/branch/Index">Bayiler</a>
+                                    </li>
+
+                                    <li style="left: 10px">
+                                        <a href="/contact/Index">İletişim</a>
+
+                                    </li>
+                                    <li style="left: 10px"><a href="/services/Index">Hizmetler</a></li>
+                                    @if (User.Identity.IsAuthenticated == false)
+                                    {
+                                        <li><a href="/user/Index">Giriş</a></li>
+
+
+                                    }
+                                    else
+                                    {
+                                        <li style="left: 10px">
+                                            <a href="#">@User.Identity.Name</a>
+                                            <ul class="submenu">
+                                                <li><a href="/user/userProfile">Profil</a></li>
+                                                <li><a href="/user/logOut">Çıkış</a></li>
+                                            </ul>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 d-none d-lg-block">
+                        <div class="custom_order">
+                            <a href="/Reservation/Index" class="boxed_btn_white" style="background-color: #78b454 !important;margin-left: 10px;">Rezervasyon</a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                    @{
+                        Html.RenderAction("MobilLogo","Home");
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+@{
+    Html.RenderAction("slider","Home");
+}
+    <!-- header-end -->
+    @RenderBody()
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    @{
+        Html.RenderAction("footer","Home");
+    }
+   
+<!-- JS here -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+@*<script src="~/content/Scripts/jquery-3.4.1.min.js"></script>*@
+    <script src="~/content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/content/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="~/content/js/popper.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    @*<script src="~/content/js/bootstrap.min.js"></script>*@
+    <script src="~/content/js/owl.carousel.min.js"></script>
+    <script src="~/content/js/isotope.pkgd.min.js"></script>
+    <script src="~/content/js/ajax-form.js"></script>
+    <script src="~/content/js/waypoints.min.js"></script>
+    <script src="~/content/js/jquery.counterup.min.js"></script>
+    <script src="~/content/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/content/js/scrollIt.js"></script>
+    <script src="~/content/js/jquery.scrollUp.min.js"></script>
+    <script src="~/content/js/wow.min.js"></script>
+    <script src="~/content/js/nice-select.min.js"></script>
+    <script src="~/content/js/jquery.slicknav.min.js"></script>
+    <script src="~/content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/content/js/plugins.js"></script>
+ 
+
+
+    <!--contact js-->
+ 
+    <script src="~/content/js/jquery.ajaxchimp.min.js"></script>
+    @*<script src="~/content/js/jquery.form.js"></script>
+    <script src="~/content/js/jquery.validate.min.js"></script>
+   *@
+    <script src="~/content/js/main.js"></script>
+    @RenderSection("js", false)
+
+
+   
+    <script src="~/content/js/slick.js"></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>*@
+<script src="~/content/js/sliderJs.js"></script>
+
+
+
+</body>
+
+</html>

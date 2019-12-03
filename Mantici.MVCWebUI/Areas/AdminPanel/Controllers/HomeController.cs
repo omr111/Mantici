@@ -28,6 +28,7 @@ namespace Mantici.MVCWebUI.Areas.AdminPanel.Controllers
             adminIndex.defaultReservations = _rezervationBll.ListAll();
             adminIndex.Users = _userBll.ListAll();
             adminIndex.managementTeam = _userBll.managementTeam("Uye");
+            ViewBag.OnlineVisitor = HttpContext.Application["visitor"];
             return View(adminIndex);
         }
         public PartialViewResult favicon()

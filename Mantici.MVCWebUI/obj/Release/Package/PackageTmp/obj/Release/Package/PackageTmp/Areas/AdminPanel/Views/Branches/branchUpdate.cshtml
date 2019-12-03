@@ -1,0 +1,261 @@
+﻿@model Mantici.Entities.Models.Branch
+
+@{
+    ViewBag.Title = "branchUpdate";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+@*@using(Html.BeginForm("branchUpdate","Branches",FormMethod.Post, new{enctype="multipart/form-data"}))
+{*@ 
+<form action="/AdminPanel/Branches/branchUpdate" method="post" enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+
+    <!-- content-->
+    <div id="numaraUyari"></div>
+    <div id="errorOfbranch">
+        @if (ViewData["branchUpdateError"] != null)
+        {
+            <div class="col-sm-12">
+
+                <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                    <span class="badge badge-pill badge-success">Hata</span> @ViewData["branchUpdateError"].ToString()
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        }
+
+    </div>
+    <script type="text/javascript">
+        setTimeout(function () { $('#errorOfbranch').hide('slow'); }, 5000);
+    </script>
+
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Ürün Giriş</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label class=" form-control-label">Bayi Adı</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
+                                    @*<input type="text" name="BranchName" value="@Model.BranchName" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.BranchName,new{@class="form-control"})
+                                    @Html.HiddenFor(m=>m.id)
+                                </div>
+                                @Html.ValidationMessageFor(m => m.BranchName, "", new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Bölge</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
+                                    @*<input type="text" name="area" value="@Model.area" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.area,new{@class="form-control"})
+                                </div>
+                                @Html.ValidationMessageFor(m => m.area, "", new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Şehir</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
+                                    @*<input type="text" name="city" value="@Model.city" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.city,new{@class="form-control"})
+                                </div>
+                                @Html.ValidationMessageFor(m => m.city, "", new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Adres</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-address-book"></i></div>
+                                    @*<input type="text" name="BranchAdress" value="@Model.BranchAdress" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.BranchAdress,new{@class="form-control"})
+                                </div>
+                                @Html.ValidationMessageFor(m => m.BranchAdress, "", new { @style = "color:red" })
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-body card-block">
+
+                            <div class="form-group">
+                                <label class=" form-control-label">Telefon</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+
+                                    <input style="margin-left: 10px; margin-top: 4px" list="browsers" id="selectedPhone" name="browser" maxlength="11" type="tel">
+
+                                    <datalist id="browsers">
+                                        @if (Model.BranchPhones.Count > 0)
+                                        {
+                                            foreach (var phone in Model.BranchPhones)
+                                            {
+                                                <option value="@phone.BranchPhone1"></option>
+
+                                            }
+                                        }
+                                    </datalist>
+                                    <a style=" margin-left: 5px" class="btn btn-success numSave" data-id="@Model.id"><i class="fa fa-plus" title="Telefon Ekle"></i></a>
+                                    <a style="margin-left: 5px" class="btn btn-danger numDelete" data-id="@Model.id"><i class="fa fa-trash" title="Telefon Sil"></i></a>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">E-mail</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    @*<input type="email" name="email" value="@Model.email" class="form-control">*@
+                                    @Html.TextBoxFor(m=>m.email,new{@class="form-control"})
+                                </div>
+                                @Html.ValidationMessageFor(m=>m.email,"",new{@style="color:red"})
+                            </div>
+
+                            <div class="form-group">
+                                <label class=" form-control-label">Resim</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-file"></i></div>
+                                    @Html.TextBox("file","file",new{@type="file", @class="form-control"})
+                                    @*<input class="form-control" type="file" name="file" placeholder="Resim düzenlemek istemiyorsanız burayı boş bırakın !">*@
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <input type="submit" value="Onayla" class="btn btn-success onayla" style="float: right" />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div><!--row end-->
+
+        </div><!-- .animated -->
+
+    </div>
+
+    <!-- .content -->
+
+</form>
+
+@section js{
+    <!--Numara Kayıt Etme-->
+    <script type="text/javascript">
+        var mesaj = "";
+
+        function failOk(m) {
+            var okFail = '<div class="col-sm-12">';
+            okFail += '<div class="alert  alert-danger alert-dismissible fade show" role="alert">';
+            okFail += ' <span class="badge badge-pill badge-success">Hata</span>' + mesaj;
+            okFail += ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+            okFail += '<span aria-hidden="true">&times;</span>';
+            okFail += '</button>';
+            okFail += '</div>';
+            okFail += ' </div>';
+            return okFail;
+        }
+
+        function ok(m) {
+            var ok = '<div class="col-sm-12">';
+            ok += '<div class="alert  alert-success alert-dismissible fade show" role="alert">';
+            ok += ' <span class="badge badge-pill badge-success">Başarılı</span>' + m;
+            ok += ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+            ok += '<span aria-hidden="true">&times;</span>';
+            ok += '</button>';
+            ok += '</div>';
+            ok += ' </div>';
+            return ok;
+        }
+
+        $(".numSave").click(function() {
+            var selectedPhone = $("#selectedPhone").val();
+            var companyId = $(this).data("id");
+
+
+            $.ajax({
+                url: "/AdminPanel/Branches/phoneAdd",
+                type: "POST",
+                data: { selectedPhone: selectedPhone, companyId: companyId },
+                success: function(data) {
+
+                    if (data != "") {
+                        var newElement = new Option(data);
+                        $("#browsers").append(newElement);
+                        $("#selectedPhone").val("");
+                        mesaj = "Telefon Numarası Başarıyla Eklendi !";
+                        $("#numaraUyari").html(ok(mesaj));
+                        setTimeout(function() { $('#numaraUyari').hide('slow'); }, 5000);
+                    } else {
+                        mesaj = "Telefon Numarası Ekleme Sırasında Bir Hata Meydana Geldi !";
+                        $("#numaraUyari").html(failOk(mesaj));
+
+                        setTimeout(function() { $('#numaraUyari').hide('slow'); }, 5000);
+                    }
+                },
+                error: function() {
+                    mesaj = "Telefon Numarası Ekleme Sırasında Bir Hata Meydana Geldi !";
+                    $("#numaraUyari").html(failOk(mesaj));
+
+                    setTimeout(function() { $('#numaraUyari').hide('slow'); }, 5000);
+                }
+            });
+
+
+        });
+
+    </script>
+    <!--Numara Silme-->
+    <script type="text/javascript">
+
+        $(".numDelete").click(function() {
+            var companyId = $(this).data("id");
+            var selectedPhone = $("#selectedPhone").val();
+         
+
+            $.ajax({
+                url: "/AdminPanel/Branches/phoneDelete",
+                type: "POST",
+                data: { selectedPhone: selectedPhone, companyId: companyId },
+                success: function(data) {
+
+                    if (data != null) {
+                        mesaj = "Telefon Numarasın Başarıyla Silindi !";
+
+                        document.location.replace("/AdminPanel/Branches/branchUpdate/"+companyId);
+                     
+
+                        $("#numaraUyari").html(ok(mesaj));
+                        setTimeout(function() { $('#numaraUyari').hide('slow'); }, 5000);
+                    } else {
+                        mesaj = "Telefon Numarası Silme Sırasında Bir Hata Meydana Geldi !";
+                        $("#numaraUyari").html(failOk(mesaj));
+
+                        setTimeout(function() { $('#numaraUyari').hide('slow'); }, 5000);
+                    }
+                },
+                error: function(data) {
+                    mesaj = "Telefon Numarası Silme Sırasında Bir Hata Meydana Geldi !";
+                    $("#numaraUyari").html(failOk(mesaj));
+                    setTimeout(function() { $('#numaraUyari').hide('slow'); }, 5000);
+                }
+            });
+
+
+        });
+    </script>
+}

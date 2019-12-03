@@ -1,0 +1,155 @@
+﻿@model Mantici.Entities.Models.Branch
+@{
+    ViewBag.Title = "branchAdd";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_adminLayout.cshtml";
+}
+
+@*@using (Html.BeginForm("branchAdd", "Branches", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{*@
+<form action="/AdminPanel/Branches/branchAdd" method="post" id="formBranches"  enctype="multipart/form-data">
+ @Html.AntiForgeryToken()
+
+        <!-- content-->
+        <div class="infosaveUser">
+            @if (ViewData["branchAddingError"] != null)
+            {
+        
+                <div class="col-sm-12">
+
+                    <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                        <span class="badge badge-pill badge-success">Hata</span> @ViewData["branchAddingError"].ToString()
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Bayi Giriş</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <div class="form-group">
+                                    <label class=" form-control-label">Bayi Adı</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa icofont-fast-food"></i></div>
+                                        @*<input type="text" name="BranchName" class="form-control">*@
+                                       @Html.TextBoxFor(m => m.BranchName, new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m=>m.BranchName,"",new{@style="color:red"})
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Bölge</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
+                                        @*<input type="text" name="area" class="form-control">*@
+                                        @Html.TextBoxFor(m => m.area, new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.area, "", new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Şehir</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-audio-description"></i></div>
+                                        @*<input type="text" name="city" class="form-control">*@
+                                        @Html.TextBoxFor(m => m.city, new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.city, "", new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Adres</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-address-book"></i></div>
+                                        @*<input type="text" name="BranchAdress" class="form-control">*@
+                                        @Html.TextBoxFor(m => m.BranchAdress, new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.BranchAdress, "", new { @style = "color:red" })
+                                </div>
+
+                             
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-body card-block">
+
+
+                                <div class="form-group">
+                                    <label class=" form-control-label">Telefon 1</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                        <input type="text" name="BranchPhone1" class="form-control phone1" maxlength="11" />
+                                      
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Telefon 2</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                        <input type="text" name="BranchPhone1" class="form-control phone2" maxlength="11" />
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Telefon 3</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                        <input type="text" name="BranchPhone1" class="form-control phone3" maxlength="11" />
+
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class=" form-control-label">Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                        @*<input class="form-control" type="email" name="email">*@
+                                        @Html.TextBoxFor(m => m.email, new {@class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.email, "", new { @style = "color:red" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label class=" form-control-label">Resim</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
+                                        @*<input class="form-control" type="file" name="file">*@
+                                        @Html.TextBox("file","file", new {@type="file", @class = "form-control" })
+                                    </div>
+                                    
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <input type="submit" value="Onayla" class="btn btn-success onayla" style="float: right" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div><!--row end-->
+
+
+
+
+
+            </div><!-- .animated -->
+
+        </div>
+
+        <!-- .content -->
+
+</form>

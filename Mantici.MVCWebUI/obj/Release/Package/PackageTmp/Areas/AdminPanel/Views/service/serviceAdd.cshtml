@@ -53,7 +53,7 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-file"></i></div>
                                     @*<input class="form-control" type="file" name="file">*@
-                                    @Html.TextBoxFor(m=>m.serviceIcon,new {type="file",@class="form-control"})
+                                    <input type="file" class="form-control" name="file"/>
                                 </div>
                                 @Html.ValidationMessageFor(m=>m.serviceIcon,"",new {@style="color:red"})
                             </div>

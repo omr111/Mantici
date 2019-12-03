@@ -1,0 +1,34 @@
+﻿@model List<Mantici.Entities.Models.service>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="service_area" style="padding: 30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title mb-60">
+                    <h3 style="text-align: center; color: #78b454">Servislerimiz</h3>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Mantici.Entities.Models.service svr in Model)
+            {
+                <div class="col-xl-4 col-md-6">
+                    <div class="single_service">
+                        <div class="service_icon">
+                            <img src="@svr.serviceIcon" />
+                        </div>
+                        <h4>@svr.serviceName</h4>
+                        <p>@svr.serviceInfo</p>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>

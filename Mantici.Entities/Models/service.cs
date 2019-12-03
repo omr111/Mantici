@@ -8,7 +8,7 @@ namespace Mantici.Entities.Models
     {
         public int id { get; set; }
 
-        [Required(ErrorMessage = "Bu alan boþ geçilemez.")]
+       
         public string serviceIcon { get; set; }
 
         [Required(ErrorMessage = "Bu alan boþ geçilemez."), MaxLength(100, ErrorMessage = "En fazla 100 karakter girebilirsiniz.")]

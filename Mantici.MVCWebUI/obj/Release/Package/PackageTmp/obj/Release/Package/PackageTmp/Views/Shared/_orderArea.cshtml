@@ -1,0 +1,38 @@
+﻿@using Mantici.Entities.Models
+@model List<Mantici.Entities.Models.Product>
+<div class="order_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title mb-70">
+                    <h2>Popüler Yemekler</h2>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Product pro in Model)
+            {
+                <div class="col-xl-4 col-md-6">
+                    <div class="single_order">
+                        <div class="order_thumb">
+                            <img src="@pro.coverPicturePath" alt="@pro.pictureAlt">
+                            <div class="order_prise">
+                                <span>@pro.price</span>
+                            </div>
+                        </div>
+                        <div class="order_info">
+                            <h3><a href="#">@pro.name</a></h3>
+                            <p>
+                                @pro.caption
+                            </p>
+                          
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        
+        </div>
+    </div>
+</div>

@@ -121,8 +121,9 @@ namespace Mantici.MVCWebUI.Controllers
                             bool result2 = _reviewBll.Add(review);
                             if (result2)
                             {
-                                return RedirectToAction("Index");
                                 Session["reviewInfo"] = "Yorum Başarıyla Gönderildi.";
+                                return RedirectToAction("Index");
+                                
                             }
                             else
                             {
@@ -130,8 +131,9 @@ namespace Mantici.MVCWebUI.Controllers
                                 return RedirectToAction("Index");
                             }
                         }
-                        return RedirectToAction("Index");
                         Session["reviewInfo"] = "Lütfen Eksik Alanları Doldurun !";
+                        return RedirectToAction("Index");
+                        
                     }
                     else
                     {
