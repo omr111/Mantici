@@ -20,8 +20,10 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +33,19 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -1126,6 +1141,8 @@
     <Content Include="content\img\userPictures\admin.jpg" />
     <Content Include="content\img\userPictures\cevizli_kafkas.jpg" />
     <Content Include="content\img\userPictures\omer.jpg" />
+    <Content Include="content\css\addCart.css" />
+    <Content Include="content\js\addCart.js" />
     <Content Include="content\js\ajax-form.js" />
     <Content Include="content\js\bootstrap.min.js" />
     <Content Include="content\js\imagesloaded.pkgd.min.js" />
@@ -1521,19 +1538,6 @@
     <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\CHANGELOG.md" />
     <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\CODE_OF_CONDUCT.md" />
     <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\CONTRIBUTING.md" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper-utils.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper-utils.min.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper.min.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\poppper.js.flow" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper-utils.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper-utils.min.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper.min.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper-utils.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper-utils.min.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper.js.map" />
-    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper.min.js.map" />
     <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\docs\CNAME" />
     <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\docs\css\ie8.scss" />
     <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\docs\css\ie9.scss" />
@@ -1617,6 +1621,19 @@
     <Content Include="Areas\AdminPanel\Views\Branches\branchRequestList.cshtml" />
     <Content Include="Areas\AdminPanel\Views\review\Index.cshtml" />
     <Content Include="bin\Mantici.MVCWebUI.dll.config" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper-utils.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper-utils.min.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\popper.min.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper-utils.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper-utils.min.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\popper.min.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\esm\poppper.js.flow" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper-utils.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper-utils.min.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper.js.map" />
+    <Content Include="Areas\AdminPanel\context\admin-panel\vendors\popper.js\dist\umd\popper.min.js.map" />
     <None Include="content\Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="content\Scripts\jquery-3.4.1.js" />
     <Content Include="content\Scripts\jquery-3.4.1.min.js" />

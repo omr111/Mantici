@@ -1,38 +1,54 @@
 ﻿@using Mantici.Entities.Models
 @model List<Mantici.Entities.Models.Product>
+
+@*<link href="~/content/css/addCart.css" rel="stylesheet" />*@
 <div class="order_area">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="section_title mb-70">
                     <h2>Popüler Yemekler</h2>
-                    
+
                 </div>
             </div>
         </div>
-        <div class="row">
-            @foreach (Product pro in Model)
-            {
-                <div class="col-xl-4 col-md-6">
-                    <div class="single_order">
-                        <div class="order_thumb">
-                            <img src="@pro.coverPicturePath" alt="@pro.pictureAlt">
-                            <div class="order_prise">
-                                <span>@pro.price</span>
+        <form id="AddToCartForm">
+            <div class="row">
+
+                @foreach (Product pro in Model)
+                {
+                    <div class="col-xl-4 col-md-6">
+                        <div class="single_order">
+                            <div class="order_thumb">
+                                <img src="@pro.coverPicturePath" alt="@pro.pictureAlt">
+                                <div class="order_prise">
+                                    <span>@pro.price</span>
+                                </div>
+                            </div>
+                            <div class="order_info">
+                                <h3><a href="#">@pro.name</a></h3>
+                                <p>
+                                    @pro.caption
+                                </p>
+
+
+                                <a href="#" class="boxed-btn">Add to Cart</a>
+                            
+
+
                             </div>
                         </div>
-                        <div class="order_info">
-                            <h3><a href="#">@pro.name</a></h3>
-                            <p>
-                                @pro.caption
-                            </p>
-                          
-                        </div>
                     </div>
-                </div>
-            }
-            
-        
-        </div>
+                }
+
+
+            </div>
+        </form>
     </div>
 </div>
+
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script src="~/content/js/addCart.js"></script>
+
+
